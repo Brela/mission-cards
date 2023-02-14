@@ -45,6 +45,12 @@ app.post('/cards', async (req: Request, res: Response) => {
     res.json(createdCard);
 });
 
+app.delete('/decks/:deckId', async (req: Request, res: Response) => {
+    const deckId = req.params.deckId;
+    const deck = await Deck.findByIdAndDelete(deckId);
+    res.json(deck)
+})
+
 const connectDB = require('./config/database')
 // wait for mongo connection before starting server inside the .then()
 connectDB().then(() => {

@@ -11,6 +11,14 @@ function App() {
   const [decks, setDecks] = useState<DeckType[]>(deckList);
   const [deckName, setDeckName] = useState('');
 
+  async function loadDecks() {
+    // make another GET request to the server to get the updated list of decks
+    const response = await fetch('http://localhost:5000/decks');
+    const newDecks = await response.json();
+    // update the state of the decks array with the new list of decks
+    setDecks(newDecks);
+  }
+
 
   async function handleCreateDeck(e: React.FormEvent) {
     e.preventDefault();
@@ -25,30 +33,28 @@ function App() {
         deckName,
       }),
     });
-
-    // make another GET request to the server to get the updated list of decks
-    const response = await fetch('http://localhost:5000/decks');
-    const newDecks = await response.json();
-
-    // update the state of the decks array with the new list of decks
-    setDecks(newDecks);
-
+    // update the decks
+    loadDecks()
     // clear the input field
     setDeckName('');
   }
 
-  // this can set the decks to the decks in mongo via the fetch
-  /*   useEffect(() => {
-      (async _ => {
-        const response = await fetch('http://localhost:5000/decks');
-        const newDecks = await response.json();
-        setDecks(newDecks)
-      })();
-    }, []); */
+  async function handleDeleteDeck(deckId: String) {
+    await fetch(`http://localhost:5000/decks/${deckId}`, {
+      method: 'DELETE',
+    });
+    // update the decks
+    loadDecks()
+  }
 
   useEffect(() => {
     console.log(decks);
   }, [decks]);
+
+  useEffect(() => {
+    loadDecks();
+  }, []);
+
 
 
   return (
@@ -56,7 +62,9 @@ function App() {
       <div className='decksContainer'>
         {
           decks.map(deck => (
-            <li key={deck._id}>{deck.deckName}</li>
+            <li key={deck._id}>
+              <button onClick={() => handleDeleteDeck(deck._id)}>X</button>
+              {deck.deckName}</li>
           ))
         }
       </div>
