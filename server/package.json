@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch \"server/**\" --ext \"ts,json,js\" --exec \"ts-node server.ts\"",
+    "dev": "nodemon --watch \"server/**\", --watch \"client/**\" --ext \"ts,json,js,tsx --exec\" \"ts-node server.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.13",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.9.1",

@@ -1,27 +1,36 @@
 import express, { Request, Response } from "express";
-import { DeckModel, CardModel } from "./models/Deck";
+import { DeckModel } from "./models/Deck";
+import { CardModel } from "./models/Card";
+import cors from 'cors';
 const Deck = DeckModel;
 require('dotenv').config({ path: './config/.env' })
 
 const app = express()
+app.use(cors())
 app.use(express.static('client/public'));  // Serve the React app
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // this allows json post requests to be read by express
 
 
-app.get('/', (req: Request, res: Response) => {
-    res.send("gg")
+app.get('/decks', async (req: Request, res: Response) => {
+    // the find() method in express will get all decks if it had no params
+    const decks = await Deck.find();
+    res.json(decks);
 })
 
 app.post('/decks', async (req: Request, res: Response) => {
-    const newDeck = new DeckModel({
-        name: req.body.name,
-        description: req.body.description,
-        creationDate: new Date()
-    });
-    // await mongoDB to save the deck
-    const createdDeck = await newDeck.save();
-    res.json(createdDeck);
+    try {
+        const newDeck = new DeckModel({
+            deckName: req.body.deckName, // use 'deckName' instead of 'description'
+            creationDate: new Date()
+        });
+
+        const createdDeck = await newDeck.save();
+        res.status(201).json(createdDeck);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
 });
 
 app.post('/cards', async (req: Request, res: Response) => {
