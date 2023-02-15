@@ -24,7 +24,7 @@ function App() {
     e.preventDefault();
 
     // send a POST request to backend to create a new deck
-    await fetch('http://localhost:5000/decks', {
+    const response = await fetch('http://localhost:5000/decks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
