@@ -1,6 +1,36 @@
+/* import React, { useState, useEffect } from 'react';
+
+import Footer from './components/Footer/Footer';
+import DeckList from './components/DeckList/DeckList';
+import Deck from './components/Deck/Deck'; 
+import './styles/reset.css';
+import './styles/header.css';
+import './styles/footer.css';
+import './styles/deck-list.css';
+import './styles/deck.css';
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <main>
+        <DeckList />
+        <Deck />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App; */
+
+
+
 import { useState, useEffect } from 'react';
 import DeckType from '../../interfaces'
-import './App.css'
+import './styles/layout.css'
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 let deckList: DeckType[] = [];
 
@@ -59,6 +89,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <div className='decksContainer'>
         {
           decks.map(deck => (
@@ -78,6 +109,7 @@ function App() {
         />
         <button>Create Deck</button>
       </form>
+      <Footer />
     </div>
   )
 }
