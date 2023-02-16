@@ -12,6 +12,7 @@ const { json, urlencoded } = pkg;
 import connectDB from './config/database.mjs';
 import DeckModel from './models/Deck.mjs';
 import CardModel from './models/Card.mjs';
+const Deck = DeckModel;
 
 dotenv.config({ path: './config/.env' })
 const app = express()

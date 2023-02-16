@@ -6,7 +6,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "node server.mjs",
-    "dev": "nodemon --watch \"server/**\", --watch \"client/**\" --ext \"ts,json,js,tsx\" --exec \"ts-node server.ts\"",
+    "dev": "nodemon --watch \"server/**\", --watch \"client/**\" --ext \"ts,json,js,tsx\" --exec \"ts-node server.mjs\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
