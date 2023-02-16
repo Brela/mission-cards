@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 mongoose.set('strictQuery', false);
 
 const CardSchema = new mongoose.Schema({
@@ -29,4 +29,4 @@ const CardSchema = new mongoose.Schema({
 const CardModel = mongoose.model('Card', CardSchema)
 
 
-export { CardModel }
+export default CardModel

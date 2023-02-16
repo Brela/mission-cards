@@ -1,10 +1,19 @@
-import express, { Request, Response } from "express";
-import { DeckModel } from "./models/Deck";
-import { CardModel } from "./models/Card";
+/* const express = require('express');
+// const { Request, Response } = require('express');
+const DeckModel = require("./models/Deck.js");
+const CardModel = require("./models/Card.js");
+const cors = require('cors')
+const Deck = DeckModel; */
+import express from 'express';
+import dotenv from 'dotenv';
 import cors from 'cors';
-const Deck = DeckModel;
-require('dotenv').config({ path: './config/.env' })
+import pkg from 'body-parser';
+const { json, urlencoded } = pkg;
+import connectDB from './config/database.mjs';
+import DeckModel from './models/Deck.mjs';
+import CardModel from './models/Card.mjs';
 
+dotenv.config({ path: './config/.env' })
 const app = express()
 app.use(cors())
 app.use(express.static('client/public'));  // Serve the React app
@@ -12,13 +21,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // this allows json post requests to be read by express
 
 
-app.get('/decks', async (req: Request, res: Response) => {
+app.get('/decks', async (req, res) => {
     // the find() method in express will get all decks if it had no params
     const decks = await Deck.find();
     res.json(decks);
 })
 
-app.post('/decks', async (req: Request, res: Response) => {
+app.post('/decks', async (req, res) => {
     try {
         const newDeck = new DeckModel({
             deckName: req.body.deckName, // use 'deckName' instead of 'description'
@@ -33,7 +42,7 @@ app.post('/decks', async (req: Request, res: Response) => {
     }
 });
 
-app.post('/cards', async (req: Request, res: Response) => {
+app.post('/cards', async (req, res) => {
     const newCard = new CardModel({
         deckId: req.body.deckId,
         question: req.body.question,
@@ -45,13 +54,13 @@ app.post('/cards', async (req: Request, res: Response) => {
     res.json(createdCard);
 });
 
-app.delete('/decks/:deckId', async (req: Request, res: Response) => {
+app.delete('/decks/:deckId', async (req, res) => {
     const deckId = req.params.deckId;
     const deck = await Deck.findByIdAndDelete(deckId);
     res.json(deck)
 })
 
-const connectDB = require('./config/database')
+
 // wait for mongo connection before starting server inside the .then()
 connectDB().then(() => {
 

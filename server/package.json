@@ -1,10 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.mjs",
     "dev": "nodemon --watch \"server/**\", --watch \"client/**\" --ext \"ts,json,js,tsx\" --exec \"ts-node server.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

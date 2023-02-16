@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 mongoose.set('strictQuery', false);
 
 const DeckSchema = new mongoose.Schema({
@@ -20,4 +20,4 @@ const DeckSchema = new mongoose.Schema({
 const DeckModel = mongoose.model('Deck', DeckSchema)
 
 
-export { DeckModel }
+export default DeckModel
