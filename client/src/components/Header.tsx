@@ -2,7 +2,7 @@ import React from 'react';
 
 function Header() {
     return (
-        <header>
+        <header className='header'>
             <div className="mission">
                 <h2>Mission: </h2>
                 <input placeholder="study cards" />

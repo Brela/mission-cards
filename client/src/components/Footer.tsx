@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
     return (
-        <footer>
+        <footer className='footer'>
             <div className="quote">
                 <input placeholder="enter motivational quote" />
             </div>

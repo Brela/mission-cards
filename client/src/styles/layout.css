@@ -1,20 +1,14 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-}
+#root {}
 
 .App {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: au to 5vw;
+    padding: auto 5vw;
 }
 
 /* -------------------------    HEADER -------------------------- */
-
-header {
+header.header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,8 +18,8 @@ header {
 }
 
 header .mission {
-    flex-basis: 50%;
     display: flex;
+    flex-basis: 70%;
     font-size: 1.3em;
 }
 
@@ -41,16 +35,16 @@ header .mission input:focus {
 }
 
 header .current {
-    flex-basis: 50%;
+    flex-basis: 30%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 
 
 /* -------------------------    FOOTER -------------------------- */
 
-footer {
+footer.footer {
     position: fixed;
     bottom: 0;
     display: flex;
@@ -95,5 +89,5 @@ footer .quote input:focus {
 footer .login {
     flex-basis: 50%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }

@@ -1,0 +1,47 @@
+/* row3 contains the find, theme, and preferences logos */
+.container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-right: 20px;
+    width: 50%;
+}
+
+.row3 {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    flex-basis: 20%;
+}
+
+.row3 .fa-solid {
+    color: rgb(175, 175, 175);
+}
+
+.row3 .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    cursor: pointer;
+    width: 30px;
+}
+
+.active {
+    border: 1px solid white;
+    z-index: 4999;
+}
+
+.activeItem .row3 .fa-solid {
+    color: rgb(28, 107, 175);
+}
+
+
+@media screen and (max-width: 1000px) {
+    body .container {
+        justify-content: center;
+        padding-top: 10px;
+        padding-right: 20px;
+        width: 50%;
+    }
+}
