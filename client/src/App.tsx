@@ -1,13 +1,15 @@
-import './styles/layout.css'
+import './styles/header.css'
+import './styles/decksColHeadings.css'
 import './styles/decks.css'
-import './styles/morePopup.css'
-import './styles/row1.css'
-import './styles/row3.css'
-import Footer from './components/Footer';
+import './styles/popups/deckMorePopup.css'
+import './styles/popups/homeToolbarPopup.css'
+import './styles/decksToolbar.css'
+import './styles/footer.css'
 import Header from './components/Header';
-import DeckList from './components/DeckListTemp';
-import Row1 from './components/row1'
-import Row3_w_popups from './components/row3';
+import ColumnHeadings from './components/DecksColHeading'
+import DeckList from './components/DeckListHome';
+import DecksToolbar from './components/DecksHomeToolbar';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -15,9 +17,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Row1 />
+      <ColumnHeadings />
       <DeckList />
-      <Row3_w_popups />
+      <DecksToolbar />
       <Footer />
     </div>
   )

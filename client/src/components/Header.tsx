@@ -4,8 +4,7 @@ function Header() {
     return (
         <header className='header'>
             <div className="mission">
-                <h2>Mission: </h2>
-                <input placeholder="study cards" />
+                <h2><i className="fa-solid fa-layer-group"></i>mission</h2>
             </div>
             <div className="current">
                 <h3>Current # 140</h3>

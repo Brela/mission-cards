@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-
-function Row3_w_popups() {
+function DecksToolbar() {
     const [activeItem, setActiveItem] = useState('');
     const popupsRefs: Record<string, React.RefObject<HTMLDivElement>> = {
         search: useRef<HTMLDivElement>(null),
@@ -87,4 +86,4 @@ function Row3_w_popups() {
     );
 }
 
-export default Row3_w_popups;
+export default DecksToolbar;

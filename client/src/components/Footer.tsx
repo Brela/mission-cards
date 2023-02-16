@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer className='footer'>
             <div className="quote">
-                <input placeholder="enter motivational quote" />
+                <input placeholder="enter your mission here" />
             </div>
             <div className="login">
                 <h3>Login</h3>

@@ -1,5 +1,5 @@
 import React from 'react';
-function Row1() {
+function DecksColHeadings() {
     return (
         <div className="row1">
             <div className="deckHeading">
@@ -12,4 +12,4 @@ function Row1() {
     );
 }
 
-export default Row1;
+export default DecksColHeadings;

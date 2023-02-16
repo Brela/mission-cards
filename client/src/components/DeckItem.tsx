@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/morePopup.css'
 
 interface DeckType {
     _id: string;
@@ -12,8 +11,12 @@ interface DeckProps {
 }
 
 function Deck(props: DeckProps) {
+    // the decks two props: deck is each deck pulled in from deck component, and onDeleteDeck is the function for deleting them
+    // this is where we will add the `favorite a deck as well?`
     const { deck, onDeleteDeck } = props;
     const [showDeletePopup, setShowDeletePopup] = useState(false);
+
+    console.log(showDeletePopup)
 
     const handleDeleteDeck = () => {
         onDeleteDeck(deck._id);
@@ -28,21 +31,20 @@ function Deck(props: DeckProps) {
             <div className="more">
                 <button className="more-btn" onClick={() => setShowDeletePopup(true)}>...</button>
                 {showDeletePopup && (
-                    <div className="popup">
-                        <p>Are you sure you want to delete this deck?</p>
-                        <button className="popup-btn delete-btn" onClick={handleDeleteDeck}>Delete</button>
-                        <button className="popup-btn cancel-btn" onClick={() => setShowDeletePopup(false)}>Cancel</button>
+                    <div className="more-popup">
+                        <div className='more-popup-box'>
+                            <div className='more-popup-content'>
+                                <p>Are you sure you want to delete {deck.deckName}?</p>
+
+                                <button className="more-popup-btn delete-btn" onClick={handleDeleteDeck}>Delete</button>
+                                {/* cancel button simply sets the state of showDeletePopup to false which closes it */}
+                                <button className="more-popup-btn cancel-btn" onClick={() => setShowDeletePopup(false)}>Cancel</button>
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>
-            {showDeletePopup && (
-                <div className="popup">
-                    <p>Are you sure you want to delete this deck?</p>
-                    <button onClick={handleDeleteDeck}>Delete</button>
-                    <button onClick={() => setShowDeletePopup(false)}>Cancel</button>
-                </div>
-            )}
-        </li>
+        </li >
     );
 }
 

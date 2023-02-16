@@ -1,17 +1,13 @@
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
+.more-popup {
+    position: relative;
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 4998;
 }
 
-.popup-box {
+.more-popup-box {
     position: relative;
     width: 300px;
     height: 150px;
@@ -22,7 +18,7 @@
 }
 
 
-.popup-content {
+.more-popup-content {
     color: rgb(51, 53, 50);
     display: flex;
     flex-direction: column;
@@ -32,6 +28,6 @@
     text-align: center;
 }
 
-.popup.active {
+.more-popup.active {
     display: flex;
 }

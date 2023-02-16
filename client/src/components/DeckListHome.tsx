@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Deck from './DeckTemp';
-
-interface DeckType {
-    _id: string;
-    deckName: string;
-    creationDate: string;
-}
+import Deck from './DeckItem';
+import DeckType from '../types/DeckType'
 
 function DeckList() {
     const [decks, setDecks] = useState<DeckType[]>([]);
@@ -45,11 +40,13 @@ function DeckList() {
 
     return (
         <div className="decksContainer">
-            <div className="">
-                {decks.map((deck) => (
-                    <Deck key={deck._id} deck={deck} onDeleteDeck={handleDeleteDeck} />
-                ))}
-            </div>
+            <ul>
+                <div className="">
+                    {decks.map((deck) => (
+                        <Deck key={deck._id} deck={deck} onDeleteDeck={handleDeleteDeck} />
+                    ))}
+                </div>
+            </ul>
             <form onSubmit={handleCreateDeck}>
                 <label htmlFor="deck-title">Add Title</label>
                 <input
