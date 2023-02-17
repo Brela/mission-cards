@@ -1,4 +1,4 @@
-import React from 'react';
+
 function DecksColHeadings() {
     return (
         <div className="row1">

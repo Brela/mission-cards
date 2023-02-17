@@ -1,11 +1,12 @@
 .more-popup {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    display: block;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 4998;
+    z-index: 5001;
+    transform: translateY(-10px);
+    /* adjust this value to move the popup up */
 }
+
 
 .more-popup-box {
     position: relative;

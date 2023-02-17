@@ -1,3 +1,8 @@
-node_modules
 .env
 originalSetup.MD
+
+node_modules
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store

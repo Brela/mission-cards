@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+import path from 'path';
+/* import { FontAwesomeIcon } from "@fortwesome/react-fontawesome";
+import { fa5 } from `../../../node_modules/@fortawesome/fontawesome-svg-core` */
+
 function DecksToolbar() {
     const [activeItem, setActiveItem] = useState('');
     const popupsRefs: Record<string, React.RefObject<HTMLDivElement>> = {

@@ -1,5 +1,4 @@
 /* const express = require('express');
-// const { Request, Response } = require('express');
 const DeckModel = require("./models/Deck.js");
 const CardModel = require("./models/Card.js");
 const cors = require('cors')
@@ -7,8 +6,6 @@ const Deck = DeckModel; */
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import pkg from 'body-parser';
-const { json, urlencoded } = pkg;
 import connectDB from './config/database.mjs';
 import DeckModel from './models/Deck.mjs';
 import CardModel from './models/Card.mjs';
@@ -23,7 +20,11 @@ app.use(express.json()) // this allows json post requests to be read by express
 
 
 app.get('/decks', async (req, res) => {
-    // the find() method in express will get all decks if it had no params
+    // the find() method in express will get all decks if it has no params
+    const decks = await Deck.find();
+    res.json(decks);
+})
+app.get('/decks/:deckId', async (req, res) => {
     const decks = await Deck.find();
     res.json(decks);
 })

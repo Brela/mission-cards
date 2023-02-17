@@ -6,9 +6,9 @@ import './styles/popups/homeToolbarPopup.css'
 import './styles/decksToolbar.css'
 import './styles/footer.css'
 import Header from './components/Header';
-import ColumnHeadings from './components/DecksColHeading'
-import DeckList from './components/DeckListHome';
-import DecksToolbar from './components/DecksHomeToolbar';
+import ColumnHeadings from './components/home/DecksColHeading'
+import DeckList from './components/home/DeckListHome';
+import DecksToolbar from './components/home/DecksHomeToolbar';
 import Footer from './components/Footer';
 
 
