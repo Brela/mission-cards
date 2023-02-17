@@ -9,6 +9,13 @@ import cors from 'cors';
 import connectDB from './config/database.mjs';
 import DeckModel from './models/Deck.mjs';
 import CardModel from './models/Card.mjs';
+import { getDecksController } from './controllers/getDeckController.js';
+import { getCardController } from './controllers/getCardController.js';
+import { getCardsController } from './controllers/getCardsController.js';
+import { createDeckController } from './controllers/createDeckController.js';
+import { createCardController } from './controllers/createCardController.js';
+import { deleteDeckController } from './controllers/deleteDeckController.js';
+import { deleteCardController } from './controllers/deleteCardController.js';
 const Deck = DeckModel;
 
 dotenv.config({ path: './config/.env' })
@@ -19,48 +26,22 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // this allows json post requests to be read by express
 
 
-app.get('/decks', async (req, res) => {
-    // the find() method in express will get all decks if it has no params
+app.get('/decks', getDecksController);
+app.post('/decks', createDeckController);
+app.delete('/decks/:deckId', deleteDeckController);
+
+/* app.get('/decks/:deckId', async (req, res) => {
     const decks = await Deck.find();
     res.json(decks);
-})
-app.get('/decks/:deckId', async (req, res) => {
-    const decks = await Deck.find();
-    res.json(decks);
-})
+}) */
 
-app.post('/decks', async (req, res) => {
-    try {
-        const newDeck = new DeckModel({
-            deckName: req.body.deckName, // use 'deckName' instead of 'description'
-            creationDate: new Date()
-        });
+// get all cards for a deck
+app.get('/:deckName', getCardsController);
+// get a single card
+app.get('/:deckName/:cardId', getCardController);
 
-        const createdDeck = await newDeck.save();
-        res.status(201).json(createdDeck);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Server error' });
-    }
-});
-
-app.post('/cards', async (req, res) => {
-    const newCard = new CardModel({
-        deckId: req.body.deckId,
-        question: req.body.question,
-        answer: req.body.answer,
-        creationDate: new Date()
-    });
-    // await mongoDB to save the card
-    const createdCard = await newCard.save();
-    res.json(createdCard);
-});
-
-app.delete('/decks/:deckId', async (req, res) => {
-    const deckId = req.params.deckId;
-    const deck = await Deck.findByIdAndDelete(deckId);
-    res.json(deck)
-})
+app.post('/:deckName/newcard', createCardController);
+app.delete('/decks/:deckId/card', deleteCardController);
 
 
 // wait for mongo connection before starting server inside the .then()

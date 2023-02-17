@@ -12,13 +12,13 @@ const CardSchema = new mongoose.Schema({
         required: true,
         ref: 'Deck'
     },
-    question: {
+    front: {
         type: String,
         required: true
     },
-    answer: {
+    back: {
         type: String,
-        required: true
+        required: false
     },
     creationDate: {
         type: Date,
