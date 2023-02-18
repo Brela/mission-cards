@@ -8,6 +8,9 @@ Vite, TypeScript, MongoDB, Express, React, and Node
 * The back-end (server folder) uses plain JS because I already had it developed when I started using TS
 
 ### current problems
+** 'More' popups don't close when others are clicked:
+* in components/home/deckItem.tsx, code doesn't work for closing other popups. You have to cancel each one to close
+
 ** Get hosted:
 * I converted the back-end file types to .mjs because I was having trouble with running the build command "start". Using require syntax was giving me trouble. Do I need a module bundler like webpack to use the 'require' syntax?
 

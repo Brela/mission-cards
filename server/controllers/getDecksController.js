@@ -1,4 +1,4 @@
-import DeckModel from './models/Deck.mjs';
+import DeckModel from '../models/Deck.mjs';
 const Deck = DeckModel;
 
 export async function getDecksController(req, res) {

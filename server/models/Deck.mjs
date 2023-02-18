@@ -11,6 +11,10 @@ const DeckSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  listOrder: {
+    type: Number,
+    required: false
+  },
   creationDate: {
     type: Date,
     default: Date.now

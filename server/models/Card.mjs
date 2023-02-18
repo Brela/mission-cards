@@ -7,10 +7,14 @@ const CardSchema = new mongoose.Schema({
         required: true,
         auto: true
     },
-    deckId: {
-        type: mongoose.Types.ObjectId,
-        required: true,
-        ref: 'Deck'
+    /*     deckId: {
+            type: mongoose.Types.ObjectId,
+            required: true,
+            ref: 'Deck'
+        }, */
+    deckName: {
+        type: String,
+        required: true
     },
     front: {
         type: String,

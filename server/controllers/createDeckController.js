@@ -1,6 +1,6 @@
-import DeckModel from './models/Deck.mjs';
+import DeckModel from '../models/Deck.mjs';
 
-export async function getDecksController(req, res) {
+export async function createDeckController(req, res) {
     try {
         const newDeck = new DeckModel({
             deckName: req.body.deckName,
