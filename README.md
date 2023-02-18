@@ -7,6 +7,16 @@ Vite, TypeScript, MongoDB, Express, React, and Node
 * The front-end (client folder) uses typeScript because I wanted to learn typeScript
 * The back-end (server folder) uses plain JS because I already had it developed when I started using TS
 
+✳️ to adjust properties that a Card has in MongoDB, these need adjusted:
+    🗝️ the Card model -- server/models/Card
+    🗝️ the newCard properties -- server/controllers/createCardController
+    🗝️ the parameters and body contents of createCard function -- client/src/apiFetches
+    🗝️ the CardType definition -- client/src/types/CardType
+
+### temp notes
+* should addCards page show all cards for that deck or just allow to add a card and show the recently added ones?
+* aim for component-based architecture where each component is responsible for rendering its own content and managing its own state.
+
 ### current problems
 ** 'More' popups don't close when others are clicked:
 * in components/home/deckItem.tsx, code doesn't work for closing other popups. You have to cancel each one to close
@@ -27,3 +37,4 @@ Vite, TypeScript, MongoDB, Express, React, and Node
 * create page for studying card
 
 * on Home page, in deckItem, add in dynamic card number to each deck based on the associated cards for that deck in Mongo
+* add error handling to server
