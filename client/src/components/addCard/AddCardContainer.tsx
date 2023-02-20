@@ -28,15 +28,9 @@ function AddCardToDeck() {
 
     return (
         <div>
-            <h1 className='add-card'>Add Card to deck:  {deckName}</h1>
-            <div className="decks-container add-cards-container theme-color">
-                <ul>
-                    {/*   <div className="">
-                    {decks.map((deck) => (
-                        <Card key={deck._id} deck={deck} onDeleteDeck={handleDeleteDeck} />
-                        ))}
-                    </div> */}
-                </ul>
+            <h1 className='add-card'>Deck: <span>{deckName}</span></h1>
+            <div className="decks-container add-cards-container">
+
                 <form onSubmit={handleCreateCard}>
                     <div className='add-cards-sub-container'>
                         <div className='card-front'>

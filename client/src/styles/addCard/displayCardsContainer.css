@@ -1,9 +1,27 @@
 .display-cards-container {
-    height: 500px;
-    flex-basis: 20vw;
-    margin-top: 60px;
+    height: 550px;
+    width: 400px;
+    margin-top: 20px;
+    background-color: rgb(138, 138, 138);
+    background-color: var(--accent-color-3);
+    overflow-y: scroll;
 }
 
 h1.card-list {
-    text-align: center;
+    margin-left: 150px;
+    margin-top: 12px;
+}
+
+.card-list-item {
+    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--accent-color-2);
+    padding: 20px 10px;
+}
+
+.display-card-front {
+    font-size: 1em;
+}
+
+.display-card-back {
+    font-size: .7em;
 }

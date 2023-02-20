@@ -11,7 +11,7 @@ function Header() {
                 </Link >
             </div>
             <div className="current">
-                <h3>Current # 140</h3>
+                <h3>Current #: </h3>
             </div>
         </header>
     );

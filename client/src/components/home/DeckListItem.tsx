@@ -1,11 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Outlet, Link } from "react-router-dom";
-
-interface DeckType {
-    _id: string;
-    deckName: string;
-    creationDate: string;
-}
+import { Link } from "react-router-dom";
+import DeckType from '../../types/DeckType'
+import { getNumCardsForDeck } from '../../utils/getNumCardsForDeck';
 
 interface DeckProps {
     deck: DeckType;
@@ -15,12 +11,15 @@ interface DeckProps {
 function Deck(props: DeckProps): JSX.Element {
     const { deck, onDeleteDeck } = props;
     const [moreOpen, setMoreOpen] = useState(false);
+    const [numCards, setNumCards] = useState(0);
+    // const morePopupRef = useRef<HTMLDivElement>(null);
 
     const handleDeleteDeck = () => {
         onDeleteDeck(deck._id);
         setMoreOpen(false);
     };
 
+    /* 
     const handleMoreClick = () => {
         setMoreOpen(moreOpen);
         const allMorePopups = document.querySelectorAll('.more-popup');
@@ -31,30 +30,40 @@ function Deck(props: DeckProps): JSX.Element {
         });
     };
 
-    const morePopupRef = useRef<HTMLDivElement>(null);
 
-    useEffect((): (() => void | undefined) | void => {
-        const handleOutsideClick = (event: MouseEvent): void => {
-            if (
-                morePopupRef.current &&
-                !morePopupRef.current.contains(event.target as Node) &&
-                moreOpen
-            ) {
-                setMoreOpen(false);
-            }
-        };
+        useEffect((): (() => void | undefined) | void => {
+            const handleOutsideClick = (event: MouseEvent): void => {
+                if (
+                    morePopupRef.current &&
+                    !morePopupRef.current.contains(event.target as Node) &&
+                    moreOpen
+                ) {
+                    setMoreOpen(false);
+                }
+            };
+    
+            document.addEventListener('click', handleOutsideClick);
+    
+            return () => {
+                document.removeEventListener('click', handleOutsideClick);
+            };
+        }, [moreOpen]); */
 
-        document.addEventListener('click', handleOutsideClick);
 
-        return () => {
-            document.removeEventListener('click', handleOutsideClick);
-        };
-    }, [moreOpen]);
     const deckNameNoSpaces = deck.deckName.replaceAll(' ', '-')
+
+    useEffect(() => {
+        const fetchNumCards = async () => {
+            const cards = await getNumCardsForDeck(deck.deckName);
+            setNumCards(cards);
+        }
+        fetchNumCards();
+    }, [deck.deckName]);
+
     return (
         <li className='deck-list-item' key={deck._id}>
             <h5 className="deck-name">  <Link to={`${deckNameNoSpaces}`}>{deck.deckName}</Link></h5>
-            <div className="cards-remaining">77</div>
+            <div className="cards-remaining">{numCards}</div>
             <div className="more">
                 <button className="more-btn" onClick={() => setMoreOpen(true)}>...</button>
                 {moreOpen && (

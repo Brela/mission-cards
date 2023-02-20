@@ -31,7 +31,7 @@ function DeckList() {
     }, []);
 
     return (
-        <div className="decks-container theme-color">
+        <div className="decks-container">
             <ul>
                 <div className="">
                     {decks.map((deck) => (

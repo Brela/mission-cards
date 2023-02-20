@@ -2,6 +2,7 @@ import '../styles/header.css'
 import '../styles/footer.css'
 
 import '../styles/addCard/addCardFrontBack.css'
+import '../styles/addCard/displayCardsContainer.css'
 
 import Header from '../components/Header';
 import AddCardContainer from '../components/addCard/AddCardContainer'

@@ -1,10 +1,15 @@
 .align-containers {
     display: flex;
+    gap: 6vw;
 }
 
 h1.add-card {
     margin: 20px auto;
-    padding-left: 200px;
+    padding-left: 300px;
+}
+
+h1.add-card span {
+    color: var(--accent-color-5);
 }
 
 .decks-container.add-cards-container {
@@ -42,6 +47,8 @@ h1.add-card {
     vertical-align: top;
     width: 500px;
     height: 200px;
+    background-color: rgb(165, 165, 165);
+    background-color: var(--accent-color-3)
 }
 
 .add-cards-sub-container>button {

@@ -15,6 +15,10 @@ function CardList({ deckName }: Props) {
     }
 
     useEffect(() => {
+        if (!deckName) {
+            console.log('No deckName prop passed to CardList component');
+            return;
+        }
         fetchCards();
     }, [deckName]);
 
@@ -22,8 +26,13 @@ function CardList({ deckName }: Props) {
         <div className="">
             <ul>
                 {cards.map((card) => (
-                    <li key={card._id}>
-                        {card.front} - {card.back}
+                    <li
+                        className='card-list-item'
+                        key={card._id}>
+
+                        <div className='display-card-front'>{card.front}</div>
+                        <div className='display-card-back'>{card.back}</div>
+
                     </li>
                 ))}
             </ul>
