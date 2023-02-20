@@ -1,0 +1,9 @@
+.display-cards-container {
+    height: 500px;
+    flex-basis: 20vw;
+    margin-top: 60px;
+}
+
+h1.card-list {
+    text-align: center;
+}

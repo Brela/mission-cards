@@ -1,0 +1,65 @@
+.align-containers {
+    display: flex;
+}
+
+h1.add-card {
+    margin: 20px auto;
+    padding-left: 200px;
+}
+
+.decks-container.add-cards-container {
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.add-cards-sub-container * {
+    box-sizing: border-box;
+}
+
+.add-cards-sub-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 15px;
+}
+
+.add-cards-sub-container label {
+    font-size: 10px;
+
+}
+
+.add-cards-sub-container>div {
+    flex-basis: 200px;
+
+}
+
+.add-cards-sub-container .card-text {
+    padding: 10px;
+    vertical-align: top;
+    width: 500px;
+    height: 200px;
+}
+
+.add-cards-sub-container>button {
+    flex-basis: 30px;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+.card-front, .card-back {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-front .card-text {
+    font-size: 1.4em;
+
+}
+
+.card-back .card-text {
+    font-size: 1.2em;
+}

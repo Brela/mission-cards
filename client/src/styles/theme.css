@@ -1,0 +1,10 @@
+:root {
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgb(57, 62, 58);
+    --accent-color-1: rgb(129, 221, 36);
+}
+
+.theme-color {
+    background: rgb(59, 105, 105);
+}

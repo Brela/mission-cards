@@ -1,5 +1,5 @@
 # mission study cards
-The purpose of this site is to create a captivating flashcards application where users can enter a mission, get rewarded for progress, and review added cards at user defined intervals
+The purpose of this site is to create a captivating flashcards application where users can enter their current mission, get rewarded for progress (with points), and review added cards at user defined intervals
 ## live site: <a href="" target="_blank"></a>
 ### tech used
 Vite, TypeScript, MongoDB, Express, React, and Node
@@ -14,8 +14,8 @@ Vite, TypeScript, MongoDB, Express, React, and Node
     🗝️ the CardType definition -- client/src/types/CardType
 
 ### temp notes
-* should addCards page show all cards for that deck or just allow to add a card and show the recently added ones?
-* aim for component-based architecture where each component is responsible for rendering its own content and managing its own state.
+* For now, the 'Add Card' page will display a list of cards for that deck next to section where you can add a card
+* Aim for component-based architecture where each component is responsible for rendering its own content and managing its own state.
 
 ### current problems
 ** 'More' popups don't close when others are clicked:

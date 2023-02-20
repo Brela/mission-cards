@@ -23,30 +23,30 @@ function DecksToolbar() {
 
 
     // this is supposed to allow the boxes to be closed by clicking anywhere, but it makes the boxes not show up
-    /* useEffect(() => {
-        const handleClick = (event: MouseEvent) => {
-            const popup = document.querySelector('.popup.active');
-            if (popup && !popup.contains(event.target as Node)) {
-                setActiveItem('');
-            }
-            console.log(activeItem)
-            console.log(popup)
-        };
-
-        document.addEventListener('click', handleClick);
-
-        return () => {
-            document.removeEventListener('click', handleClick);
-        };
-    }, []); */
-
+    /*     useEffect(() => {
+            const handleClick = (event: MouseEvent) => {
+                const popup = document.querySelector('.active-item');
+                if (popup && !popup.contains(event.target as Node)) {
+                    setActiveItem('');
+                }
+                console.log(activeItem)
+                console.log(popup)
+            };
+    
+            document.addEventListener('click', handleClick);
+    
+            return () => {
+                document.removeEventListener('click', handleClick);
+            };
+        }, []);
+     */
     return (
         <div className="container">
-            <div className="row3">
+            <div className="row-3">
                 {['search', 'palette', 'gear'].map((popupItem) => (
                     <div
                         key={popupItem}
-                        className={`item ${activeItem === popupItem ? 'activeItem' : ''}`}
+                        // className={`item ${activeItem === popupItem ? 'active-item' : ''}`}
                         data-popup={popupItem}
                         onClick={handleItemClick}
                         ref={popupsRefs[popupItem]}
