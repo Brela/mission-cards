@@ -14,7 +14,7 @@ The purpose of this site is to create a captivating flashcards application where
 ### current problems
 * cards don't load on 'AddCard' page (CardsList component) if the deck has spaces in the name
 * cards dont reload in tha that same component when a new card is added
- * figure out adding the Create Card button click in 'AddCardContainer' as a prop so that the 'CardList' component can be updated when a new card is added
+  * figure out adding the Create Card button click in 'AddCardContainer' as a prop so that the 'CardList' component can be updated when a new card is added
   * is this doen through the parent component (pages/AddCard) that they share? 
 
 ## tech used
