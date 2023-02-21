@@ -1,13 +1,13 @@
 # mission study cards
 The purpose of this site is to create a captivating flashcards application where users can enter their current mission, get rewarded for progress (with points), and review added cards at user defined intervals
 <!-- ## live site: <a href="" target="_blank"></a> -->
-### start it up
+## start it up
 * add *.env* file to *server/config/* -> add port and DB_string to env file
 * cd client -> npm install -> npm run dev
 * cd server -> npm install -> npm run dev
 * go to http://localhost:5173/ in browser
 
-### tech used
+## tech used
 Vite, TypeScript, MongoDB, Express, React, and Node
 ### notes
 * The front-end (client folder) uses typeScript because I wanted to learn typeScript
