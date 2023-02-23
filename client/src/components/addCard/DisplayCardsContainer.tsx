@@ -5,7 +5,6 @@ import CardList from './CardsList';
 
 function DisplayCardsForDeck() {
     const { deckName } = useParams()
-    console.log(deckName)
 
     return (
         <div>

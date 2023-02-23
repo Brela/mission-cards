@@ -13,7 +13,6 @@ function AddCardToDeck() {
         e.preventDefault();
         const response = await createCard(deckName!, frontText, backText)
         // setDecks([...decks, response]);
-        console.log(response)
         setFrontText('');
         setBackText('');
     }
