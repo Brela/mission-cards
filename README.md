@@ -19,3 +19,4 @@ The purpose of this site is to create a captivating flashcards application where
 
 ## tech used
 Vite, TypeScript, MongoDB, Express, React, and Node
+

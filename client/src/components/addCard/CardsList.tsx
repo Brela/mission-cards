@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardType from '../../types/CardType';
+import { useCardContext } from './_CardListContext';
 import { getAllCardsForDeck } from '../../apiFetches/getAllCardsForDeck';
 
 type Props = {
@@ -7,7 +7,10 @@ type Props = {
 };
 
 function CardList({ deckName }: Props) {
-    const [cards, setCards] = useState<CardType[]>([]);
+
+    // useCardContext() listens to changes in the cards state, which is passed down from the context provider through the useCardContext hook in the parent 'pages/AddCard'
+    const { cards, setCards } = useCardContext();
+
 
     async function fetchCards() {
         const response = await getAllCardsForDeck(deckName);
@@ -21,6 +24,11 @@ function CardList({ deckName }: Props) {
         }
         fetchCards();
     }, [deckName]);
+
+    useEffect(() => {
+        fetchCards();
+        // [cards] is called a hook and listens for changes in the cards variable. When there's a change it'll run the function again
+    }, [cards]);
 
     return (
         <div className="">
