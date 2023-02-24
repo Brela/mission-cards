@@ -2,5 +2,5 @@
 .vscode/*
 !.vscode/extensions.json
 .DS_Store
-originalSetup.md
 notes-to-self.md
+notes.md
