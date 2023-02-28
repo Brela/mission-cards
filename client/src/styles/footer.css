@@ -9,19 +9,24 @@ footer.footer {
     width: 90vw;
     height: 80px;
     margin-bottom: 30px;
+
 }
 
 footer .quote {
     flex-basis: 50%;
     display: flex;
     font-size: 1.3em;
+
+
 }
 
 footer .quote input {
+
     margin-left: 20px;
     height: 30px;
     width: 350px;
-    background-color: rgb(38, 44, 44);
+    background-color: rgb(153, 169, 169);
+    background-color: var(--accent-color-3);
     text-align: center;
     color: white;
     resize: horizontal;
@@ -34,12 +39,15 @@ footer .quote input::-webkit-input-placeholder {
 
 /* For modern browsers */
 footer .quote input::placeholder {
+    color-scheme: light;
+    color: white;
     text-align: center;
 }
 
 
 footer .quote input:focus {
-    background-color: rgb(82, 83, 83);
+    color: rgb(0, 0, 0);
+    background-color: var(--accent-color-3);
 }
 
 footer .login {

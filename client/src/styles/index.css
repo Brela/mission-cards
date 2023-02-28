@@ -9,6 +9,10 @@
   -webkit-text-size-adjust: 100%; */
 }
 
+a {
+  color: white;
+}
+
 * {
   text-decoration: none;
 }

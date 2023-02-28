@@ -11,7 +11,7 @@ function CardList({ deckName }: Props) {
     // useCardContext() listens to changes in the cards state, which is passed down from the context provider through the useCardContext hook in the parent 'pages/AddCard'
     const { cards, setCards } = useCardContext();
 
-
+    deckName = deckName.replaceAll('-', ' ')
     async function fetchCards() {
         const response = await getAllCardsForDeck(deckName);
         setCards(response);

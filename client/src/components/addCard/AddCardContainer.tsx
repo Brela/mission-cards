@@ -28,7 +28,7 @@ function AddCardToDeck() {
     return (
         <div>
             <h1 className='add-card'>Deck: <span>{deckName}</span></h1>
-            <div className="decks-container add-cards-container">
+            <div className="add-cards-container">
 
                 <form onSubmit={handleCreateCard}>
                     <div className='add-cards-sub-container'>
