@@ -3,7 +3,8 @@
     width: 400px;
     margin-top: 20px;
     background-color: rgb(138, 138, 138);
-    background-color: var(--accent-color-3);
+    background-color: var(--background-2);
+    color: black;
     overflow-y: scroll;
 }
 
@@ -14,7 +15,7 @@ h1.card-list {
 
 .card-list-item {
     border-bottom: 1px solid white;
-    border-bottom: 1px solid var(--accent-color-2);
+    border-bottom: 1px solid var(--accent-color-1);
     padding: 20px 10px;
 }
 

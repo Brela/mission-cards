@@ -16,7 +16,7 @@ function CardList({ deckName }: Props) {
         const response = await getAllCardsForDeck(deckName);
         setCards(response);
     }
-
+    // used to fetch the cards on initial render or whenever the deckName prop changes.
     useEffect(() => {
         if (!deckName) {
             console.log('No deckName prop passed to CardList component');
@@ -25,9 +25,9 @@ function CardList({ deckName }: Props) {
         fetchCards();
     }, [deckName]);
 
+    // listens for changes in the cards state and re-fetches the cards when the state changes.
     useEffect(() => {
         fetchCards();
-        // [cards] is called a hook and listens for changes in the cards variable. When there's a change it'll run the function again
     }, [cards]);
 
     return (
