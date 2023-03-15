@@ -6,4 +6,9 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    resolve: {
+        fallback: {
+            "url": require.resolve("url/")
+        }
+    },
 };
