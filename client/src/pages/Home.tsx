@@ -10,7 +10,7 @@ import '../styles/popups/homeToolbarPopup.css'
 
 import Header from '../components/Header';
 import ColumnHeadings from '../components/home/DecksColHeading'
-import DeckList from '../components/home/DecksConatiner';
+import DecksContainer from '../components/home/DecksConatiner';
 import DecksToolbar from '../components/home/DecksHomeToolbar';
 import Footer from '../components/Footer';
 
@@ -21,7 +21,7 @@ function Home() {
     <div className="home-page">
       <Header />
       <ColumnHeadings />
-      <DeckList />
+      <DecksContainer />
       <DecksToolbar />
       <Footer />
     </div>

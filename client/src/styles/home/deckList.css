@@ -78,6 +78,10 @@ li .cards-remaining {
     padding-left: 60px;
 }
 
+.create-deck input {
+    background-color: var(--background-1);
+}
+
 .create-deck button {
     margin-left: 10px;
     width: 60px;

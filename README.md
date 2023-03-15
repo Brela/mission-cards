@@ -11,12 +11,11 @@ The purpose of this site is to create a captivating flashcards application where
 * The front-end (client folder) uses typeScript because I wanted to learn typeScript
 * The back-end (server folder) uses plain JS because I already had it developed when I started using TS
 
-### current problems
-* cards don't load on 'AddCard' page (CardsList component) if the deck has spaces in the name
-* cards dont reload in tha that same component when a new card is added
-  * figure out adding the Create Card button click in 'AddCardContainer' as a prop so that the 'CardList' component can be updated when a new card is added
-  * is this doen through the parent component (pages/AddCard) that they share? 
 
 ## tech used
 Vite, TypeScript, MongoDB, Express, React, and Node
 
+### organization of components and functions
+- DecksContainer contains the popupOpen state and passes down through the Deck component to the DotsPopup
+(change this to using context?)
+- DeleteDeck is in DotsPopup component where the delete button is located

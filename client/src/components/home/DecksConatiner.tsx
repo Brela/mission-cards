@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Deck from './DeckListItem';
+import Deck from './Deck';
 import DeckType from '../../types/DeckType';
-import { getDecks } from '../../apiFetches/getDecks'
-import { createDeck } from '../../apiFetches/createDeck'
-import { deleteDeck } from '../../apiFetches/deleteDeck'
+import { getDecks } from '../../apiFetches/getDecks';
+import { createDeck } from '../../apiFetches/createDeck';
 
-function DeckList() {
+interface DeckProps {
+    deck: DeckType;
+    loadDecks: () => void;
+    popupIsOpen: boolean;
+    setPopupIsOpen: (popupIsOpen: boolean) => void; // add this line
+    handleOpenPopup: (deckId: string, event: React.MouseEvent<HTMLButtonElement>) => void;
+    handleClosePopup: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+
+function DecksContainer() {
+    const [popupIsOpen, setPopupIsOpen] = useState(false);
+    const [deckId, setDeckId] = useState('');
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
 
@@ -13,8 +24,9 @@ function DeckList() {
         const loadedDecks = await getDecks()
         setDecks(loadedDecks);
     }
-
-
+    useEffect(() => {
+        loadDecks();
+    }, []);
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault();
         const response = await createDeck(deckName)
@@ -22,20 +34,32 @@ function DeckList() {
         setDeckName('');
     }
 
-    async function handleDeleteDeck(deckId: string) {
-        await deleteDeck(deckId)
-        loadDecks();
+    function handleOpenPopup(deckId: string, event: React.MouseEvent<HTMLButtonElement>) {
+        if (event && event.target) {
+            setPopupIsOpen(true);
+            setDeckId(deckId);
+        }
     }
-    useEffect(() => {
-        loadDecks();
-    }, []);
+
+    function handleClosePopup(event: React.MouseEvent<HTMLButtonElement>) {
+        setPopupIsOpen(false);
+    }
+
+
 
     return (
         <div className="decks-container">
             <ul>
                 <div className="">
                     {decks.map((deck) => (
-                        <Deck key={deck._id} deck={deck} onDeleteDeck={handleDeleteDeck} />
+                        <Deck
+                            key={deck._id}
+                            deck={deck}
+                            loadDecks={loadDecks}
+                            popupIsOpen={popupIsOpen}
+                            handleOpenPopup={handleOpenPopup}
+                            handleClosePopup={handleClosePopup}
+                        />
                     ))}
                 </div>
             </ul>
@@ -56,4 +80,4 @@ function DeckList() {
     );
 }
 
-export default DeckList;
+export default DecksContainer;
