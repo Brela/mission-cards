@@ -8,7 +8,11 @@ module.exports = {
     },
     resolve: {
         fallback: {
-            "url": require.resolve("url/")
+            "path": require.resolve("path-browserify"),
+            "fs": false, // use an empty module for 'fs' if you don't need it
+            "util": require.resolve("util/"),
+            "string_decoder": require.resolve("string_decoder/"),
+            "stream": require.resolve("stream-browserify")
         }
     },
 };
