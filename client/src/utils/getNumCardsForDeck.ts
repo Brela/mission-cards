@@ -1,5 +1,5 @@
 import CardType from '../types/CardType';
-import { getAllCardsForDeck } from '../apiFetches/getAllCardsForDeck'
+import { getAllCardsForDeck } from '../services/getAllCardsForDeck'
 
 export async function getNumCardsForDeck(deckName: string): Promise<number> {
 

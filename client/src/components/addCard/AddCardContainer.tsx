@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { createCard } from '../../apiFetches/createCard'
+import { createCard } from '../../services/createCard'
 
 function AddCardToDeck() {
     const [frontText, setFrontText] = useState('');

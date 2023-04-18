@@ -1,12 +1,16 @@
+
+require('dotenv').config({ path: '../.env' });
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 /* const express = require('express');
 const DeckModel = require("./models/Deck.js");
 const CardModel = require("./models/Card.js");
 const cors = require('cors')
 const Deck = DeckModel; */
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import connectDB from './config/database.mjs';
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/database.mjs');
 
 import { getDecksController } from './controllers/getDecksController.js';
 import { getSingleCardController } from './controllers/getSingleCardController.js';
@@ -28,24 +32,51 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // this allows json post requests to be read by express
 
 
-app.get('/decks', getDecksController);
-app.post('/decks', createDeckController);
-app.delete('/decks/:deckId', deleteDeckController);
-// update deckName isn't configured yet
-app.put('/:deckId/', updateDeckController);
-
-
-app.get('/cards', getAllCardsController);
-app.get('/:deckName', getAllCardsForDeckController);
-app.get('/:deckName/:cardId', getSingleCardController);
-app.post('/:deckName/newcard', createCardController);
-app.delete('/:deckName/:cardId', deleteCardController);
-// update card isn't configured yet
-app.put('/:deckName/:cardId', updateCardController);
-
+const routes = require('./routes/cardRoutes.js')(app);
 
 connectDB().then(() => {
     app.listen(process.env.PORT, () => {
         console.log(`Server is running -- ${process.env.PORT}`)
     });
 });
+/* 
+const express = require('express');
+const app = express();
+require('dotenv').config({ path: '../.env' });
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
+const inventoryRoutes = require('./routes/inventoryRoutes');
+const ordersRoutes = require('./routes/ordersRoutes');
+const userRoutes = require('./routes/userRoutes');
+const companyRoutes = require('./routes/companyRoutes');
+const authenticationRoutes = require('./routes/authenticationRoutes');
+const settingsRoutes = require('./routes/settingsRoutes');
+// allow all origins during development?
+app.use(
+  cors({
+    origin: `${process.env.CORS_ORIGIN}`,
+    credentials: true,
+  })
+);
+// allowing express to read incoming json data
+app.use(express.json());
+// allowing express to read urlencoded data
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  next();
+});
+app.use(cookieParser());
+app.use('/inventory', inventoryRoutes);
+app.use('/orders', ordersRoutes);
+app.use('/user', userRoutes);
+app.use('/company', companyRoutes);
+app.use('/authentication', authenticationRoutes);
+app.use('/settings', settingsRoutes);
+app.use('/uploads', express.static('settingsRoutes'));
+
+app.listen(process.env.PORT, () => {
+  console.log('server is running!');
+}); 
+*/
