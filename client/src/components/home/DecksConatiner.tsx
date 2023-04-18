@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Deck from './Deck';
 import DeckType from '../../types/DeckType';
-import { getDecks } from '../../services/getDecks';
-import { createDeck } from '../../services/createDeck';
+import { getDecks } from '../../services/deckAPI';
+import { createDeck } from '../../services/deckAPI';
 
 interface DeckProps {
     deck: DeckType;

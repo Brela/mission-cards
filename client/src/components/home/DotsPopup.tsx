@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import DeckType from '../../types/DeckType'
-import { deleteDeck } from '../../services/deleteDeck'
+import { deleteDeck } from '../../services/deckAPI'
 
 interface DotsPopupProps {
     deck: DeckType;

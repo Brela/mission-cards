@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCardContext } from './_CardListContext';
-import { getAllCardsForDeck } from '../../services/getAllCardsForDeck';
+import { getAllCardsForDeck } from '../../services/cardAPI';
 
 type Props = {
     deckName: string;
