@@ -1,4 +1,4 @@
-import CardModel from '../models/Card.mjs';
+const CardModel = require('../models/Card.js');
 const Card = CardModel;
 
 module.exports = {

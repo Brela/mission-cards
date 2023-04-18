@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
 const CardSchema = new mongoose.Schema({
@@ -33,4 +33,4 @@ const CardSchema = new mongoose.Schema({
 const CardModel = mongoose.model('Card', CardSchema)
 
 
-export default CardModel
+module.exports = CardModel;

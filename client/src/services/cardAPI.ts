@@ -3,7 +3,7 @@ import CardType from '../types/CardType';
 type Name = string;
 
 export async function createCard(deckName: string, front: string, back: string): Promise<CardType> {
-    const response = await fetch(`${API_URL}/${deckName}/newcard`, {
+    const response = await fetch(`${API_URL}/cards/${deckName}/newcard`, {
         method: 'POST',
         body: JSON.stringify({
             deckName,
@@ -18,6 +18,6 @@ export async function createCard(deckName: string, front: string, back: string):
 }
 
 export async function getAllCardsForDeck(deckName: Name): Promise<CardType[]> {
-    const response = await fetch(`${API_URL}/${deckName}`);
+    const response = await fetch(`${API_URL}/cards/${deckName}`);
     return await response.json();
 } 

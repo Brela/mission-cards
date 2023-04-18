@@ -1,4 +1,4 @@
-import DeckModel from '../models/Deck.mjs';
+const DeckModel = require('../models/Deck.js');
 const Deck = DeckModel;
 
 

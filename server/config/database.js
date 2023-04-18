@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
 // this function that connects to mongoDB is async so that nothing happens on the server until this connection is made
@@ -17,4 +17,4 @@ const database = async () => {
   }
 }
 
-export default database
+module.exports = database;
