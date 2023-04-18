@@ -12,27 +12,23 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/database.mjs');
 
-import { getDecksController } from './controllers/getDecksController.js';
-import { getSingleCardController } from './controllers/getSingleCardController.js';
-import { getAllCardsController } from './controllers/getAllCardsController.js';
-import { getAllCardsForDeckController } from './controllers/getAllCardsForDeckController.js';
-import { createDeckController } from './controllers/createDeckController.js';
-import { createCardController } from './controllers/createCardController.js';
-import { updateCardController } from './controllers/updateCardController.js';
-import { updateDeckController } from './controllers/updateDeckController.js';
-import { deleteDeckController } from './controllers/deleteDeckController.js';
-import { deleteCardController } from './controllers/deleteCardController.js';
 
 dotenv.config({ path: './config/.env' });
 const app = express();
+
+const deckRoutes = require('./routes/deckRoutes');
+const cardRoutes = require('./routes/cardRoutes');
 
 app.use(cors());
 app.use(express.static('client/public'));  // Serve the React app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // this allows json post requests to be read by express
 
+app.use('/deck', deckRoutes);
+app.use('/card', cardRoutes);
 
-const routes = require('./routes/cardRoutes.js')(app);
+
+
 
 connectDB().then(() => {
     app.listen(process.env.PORT, () => {
