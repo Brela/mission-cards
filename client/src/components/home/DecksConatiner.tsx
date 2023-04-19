@@ -7,16 +7,10 @@ import { createDeck } from '../../services/deckAPI';
 interface DeckProps {
     deck: DeckType;
     loadDecks: () => void;
-    popupIsOpen: boolean;
-    setPopupIsOpen: (popupIsOpen: boolean) => void; // add this line
-    handleOpenPopup: (deckId: string, event: React.MouseEvent<HTMLButtonElement>) => void;
-    handleClosePopup: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 
 function DecksContainer() {
-    const [popupIsOpen, setPopupIsOpen] = useState(false);
-    const [deckId, setDeckId] = useState('');
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
 
@@ -34,16 +28,7 @@ function DecksContainer() {
         setDeckName('');
     }
 
-    function handleOpenPopup(deckId: string, event: React.MouseEvent<HTMLButtonElement>) {
-        if (event && event.target) {
-            setPopupIsOpen(true);
-            setDeckId(deckId);
-        }
-    }
 
-    function handleClosePopup(event: React.MouseEvent<HTMLButtonElement>) {
-        setPopupIsOpen(false);
-    }
 
 
 
@@ -56,9 +41,6 @@ function DecksContainer() {
                             key={deck._id}
                             deck={deck}
                             loadDecks={loadDecks}
-                            popupIsOpen={popupIsOpen}
-                            handleOpenPopup={handleOpenPopup}
-                            handleClosePopup={handleClosePopup}
                         />
                     ))}
                 </div>
