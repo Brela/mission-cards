@@ -7,28 +7,23 @@ type Props = {
 };
 
 function CardList({ deckName }: Props) {
-
-    // useCardContext() listens to changes in the cards state, which is passed down from the context provider through the useCardContext hook in the parent 'pages/AddCard'
     const { cards, setCards } = useCardContext();
 
-    deckName = deckName.replaceAll('-', ' ')
+    deckName = deckName.replaceAll('-', ' ');
+
     async function fetchCards() {
         const response = await getAllCardsForDeck(deckName);
         setCards(response);
     }
-    // used to fetch the cards on initial render or whenever the deckName prop changes.
+
     useEffect(() => {
         if (!deckName) {
             console.log('No deckName prop passed to CardList component');
             return;
         }
+
         fetchCards();
     }, [deckName]);
-
-    // listens for changes in the cards state and re-fetches the cards when the state changes.
-    useEffect(() => {
-        fetchCards();
-    }, [cards]);
 
     return (
         <div className="">
