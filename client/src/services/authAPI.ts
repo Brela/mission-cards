@@ -25,14 +25,14 @@ export async function logoutUser() {
 }
 
 
-export async function createUser(userName: string, email: string, password: string, confirmPassword: string) {
+export async function createUser(email: string, password: string, confirmPassword: string) {
     const response = await fetch(`${API_URL}/users/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            userName,
+            // userName,
             email,
             password,
             confirmPassword

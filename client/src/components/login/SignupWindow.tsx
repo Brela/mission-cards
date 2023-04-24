@@ -7,7 +7,7 @@ type Props = {
 
 
 function SignupWindow(props: Props) {
-    const [userName, setUserName] = useState('');
+    // const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -15,7 +15,7 @@ function SignupWindow(props: Props) {
     async function handleSignupUser(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if (password === confirmPassword) {
-            const response = await createUser(userName, email, password, confirmPassword);
+            const response = await createUser(email, password, confirmPassword);
             if (response.user) {
                 props.onUserLoggedIn(response.user);
             }
@@ -43,7 +43,7 @@ function SignupWindow(props: Props) {
                             required
                         />
                     </li>
-                    <li>
+                    {/*       <li>
                         <label htmlFor="username">Username:</label>
                         <input
                             type="username"
@@ -52,7 +52,7 @@ function SignupWindow(props: Props) {
                             onChange={(e) => setUserName(e.target.value)}
                             required
                         />
-                    </li>
+                    </li> */}
                     <li>
                         <label htmlFor="password">Password:</label>
                         <input
