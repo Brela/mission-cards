@@ -19,6 +19,7 @@ const MongoStore = require('connect-mongo');
 const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database.js');
+const authRoutes = require('./routes/authRoutes');
 const deckRoutes = require('./routes/deckRoutes');
 const cardRoutes = require('./routes/cardRoutes');
 
@@ -51,7 +52,7 @@ app.use(passport.session())
 app.use(flash())
 
 
-
+app.use('/user', authRoutes)
 app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
 
