@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Home from './pages/Home';
 import AddCard from './pages/AddCard';
+import AuthenticationPage from './pages/Authentication';
 
 import './styles/reset.css';
 import './styles/index.css';
@@ -18,6 +19,10 @@ function App() {
         {
             path: '/:deckName',
             element: <AddCard />,
+        },
+        {
+            path: '/auth',
+            element: <AuthenticationPage />,
         },
     ]);
 

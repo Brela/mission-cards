@@ -1,0 +1,78 @@
+.auth-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.auth-page .title {
+    display: flex;
+    justify-content: center;
+    min-height: 5vh;
+    font-size: 1.3em;
+}
+
+.auth-page .mission {
+    flex-basis: 0;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.auth-window-container {
+    position: relative;
+    padding: 10vh 0 5vh 0;
+    border: 1px solid white;
+    border-radius: 8px;
+    width: 40vw;
+    min-height: 50vh;
+    background-color: var(--background-2);
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-window-container input {
+    background-color: rgb(151, 151, 151);
+    color: white;
+}
+
+.auth-window-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-window-container li {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.auth-window-container li label {
+    /*     display: flex;
+    justify-content: center; */
+    align-self: center;
+    justify-self: center;
+}
+
+.auth-window-container .sign-up-button {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    margin-top: 20px;
+}
+
+.auth-window-container .sign-up-button button {
+    background-color: rgb(110, 110, 103);
+}
+
+.auth-window-container .go-to-button {
+    background-color: rgba(240, 248, 255, 0);
+    padding: 3px 10px;
+}

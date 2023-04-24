@@ -1,11 +1,11 @@
 :root {
     color-scheme: light dark;
     color: rgba(255, 255, 255);
-    --background-1: rgb(84, 92, 86);
+    --background-1: rgb(90, 101, 94);
     background-color: rgb(57, 62, 58);
     background-color: var(--background-1);
 
-    --background-2: rgb(148, 196, 165);
+    --background-2: rgb(131, 160, 141);
 
     --accent-color-1: rgb(157, 253, 73);
     --accent-color-2: rgb(118, 196, 192);

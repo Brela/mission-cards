@@ -15,6 +15,15 @@ export async function loginUser(email: string, password: string): Promise<UserTy
     return await response.json();
 }
 
+/* Passport automatically attaches the logged-in user's information to the req object, 
+so there's no need to send the user ID explicitly in this case. */
+export async function logoutUser() {
+    const response = await fetch(`${API_URL}/users/logout`, {
+        method: 'GET',
+    });
+    return response;
+}
+
 
 export async function createUser(userName: string, email: string, password: string, confirmPassword: string) {
     const response = await fetch(`${API_URL}/users/signup`, {
@@ -34,11 +43,3 @@ export async function createUser(userName: string, email: string, password: stri
     return responseData;
 }
 
-/* Passport automatically attaches the logged-in user's information to the req object, 
-so there's no need to send the user ID explicitly in this case. */
-export async function logoutUser() {
-    const response = await fetch(`${API_URL}/users/logout`, {
-        method: 'GET',
-    });
-    return response;
-}

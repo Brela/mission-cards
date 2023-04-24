@@ -34,3 +34,8 @@ a {
   align-items: center;
   padding: auto 5vw;
 }
+
+button {
+  padding: 3px 10px;
+  border-radius: 6px;
+}
