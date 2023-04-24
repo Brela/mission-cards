@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useCardContext } from './_CardListContext';
+import { useCardContext } from '../../contexts/CardListContext';
 import { getAllCardsForDeck } from '../../services/cardAPI';
 
 type Props = {
