@@ -6,7 +6,13 @@ import Header from '../components/Header';
 import LoginWindow from '../components/login/LoginWindow';
 import SignupWindow from '../components/login/SignupWindow';
 
-function Home() {
+
+type Props = {
+    onUserLoggedIn: (user: any) => void;
+};
+
+
+function AuthenticationPage(props: Props) {
     const [isLoginActive, setIsLoginActive] = useState(false);
 
     const handleToggle = () => {
@@ -27,7 +33,7 @@ function Home() {
                 <h1 className='title'>Welcome to Mission Cards!</h1>
                 {/* <h3 className='title subtitle'>Take your studying to the next level with your custom mission and ChatGPT as your personal assistant</h3> */}
                 <div className="auth-window-container">
-                    {isLoginActive ? <LoginWindow /> : <SignupWindow />}
+                    {isLoginActive ? <LoginWindow /> : <SignupWindow onUserLoggedIn={props.onUserLoggedIn} />}
                     <div>
                         <button className='go-to-button' onClick={handleToggle}>
                             {isLoginActive ? 'Go to Signup Page' : 'Go to Login Page'}
@@ -39,4 +45,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default AuthenticationPage;

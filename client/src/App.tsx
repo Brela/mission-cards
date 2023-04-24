@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -11,6 +11,12 @@ import './styles/index.css';
 import './styles/theme.css';
 
 function App() {
+    const [loggedInUser, setLoggedInUser] = useState(null);
+
+    const handleUserLoggedIn = (user: any) => {
+        setLoggedInUser(user);
+    };
+
     const router = createBrowserRouter([
         {
             path: '/',
@@ -22,7 +28,7 @@ function App() {
         },
         {
             path: '/auth',
-            element: <AuthenticationPage />,
+            element: <AuthenticationPage onUserLoggedIn={handleUserLoggedIn} />,
         },
     ]);
 

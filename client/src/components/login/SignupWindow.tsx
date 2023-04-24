@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { createUser } from '../../services/authAPI';
 
 type Props = {
+    onUserLoggedIn: (user: any) => void;
 };
 
-function SignupWindow() {
+
+function SignupWindow(props: Props) {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,6 +16,9 @@ function SignupWindow() {
         e.preventDefault();
         if (password === confirmPassword) {
             const response = await createUser(userName, email, password, confirmPassword);
+            if (response.user) {
+                props.onUserLoggedIn(response.user);
+            }
             console.log(response);
         } else {
             console.log("Passwords do not match.");
@@ -35,6 +40,16 @@ function SignupWindow() {
                             id="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="username"
+                            id="username"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
                             required
                         />
                     </li>

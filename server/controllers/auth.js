@@ -61,7 +61,8 @@ module.exports = {
                         if (err) {
                             return res.status(500).json({ error: err.message });
                         }
-                        return res.status(201).json({ message: 'User account created successfully.' });
+                        // return user object so that user can be automatically logegd in after signup
+                        return res.status(201).json({ message: 'User account created successfully.', user });
                     });
                 });
             }
