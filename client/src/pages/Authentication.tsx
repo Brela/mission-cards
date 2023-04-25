@@ -12,7 +12,7 @@ type Props = {
 };
 
 
-function AuthenticationPage(props: Props) {
+function AuthenticationPage() {
     const [isLoginActive, setIsLoginActive] = useState(false);
 
     const handleToggle = () => {
@@ -33,7 +33,7 @@ function AuthenticationPage(props: Props) {
                 <h1 className='title'>Welcome to Mission Cards!</h1>
                 {/* <h3 className='title subtitle'>Take your studying to the next level with your custom mission and ChatGPT as your personal assistant</h3> */}
                 <div className="auth-window-container">
-                    {isLoginActive ? <LoginWindow /> : <SignupWindow onUserLoggedIn={props.onUserLoggedIn} />}
+                    {isLoginActive ? <LoginWindow /> : <SignupWindow />}
                     <div>
                         <button className='go-to-button' onClick={handleToggle}>
                             {isLoginActive ? 'Go to Signup Page' : 'Go to Login Page'}

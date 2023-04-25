@@ -14,8 +14,25 @@ import DecksContainer from '../components/home/DecksConatiner';
 import DecksToolbar from '../components/home/DecksHomeToolbar';
 import Footer from '../components/Footer';
 
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+
+type Props = {
+};
+
+
+
 
 function Home() {
+  const { isAuthenticated, user, } = useContext(UserContext);
+
+
+  /* 
+    useEffect(() => {
+      console.log("isAuthenticated ", isAuthenticated)
+      console.log("user ", user)
+    }, [isAuthenticated, user]); */
+
 
   return (
     <div className="home-page">

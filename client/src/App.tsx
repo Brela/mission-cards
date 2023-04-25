@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { UserProvider } from './contexts/UserContext';
 
 import Home from './pages/Home';
 import AddCard from './pages/AddCard';
@@ -11,11 +11,6 @@ import './styles/index.css';
 import './styles/theme.css';
 
 function App() {
-    const [loggedInUser, setLoggedInUser] = useState(null);
-
-    const handleUserLoggedIn = (user: any) => {
-        setLoggedInUser(user);
-    };
 
     const router = createBrowserRouter([
         {
@@ -28,13 +23,15 @@ function App() {
         },
         {
             path: '/auth',
-            element: <AuthenticationPage onUserLoggedIn={handleUserLoggedIn} />,
+            element: <AuthenticationPage />,
         },
     ]);
 
     return (
         <React.StrictMode>
-            <RouterProvider router={router} />
+            <UserProvider>
+                <RouterProvider router={router} />
+            </UserProvider>
         </React.StrictMode>
     );
 }

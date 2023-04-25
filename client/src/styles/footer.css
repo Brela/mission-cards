@@ -51,7 +51,18 @@ footer .quote input:focus {
 }
 
 footer .login {
+    position: relative;
     flex-basis: 50%;
     display: flex;
     justify-content: flex-end;
+}
+
+footer .login button {
+    z-index: 1000;
+}
+
+footer .logout-message {
+    position: absolute;
+    top: 0;
+    right: 100px;
 }

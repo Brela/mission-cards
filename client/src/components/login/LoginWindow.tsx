@@ -1,21 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { loginUser } from '../../services/authAPI';
+import { UserContext } from '../../contexts/UserContext';
 
 type Props = {
 };
 
 function LoginWindow() {
+    const { isAuthenticated, setIsAuthenticated, user, setUser, logout } = useContext(UserContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+
+    useEffect(() => {
+        console.log("isAuthenticated ", isAuthenticated)
+        console.log("user ", user)
+    }, [isAuthenticated, user]);
+
 
     async function handleLoginUser(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const response = await loginUser(email, password);
-        console.log(response);
+        // console.log(response);
+        if (response.status === 200) {
+            // Redirect to home page after successful login
+            setIsAuthenticated(true)
+            console.log("response", response)
+            setUser(response.data.user)
+            window.location.href = '/';
+        } else {
+            // Display error message if login fails
+            alert(response.data.error);
+        }
     }
 
-    useEffect(() => {
-    }, []);
 
     return (
         <div className="">
