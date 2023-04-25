@@ -21,7 +21,7 @@ function Footer() {
     return (
         <footer className='footer'>
             <div className="quote">
-                <input placeholder="enter your mission here" />
+                <div></div>
             </div>
             <div className="login">
                 {isAuthenticated ? (

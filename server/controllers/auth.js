@@ -40,21 +40,20 @@ module.exports = {
         });
 
         const user = new User({
-            // userName: req.body.userName,
             email: req.body.email,
             password: req.body.password,
         });
 
         User.findOne(
             {
-                $or: [{ email: req.body.email }, { userName: req.body.userName }],
+                email: req.body.email,
             },
             (err, existingUser) => {
                 if (err) {
                     return res.status(500).json({ error: err.message });
                 }
                 if (existingUser) {
-                    return res.status(409).json({ error: 'Account with that email address or username already exists.' });
+                    return res.status(409).json({ error: 'Account with that email address already exists.' });
                 }
                 user.save((err) => {
                     if (err) {
@@ -68,9 +67,9 @@ module.exports = {
                         return res.status(201).json({ message: 'User account created successfully.', user });
                     });
                 });
-            }
-        );
+            });
     },
+
 
     logoutUser: (req, res) => {
         req.logout(function (err) {

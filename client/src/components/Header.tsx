@@ -10,8 +10,8 @@ function Header() {
                     <h2><i className="fa-solid fa-layer-group"></i>mission</h2>
                 </Link >
             </div>
-            <div className="current">
-                <h3>Current #: </h3>
+            <div className="quote">
+                <input placeholder="enter your mission here" />
             </div>
         </header>
     );

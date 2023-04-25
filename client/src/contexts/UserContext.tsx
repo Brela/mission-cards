@@ -8,6 +8,11 @@ type UserContextType = {
     setUser: (user: UserType) => void;
     login: (user: UserType) => void;
     logout: () => void;
+    justSignedUp: boolean;
+    setJustSignedUp: (value: boolean) => void;
+    showLoginWindow: boolean;
+    setShowLoginWindow: (value: boolean) => void;
+
 };
 
 const initialUserContext: UserContextType = {
@@ -17,6 +22,10 @@ const initialUserContext: UserContextType = {
     setUser: () => { },
     login: () => { },
     logout: () => { },
+    justSignedUp: false,
+    setJustSignedUp: () => { },
+    showLoginWindow: false,
+    setShowLoginWindow: () => { },
 };
 
 export const UserContext = createContext<UserContextType>(initialUserContext);
@@ -35,6 +44,8 @@ export const UserProvider: React.FC<Props> = ({ children }) => {
     // Use these values as the initial state for useState
     const [isAuthenticated, setIsAuthenticated] = useState(initialIsAuthenticated);
     const [user, setUser] = useState<UserType | null>(initialUser);
+    const [justSignedUp, setJustSignedUp] = useState(false)
+    const [showLoginWindow, setShowLoginWindow] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('isAuthenticated', isAuthenticated.toString());
@@ -58,9 +69,26 @@ export const UserProvider: React.FC<Props> = ({ children }) => {
     const setUserWrapper = (user: UserType) => {
         setUser(user);
     };
+    const setJustSignedUpWrapper = (value: boolean) => {
+        setJustSignedUp(value);
+    };
+    const setShowLoginWindowWrapper = (value: boolean) => {
+        setShowLoginWindow(value);
+    };
 
     return (
-        <UserContext.Provider value={{ setIsAuthenticated: setIsAuthenticatedWrapper, isAuthenticated, user, setUser: setUserWrapper, login, logout }}>
+        <UserContext.Provider value={{
+            setIsAuthenticated: setIsAuthenticatedWrapper,
+            isAuthenticated,
+            user,
+            setUser: setUserWrapper,
+            login,
+            logout,
+            justSignedUp,
+            setJustSignedUp: setJustSignedUpWrapper,
+            showLoginWindow,
+            setShowLoginWindow: setShowLoginWindowWrapper
+        }}>
             {children}
         </UserContext.Provider>
     );

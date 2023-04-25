@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { createUser } from '../../services/authAPI';
+import { UserContext } from '../../contexts/UserContext';
 
 type Props = {
     onUserLoggedIn: (user: any) => void;
@@ -7,6 +8,7 @@ type Props = {
 
 
 function SignupWindow() {
+    const { setJustSignedUp, setShowLoginWindow } = useContext(UserContext);
     // const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,8 +19,8 @@ function SignupWindow() {
         if (password === confirmPassword) {
             const response = await createUser(email, password, confirmPassword);
             if (response.user) {
-
-                // props.onUserLoggedIn(response.user);
+                setJustSignedUp(true)
+                setShowLoginWindow(true)
             }
             console.log(response);
         } else {
