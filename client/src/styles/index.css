@@ -10,7 +10,7 @@
 }
 
 a {
-  color: white;
+  color: var(--text-color);
 }
 
 * {
@@ -38,4 +38,7 @@ a {
 button {
   padding: 3px 10px;
   border-radius: 6px;
+  border: none;
+  background-color: rgb(215, 237, 221);
+  color: var(--text-color);
 }

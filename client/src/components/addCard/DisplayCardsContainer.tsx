@@ -8,7 +8,7 @@ function DisplayCardsForDeck() {
 
     return (
         <div>
-            <h1 className='card-list'>Cards</h1>
+            <div className='card-list-heading'><h3>Cards Preview</h3></div>
             <div className='display-cards-container theme-color'>
                 <CardList deckName={deckName ? deckName : ''} />
             </div>

@@ -4,9 +4,19 @@
     width: 50vw;
     height: 500px;
     padding-top: 20px;
-    overflow-y: scroll;
+    overflow: auto;
     background-color: var(--background-2);
-    color: black;
+    color: var(--text-color);
+    border-radius: 6px;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer and Edge */
+}
+
+.decks-container::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }
 
 .plus {

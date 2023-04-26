@@ -1,11 +1,12 @@
 :root {
     color-scheme: light dark;
     color: rgba(255, 255, 255);
+
     --background-1: rgb(90, 101, 94);
     background-color: rgb(57, 62, 58);
     background-color: var(--background-1);
 
-    --background-2: rgb(131, 160, 141);
+    --background-2: rgb(158, 179, 155);
 
     --accent-color-1: rgb(157, 253, 73);
     --accent-color-2: rgb(164, 242, 248);
@@ -14,4 +15,6 @@
     --accent-color-4: rgb(78, 90, 90);
     --accent-color-5: rgb(184, 228, 144);
     --accent-color-6: rgb(175, 201, 149);
+
+    --text-color: rgb(30, 26, 26);
 }

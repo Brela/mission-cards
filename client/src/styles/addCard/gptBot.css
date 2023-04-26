@@ -1,0 +1,7 @@
+.gpt-bot-sub-container {
+    width: 50%;
+    height: 10%;
+    background-color: rgb(34, 34, 36);
+    box-shadow: 0px 1px 10px var(--accent-color-5);
+    border-radius: 6px;
+}

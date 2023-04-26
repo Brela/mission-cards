@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
+import { getDecks } from '../../services/deckAPI';
+import DeckType from '../../types/DeckType';
 
 function AddCardToDeck() {
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
     let { deckName } = useParams()
     deckName = deckName?.replaceAll('-', ' ')
+    const [decks, setDecks] = useState<DeckType[]>([]);
+    const navigate = useNavigate();
+
+
+    async function loadDecks() {
+        const loadedDecks = await getDecks()
+        setDecks(loadedDecks);
+    }
+
+    useEffect(() => {
+        loadDecks();
+    }, []);
 
 
     async function handleCreateCard(e: React.FormEvent) {
@@ -25,9 +39,25 @@ function AddCardToDeck() {
             loadDecks();
         }, []); */
 
+    function handleSelectDeck(e: React.ChangeEvent<HTMLSelectElement>) {
+        navigate(`/decks/${e.target.value.toLowerCase().replaceAll(' ', '-')}`);
+    }
+
+
     return (
         <div>
-            <h1 className='add-card'>Deck: <span>{deckName}</span></h1>
+            <div className="addcardtodeck">
+                <h1 className="add-card">Add Card to Deck:</h1>
+
+                <select value={deckName} onChange={handleSelectDeck}>
+
+                    {decks.map((deck) => (
+                        <option key={deck._id} value={deck.deckName}>
+                            {deck.deckName}
+                        </option>
+                    ))}
+                </select>
+            </div>
             <div className="add-cards-container">
 
                 <form onSubmit={handleCreateCard}>

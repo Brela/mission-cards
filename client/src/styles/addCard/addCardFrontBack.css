@@ -1,26 +1,37 @@
-.align-containers {
+.addcardtodeck {
     display: flex;
-    gap: 6vw;
+    justify-content: center;
+    align-items: center;
 }
 
-h1.add-card {
-    margin: 20px auto;
-    padding-left: 300px;
-}
-
-h1.add-card span {
+.addcardtodeck select {
     color: var(--accent-color-5);
+    margin-left: 20px;
+    padding: 2px 10px;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.addcardtodeck option {
+    color: var(--accent-color-5);
+    margin: 50px 0;
+    background-color: rgba(0, 0, 0, 0.625);
+}
+
+.addcardtodeck option:checked {
+
+    background-color: rgb(54, 54, 54);
 }
 
 .add-cards-container {
     width: 50vw;
-    height: 500px;
-    padding-top: 20px;
-    overflow-y: scroll;
+    height: auto;
+    /* padding-top: 20px; */
     margin-top: 30px;
     display: flex;
     justify-content: center;
     background-color: none;
+    color: var(--text-color);
+    border-radius: 6px;
 }
 
 .add-cards-sub-container * {
@@ -37,8 +48,9 @@ h1.add-card span {
 }
 
 .add-cards-sub-container label {
-    font-size: 10px;
-
+    font-size: 13px;
+    margin-bottom: 2.5px;
+    color: var(--accent-color-1);
 }
 
 .add-cards-sub-container>div {
@@ -68,9 +80,10 @@ h1.add-card span {
 
 .card-front .card-text {
     font-size: 1.4em;
-
+    background-color: var(--background-2);
 }
 
 .card-back .card-text {
     font-size: 1.2em;
+    background-color: var(--background-2);
 }

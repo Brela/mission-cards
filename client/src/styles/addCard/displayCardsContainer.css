@@ -1,16 +1,22 @@
 .display-cards-container {
-    height: 550px;
-    width: 400px;
+    height: 50vh;
+    width: 50vw;
     margin-top: 20px;
     background-color: rgb(138, 138, 138);
     background-color: var(--background-2);
-    color: black;
-    overflow-y: scroll;
+
+    overflow: auto;
+    color: var(--text-color);
+    border-radius: 6px;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer and Edge */
 }
 
-h1.card-list {
-    margin-left: 150px;
-    margin-top: 12px;
+.card-list-heading {
+    display: flex;
+    justify-content: flex-start;
 }
 
 .card-list-item {
