@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext, SyntheticEvent } from 'react';
 import { Snackbar } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import { SnackbarCloseReason } from '@mui/material';
-import { loginUser } from '../../services/authAPI';
+import { loginWithEmail } from '../../services/authAPI';
+import { loginWithGoogle } from '../../services/authAPI';
 import { UserContext } from '../../contexts/UserContext';
 
 type Props = {};
@@ -44,9 +45,9 @@ function LoginWindow() {
         }, []);
      */
 
-    async function handleLoginUser(e: React.FormEvent<HTMLFormElement>) {
+    async function handleLoginUserWithEmail(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const response = await loginUser(email, password);
+        const response = await loginWithEmail(email, password);
         // console.log(response);
         if (response.status === 200) {
             // Redirect to home page after successful login
@@ -59,6 +60,47 @@ function LoginWindow() {
             alert(response.data.error);
         }
     }
+
+    async function handleLoginUserWithGoogle(idToken: string) {
+        const response = await loginWithGoogle(idToken);
+        if (response.status === 200) {
+            setIsAuthenticated(true);
+            setUser(response.data.user);
+            window.location.href = '/';
+        } else {
+            alert(response.data.error);
+        }
+    }
+
+
+    // ---------------------- google button with popup window -------------------------------------------------------------
+    useEffect(() => {
+        window.gapi.load('auth2', renderGoogleButton);
+    }, [])
+
+    function renderGoogleButton() {
+        window.gapi.signin2.render('google-button', {
+            scope: 'profile email',
+            // width: 240,
+            // height: 50,
+            longtitle: true,
+            theme: 'light',
+            onsuccess: onGoogleSignInSuccess,
+            onfailure: onGoogleSignInFailure,
+        });
+    }
+
+
+    function onGoogleSignInSuccess(googleUser: any) {
+        const idToken = googleUser.getAuthResponse().id_token;
+        handleLoginUserWithGoogle(idToken);
+    }
+
+    function onGoogleSignInFailure(error: any) {
+        console.error("Google Sign-In error:", error);
+    }
+    // -----------------------------------------------------------------------------------
+
     /* 
         const handleCredentialResponse = (response: any) => {
             console.log(response);
@@ -76,13 +118,13 @@ function LoginWindow() {
     return (
 
         <div className="">
-            <form onSubmit={handleLoginUser}>
+            <form onSubmit={handleLoginUserWithEmail}>
                 <ul>
-                    <li>
+                    <li className='email-pass'>
                         <label htmlFor="email">Email:</label>
                         <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </li>
-                    <li>
+                    <li className='email-pass'>
                         <label htmlFor="password">Password:</label>
                         <input
                             type="password"
@@ -93,36 +135,25 @@ function LoginWindow() {
                         />
                     </li>
                     <li className="sign-up-button google-btn">
-                        <button type="submit" className="btn-text sign-in-with-email">Sign in with email</button>
+                        <button type="submit" className="btn-text sign-in-with-email">Sign in</button>
                     </li>
+
                     <li className='or-container'>
                         <span></span>
                         <p className='or'>or</p>
                         <span></span>
                     </li>
+
                     <li className='google-button-container'>
-                        <div className="google-btn">
+                        <div id="google-button"></div>
+
+                        {/*          <div id="google-button" className="google-btn">
                             <div className="google-icon-wrapper">
                                 <img className="google-icon-svg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
                             </div>
                             <p className="btn-text"><b>Sign in with Google</b></p>
-                        </div>
-                        {/*   <div id="g_id_onload"
-                            data-client_id="785322521849-crbjnjmu9q3s0nhdcj896qq0d7u7snq5.apps.googleusercontent.com"
-                            data-context="signin"
-                            data-ux_mode="popup"
-                            data-login_uri="http://localhost:7778"
-                            data-auto_prompt="false">
-                        </div>
-
-                        <div className="g_id_signin"
-                            data-type="standard"
-                            data-shape="rectangular"
-                            data-theme="outline"
-                            data-text="signup_with"
-                            data-size="large"
-                            data-logo_alignment="left">
                         </div> */}
+
                     </li>
                 </ul>
             </form>

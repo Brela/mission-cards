@@ -8,10 +8,13 @@
 }
 
 .auth-page .title {
+    position: absolute;
+    top: -50px;
     display: flex;
     justify-content: center;
     min-height: 5vh;
     font-size: 1.3em;
+    color: white;
 }
 
 .auth-page .mission {
@@ -24,9 +27,9 @@
 .auth-window-container {
     position: relative;
     padding: 10vh 0 3vh 0;
+    margin-bottom: 30px;
     border: 1px solid white;
     box-shadow: 0px 10px 20px var(--accent-color-5);
-
     border-radius: 8px;
     width: 40vw;
     min-height: 35vh;
@@ -46,13 +49,26 @@
 .auth-window-container ul {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 27px;
 }
 
 .auth-window-container li {
     display: flex;
     justify-content: space-between;
+    align-content: start;
     gap: 20px;
+}
+
+li.email-pass {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+li.email-pass label {
+    width: 100%;
+    font-size: 15px;
 }
 
 .auth-window-container li label {
@@ -62,18 +78,28 @@
     justify-self: center;
 }
 
+/* .auth-window-container li .pass {
+    margin-bottom: 20px;
+} */
+
 .auth-window-container .sign-up-button {
     display: flex;
     justify-content: center;
     align-self: center;
     justify-self: center;
-    margin-top: 0px;
 }
 
 .auth-window-container .sign-up-button button {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--accent-color-5);
     color: #757575;
     border: none;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.auth-window-container .sign-up-button.google-btn {
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0 50px;
 }
 
 .auth-window-container .btn-text.sign-in-with-email {
@@ -81,6 +107,7 @@
 }
 
 .auth-window-container .or-container {
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -113,14 +140,19 @@
     /* margin-top: 100px; */
 }
 
+#google-button {
+    border-radius: 15px;
+    margin: 20px 0 10px 0;
+}
+
 .google-btn {
     margin: 25px;
-    width: 80%;
+    width: 100%;
     min-width: 184px;
     max-width: 184px;
-    height: 42px;
+    height: 35px;
     background-color: #fcfcfc;
-    border-radius: 4px;
+    border-radius: 7px;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .2);
     cursor: pointer;
     cursor: hand;

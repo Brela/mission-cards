@@ -29,9 +29,9 @@ function AuthenticationPage() {
                     <h2><i className="fa-solid fa-layer-group"></i>mission</h2>
                     {/* </Link > */}
                 </div>
-                <h1 className='title'>Welcome to Mission Cards!</h1>
                 {/* <h3 className='title subtitle'>Take your studying to the next level with your custom mission and ChatGPT as your personal assistant</h3> */}
                 <div className="auth-window-container">
+                    <h1 className='title'>Welcome to Mission Cards!</h1>
                     {showLoginWindow ? <LoginWindow /> : <SignupWindow />}
                     <div>
                         <button className='go-to-button' onClick={handleToggle}>

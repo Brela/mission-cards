@@ -4,20 +4,15 @@ const User = require('../models/User');
 
 module.exports = {
 
-    loginUser: (req, res, next) => {
-        passport.authenticate('local', (err, user, info) => {
-            console.log('login user controller - user: ', user)
-            if (err) {
-                return res.status(500).json({ error: err.message });
-            }
+    createUserWithGoogle: (req, res, next) => {
+        passport.authenticate('google-signup', { session: false }, (err, user, info) => {
             if (!user) {
-                return res.status(401).json({ error: 'Invalid email or password.' });
+                return res.status(401).json({ error: 'Google authentication failed.' });
             }
             req.logIn(user, (err) => {
                 if (err) {
-                    return res.status(500).json({ error: err.message });
+                    return next(err);
                 }
-                // Modify the success response to include the user object
                 return res.status(200).json({ message: 'Success! You are logged in.', user });
             });
         })(req, res, next);
@@ -58,6 +53,24 @@ module.exports = {
         })(req, res, next);
     },
 
+    loginUser: (req, res, next) => {
+        passport.authenticate('local', (err, user, info) => {
+            console.log('login user controller - user: ', user)
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            if (!user) {
+                return res.status(401).json({ error: 'Invalid email or password.' });
+            }
+            req.logIn(user, (err) => {
+                if (err) {
+                    return res.status(500).json({ error: err.message });
+                }
+                // Modify the success response to include the user object
+                return res.status(200).json({ message: 'Success! You are logged in.', user });
+            });
+        })(req, res, next);
+    },
 
     createUser: (req, res, next) => {
         console.log('made it here')
