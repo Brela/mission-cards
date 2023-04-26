@@ -18,7 +18,7 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/decks/:deckName" element={<AddCard />} />
+                        <Route path="/:deckName" element={<AddCard />} />
                         <Route path="/auth" element={<AuthenticationPage />} />
                     </Routes>
                 </BrowserRouter>

@@ -40,7 +40,8 @@ function AddCardToDeck() {
         }, []); */
 
     function handleSelectDeck(e: React.ChangeEvent<HTMLSelectElement>) {
-        navigate(`/decks/${e.target.value.toLowerCase().replaceAll(' ', '-')}`);
+        const deckNameNoSpaces = e.target.value.toLowerCase().replaceAll(' ', '-');
+        navigate(`/${deckNameNoSpaces}`);
     }
 
 
