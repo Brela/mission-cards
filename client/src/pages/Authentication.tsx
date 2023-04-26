@@ -35,7 +35,7 @@ function AuthenticationPage() {
                     {showLoginWindow ? <LoginWindow /> : <SignupWindow />}
                     <div>
                         <button className='go-to-button' onClick={handleToggle}>
-                            {showLoginWindow ? 'Go to Signup Page' : 'Go to Login Page'}
+                            {showLoginWindow ? 'Go to Signup' : 'Go to Login'}
                         </button>
                     </div>
                 </div>

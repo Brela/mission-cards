@@ -7,6 +7,12 @@ import { UserContext } from '../../contexts/UserContext';
 
 type Props = {};
 
+declare global {
+    interface Window {
+        google: any;
+    }
+}
+
 function LoginWindow() {
     const { isAuthenticated, setIsAuthenticated, user, setUser, justSignedUp, setJustSignedUp } = useContext(
         UserContext
@@ -18,6 +24,25 @@ function LoginWindow() {
         console.log('isAuthenticated ', isAuthenticated);
         console.log('user ', user);
     }, [isAuthenticated, user]);
+
+    /*     useEffect(() => {
+            if (window.google && window.google.accounts && window.google.accounts.id) {
+                window.google.accounts.id.initialize({
+                    client_id: "785322521849-crbjnjmu9q3s0nhdcj896qq0d7u7snq5.apps.googleusercontent.com",
+                    callback: handleCredentialResponse,
+                    cancel_on_tap_outside: false,
+                });
+                window.google.accounts.id.renderButton(document.getElementById("g_id_onload"), {
+                    type: "standard",
+                    shape: "rectangular",
+                    theme: "outline",
+                    text: "signup_with",
+                    size: "large",
+                    logo_alignment: "left",
+                });
+            }
+        }, []);
+     */
 
     async function handleLoginUser(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -34,6 +59,11 @@ function LoginWindow() {
             alert(response.data.error);
         }
     }
+    /* 
+        const handleCredentialResponse = (response: any) => {
+            console.log(response);
+            // Handle response here, e.g., authenticate the user with your server
+        }; */
 
     const handleSnackbarClose = (event: React.SyntheticEvent<Element, Event> | Event, reason: SnackbarCloseReason) => {
         if (reason === 'clickaway') {
@@ -44,6 +74,7 @@ function LoginWindow() {
 
 
     return (
+
         <div className="">
             <form onSubmit={handleLoginUser}>
                 <ul>
@@ -61,8 +92,37 @@ function LoginWindow() {
                             required
                         />
                     </li>
-                    <li className="sign-up-button">
-                        <button type="submit">Log in</button>
+                    <li className="sign-up-button google-btn">
+                        <button type="submit" className="btn-text sign-in-with-email">Sign in with email</button>
+                    </li>
+                    <li className='or-container'>
+                        <span></span>
+                        <p className='or'>or</p>
+                        <span></span>
+                    </li>
+                    <li className='google-button-container'>
+                        <div className="google-btn">
+                            <div className="google-icon-wrapper">
+                                <img className="google-icon-svg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                            </div>
+                            <p className="btn-text"><b>Sign in with Google</b></p>
+                        </div>
+                        {/*   <div id="g_id_onload"
+                            data-client_id="785322521849-crbjnjmu9q3s0nhdcj896qq0d7u7snq5.apps.googleusercontent.com"
+                            data-context="signin"
+                            data-ux_mode="popup"
+                            data-login_uri="http://localhost:7778"
+                            data-auto_prompt="false">
+                        </div>
+
+                        <div className="g_id_signin"
+                            data-type="standard"
+                            data-shape="rectangular"
+                            data-theme="outline"
+                            data-text="signup_with"
+                            data-size="large"
+                            data-logo_alignment="left">
+                        </div> */}
                     </li>
                 </ul>
             </form>

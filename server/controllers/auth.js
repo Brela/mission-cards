@@ -23,6 +23,41 @@ module.exports = {
         })(req, res, next);
     },
 
+    loginUserWithGoogle: (req, res, next) => {
+        passport.authenticate('google', (err, user, info) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            if (!user) {
+                return res.status(401).json({ error: 'Google authentication failed.' });
+            }
+            req.logIn(user, (err) => {
+                if (err) {
+                    return res.status(500).json({ error: err.message });
+                }
+                // Modify the success response to include the user object
+                return res.status(200).json({ message: 'Success! You are logged in.', user });
+            });
+        })(req, res, next);
+    },
+
+    googleCallback: (req, res, next) => {
+        passport.authenticate('google', (err, user, info) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            if (!user) {
+                return res.status(401).json({ error: 'Google authentication failed.' });
+            }
+            req.logIn(user, (err) => {
+                if (err) {
+                    return res.status(500).json({ error: err.message });
+                }
+                return res.redirect('/decks');
+            });
+        })(req, res, next);
+    },
+
 
     createUser: (req, res, next) => {
         console.log('made it here')

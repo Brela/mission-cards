@@ -5,7 +5,11 @@ import { UserContext } from '../../contexts/UserContext';
 type Props = {
     onUserLoggedIn: (user: any) => void;
 };
-
+declare global {
+    interface Window {
+        google: any;
+    }
+}
 
 function SignupWindow() {
     const { setJustSignedUp, setShowLoginWindow } = useContext(UserContext);
@@ -76,8 +80,16 @@ function SignupWindow() {
                             required
                         />
                     </li>
-                    <li className='sign-up-button'>
-                        <button type="submit">Sign up</button>
+                    <li className="sign-up-button google-btn">
+                        <button type="submit" className="btn-text sign-in-with-email">Sign up with email</button>
+                    </li>
+                    <li className='google-button-container'>
+                        <div className="google-btn">
+                            <div className="google-icon-wrapper">
+                                <img className="google-icon-svg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                            </div>
+                            <p className="btn-text"><b>Sign up with Google</b></p>
+                        </div>
                     </li>
                 </ul>
             </form>

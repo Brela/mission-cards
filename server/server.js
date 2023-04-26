@@ -52,7 +52,7 @@ app.use(passport.session())
 app.use(flash())
 
 
-app.use('/users', authRoutes)
+app.use('/auth', authRoutes)
 app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
 
