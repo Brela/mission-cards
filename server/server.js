@@ -57,7 +57,7 @@ app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
 
 
-
+// Railway sets the PORT environment variable automatically, so you don't need to make any changes to this code for it to work correctly on Railway.
 app.listen(process.env.PORT, () => {
     console.log(`Server is running -- ${process.env.PORT}`)
 });
