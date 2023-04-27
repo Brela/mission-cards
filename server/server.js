@@ -65,12 +65,12 @@ app.use('/cards', cardRoutes);
 }); */
 
 // Serve the static files from the client folder
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static('client'));
 
 // Define a route handler for the root URL ("/")
 app.get('/', (req, res) => {
     // Send the index.html file from the client folder
-    res.sendFile(path.join(__dirname, 'client', 'index.html'));
+    res.sendFile('client/index.html');
 });
 
 // Railway sets the PORT environment variable automatically, so you don't need to make any changes to this code for it to work correctly on Railway.
