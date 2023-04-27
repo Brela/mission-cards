@@ -6,15 +6,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon --watch \"server/**\" --watch \"client/**\" --ext \"ts,json,js,tsx\" --exec \"ts-node server.js\"",
+    "dev": "nodemon --watch \"server/**\" --watch \"client/**\" --ext \"js,json\" --exec \"node server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "deploy": "ssh user@your-server-instance-ip \"cd / && git pull && npm run build && pm2 restart server\""
+    "build": "echo \"No build step required for JavaScript backend.\"",
+    "deploy": "ssh user@your-server-instance-ip \"cd / && git pull && pm2 restart server\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/cors": "^2.8.13",
     "bcrypt": "^5.1.0",
     "connect-mongo": "^5.0.0",
     "cookie-parser": "^1.4.6",
@@ -33,9 +32,6 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/mongoose": "^5.11.97",
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1"
+    "nodemon": "^2.0.20"
   }
 }
