@@ -56,6 +56,11 @@ app.use('/auth', authRoutes)
 app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
 
+app.get('/', (req, res) => {
+    // Handle the request for the root URL
+    // You can send a response, render a template, or redirect to another page
+    res.send('Hello, World!');
+});
 
 // Railway sets the PORT environment variable automatically, so you don't need to make any changes to this code for it to work correctly on Railway.
 app.listen(process.env.PORT, () => {
