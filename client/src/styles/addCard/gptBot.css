@@ -1,4 +1,14 @@
+.gpt-bot-container {
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    max-height: 100vh;
+}
+
 .gpt-bot-sub-container {
+    position: fixed;
+    bottom: 70px;
     width: 50%;
     height: 10%;
     background-color: rgb(34, 34, 36);

@@ -1,6 +1,7 @@
 .display-cards-container {
     height: 50vh;
-    width: 40vw;
+    width: 20vw;
+    margin-right: 10vw;
     margin-top: 20px;
     background-color: rgb(138, 138, 138);
     background-color: var(--background-2);
@@ -13,6 +14,11 @@
     /* Internet Explorer and Edge */
 }
 
+.display-cards-container::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
 .card-list-heading {
     display: flex;
     justify-content: flex-start;
@@ -20,8 +26,10 @@
 
 .card-list-item {
     border-bottom: 1px solid white;
-    border-bottom: 1px solid var(--accent-color-1);
-    padding: 20px 10px;
+    border-bottom-width: 80%;
+    border-bottom: 1px solid var(--accent-color-3);
+    padding: 30px 10px;
+    margin: 0 10px;
 }
 
 .display-card-front {

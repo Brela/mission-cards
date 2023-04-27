@@ -23,7 +23,7 @@ const authRoutes = require('./routes/authRoutes');
 const deckRoutes = require('./routes/deckRoutes');
 const cardRoutes = require('./routes/cardRoutes');
 
-require('dotenv').config({ path: './config/.env' });
+require('dotenv').config({ path: '../.env' });
 
 // Passport config
 require('./config/passport')(passport)

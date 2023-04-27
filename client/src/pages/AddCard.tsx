@@ -20,19 +20,19 @@ function AddCard() {
     return (
         <div className="add-card-page">
             <Header />
-            <div className='container-for-two-columns'>
-                <div className='add-cards-and-card-preview-container'>
-                    <CardListContext.Provider value={{ cards, setCards }}>
-                        <AddCardContainer />
-                        <DisplayCardsForDeck />
-                    </CardListContext.Provider>
-                </div>
-                <div className='gpt-bot-container'>
-                    <div className='gpt-bot-sub-container'></div>
-                </div>
+
+            <div className='add-cards-and-card-preview-container'>
+                <CardListContext.Provider value={{ cards, setCards }}>
+                    <AddCardContainer />
+                    <DisplayCardsForDeck />
+                </CardListContext.Provider>
             </div>
+            <div className='gpt-bot-container'>
+                <div className='gpt-bot-sub-container'></div>
+            </div>
+
             <Footer />
-        </div>
+        </div >
     )
 }
 

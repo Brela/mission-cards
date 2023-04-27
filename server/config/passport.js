@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const LocalStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose')
 const User = require('../models/User')
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: '../../.env' });
 
 module.exports = function (passport) {
     passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
