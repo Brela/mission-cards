@@ -56,10 +56,19 @@ app.use('/auth', authRoutes)
 app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     // Handle the request for the root URL
     // You can send a response, render a template, or redirect to another page
     res.send('Hello, World!');
+}); */
+
+// Serve the static files from the client folder
+app.use(express.static(path.join(__dirname, 'client')));
+
+// Define a route handler for the root URL ("/")
+app.get('/', (req, res) => {
+    // Send the index.html file from the client folder
+    res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 
 // Railway sets the PORT environment variable automatically, so you don't need to make any changes to this code for it to work correctly on Railway.
