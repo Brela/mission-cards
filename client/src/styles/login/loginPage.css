@@ -7,14 +7,22 @@
     flex-wrap: wrap;
 }
 
-.auth-page .title {
+.auth-page .title-section {
     position: absolute;
-    top: -50px;
+    top: -70px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
     min-height: 5vh;
     font-size: 1.3em;
     color: white;
+}
+
+.auth-page .title-section .subheading {
+    font-size: 17px;
+    color: var(--accent-color-3);
 }
 
 .auth-page .mission {

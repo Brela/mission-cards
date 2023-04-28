@@ -24,6 +24,7 @@ const connectDB = require('./config/database.js');
 const authRoutes = require('./routes/authRoutes');
 const deckRoutes = require('./routes/deckRoutes');
 const cardRoutes = require('./routes/cardRoutes');
+const openAiRoutes = require('./routes/openAiRoutes');
 
 require('dotenv').config({ path: './.env' });
 
@@ -57,6 +58,7 @@ app.use(flash())
 app.use('/auth', authRoutes)
 app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
+app.use('/openai', openAiRoutes);
 
 app.get('/', (req, res) => {
     // Handle the request for the root URL
