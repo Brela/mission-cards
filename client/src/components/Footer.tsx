@@ -8,9 +8,11 @@ import UserType from '../types/UserType';
 function Footer() {
     const { isAuthenticated, user, logout } = useContext(UserContext);
     const [showLogoutMessage, setShowLogoutMessage] = useState(false);
+    const [prevIsAuthenticated, setPrevIsAuthenticated] = useState(isAuthenticated);
 
+    // this is used to show the "logout successful message"
     useEffect(() => {
-        if (!isAuthenticated) {
+        if (prevIsAuthenticated && !isAuthenticated) {
             setShowLogoutMessage(true);
             setTimeout(() => {
                 setShowLogoutMessage(false);

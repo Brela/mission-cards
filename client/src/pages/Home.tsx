@@ -12,6 +12,7 @@ import Header from '../components/Header';
 import ColumnHeadings from '../components/home/DecksColHeading'
 import DecksContainer from '../components/home/DecksConatiner';
 import DecksToolbar from '../components/home/DecksHomeToolbar';
+import ErrorAlert from '../components/popups/ErrorAlert';
 import Footer from '../components/Footer';
 
 import React, { useState, useEffect, useContext } from 'react';
@@ -19,9 +20,6 @@ import { UserContext } from '../contexts/UserContext';
 
 type Props = {
 };
-
-
-
 
 function Home() {
   const { isAuthenticated, user, } = useContext(UserContext);
@@ -40,6 +38,7 @@ function Home() {
       <ColumnHeadings />
       <DecksContainer />
       <DecksToolbar />
+      <ErrorAlert />
       <Footer />
     </div>
   )

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ErrorContext from '../../contexts/ErrorContext';
 import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
 import { getDecks } from '../../services/deckAPI';
 import DeckType from '../../types/DeckType';
 
 function AddCardToDeck() {
+    const { setError } = useContext(ErrorContext);
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
     let { deckName } = useParams()
@@ -26,9 +28,14 @@ function AddCardToDeck() {
     async function handleCreateCard(e: React.FormEvent) {
         e.preventDefault();
         const response = await createCard(deckName!, frontText, backText)
-        // setDecks([...decks, response]);
-        setFrontText('');
-        setBackText('');
+        if ('error' in response) {
+            setError(response.error || null);
+        } else {
+
+            setFrontText('');
+            setBackText('');
+        }
+
     }
 
     /*     async function handleDeleteDeck(deckId: string) {

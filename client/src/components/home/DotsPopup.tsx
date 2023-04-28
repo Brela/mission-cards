@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react";
+import ErrorContext from '../../contexts/ErrorContext';
 import DeckType from '../../types/DeckType'
 import { deleteDeck } from '../../services/deckAPI'
 
@@ -10,11 +11,17 @@ interface DotsPopupProps {
 
 
 export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPopupProps): JSX.Element {
+    const { setError } = useContext(ErrorContext);
 
     async function handleDeleteDeck(event: React.MouseEvent<HTMLButtonElement>, deckId: string) {
-        await deleteDeck(deckId);
-        loadDecks();
-        handleClosePopup(event);
+        const response = await deleteDeck(deckId);
+        if ('error' in response) {
+            setError(response.error || null);
+        } else {
+            loadDecks();
+            handleClosePopup(event);
+        }
+
     }
 
 

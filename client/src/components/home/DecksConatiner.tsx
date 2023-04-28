@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ErrorContext from '../../contexts/ErrorContext';
 import Deck from './Deck';
 import DeckType from '../../types/DeckType';
 import { getDecks } from '../../services/deckAPI';
@@ -11,6 +12,7 @@ interface DeckProps {
 
 
 function DecksContainer() {
+    const { setError } = useContext(ErrorContext);
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
 
@@ -18,19 +20,21 @@ function DecksContainer() {
         const loadedDecks = await getDecks()
         setDecks(loadedDecks);
     }
+
     useEffect(() => {
         loadDecks();
     }, []);
+
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault();
-        const response = await createDeck(deckName)
-        setDecks([...decks, response]);
-        setDeckName('');
+        const response = await createDeck(deckName);
+        if ('error' in response) {
+            setError(response.error);
+        } else {
+            setDecks([...decks, response]);
+            setDeckName('');
+        }
     }
-
-
-
-
 
     return (
         <div className="decks-container">

@@ -15,6 +15,11 @@ export async function createCard(deckName: string, front: string, back: string):
         },
     });
 
+    // this shows returns error message if user is not auithenticated
+    if (response.status === 401) {
+        const data = await response.json();
+        return { error: data.message } as any;
+    }
 
     return response.json();
 }

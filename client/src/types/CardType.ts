@@ -5,6 +5,7 @@ interface CardType {
     front: string;
     back: string;
     creationDate: string;
+    error?: string;
 }
 
 export default CardType

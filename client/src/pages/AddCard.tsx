@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ErrorAlert from '../components/popups/ErrorAlert';
 
 import '../styles/header.css'
 import '../styles/footer.css'
@@ -30,7 +31,7 @@ function AddCard() {
             <div className='gpt-bot-container'>
                 <div className='gpt-bot-sub-container'></div>
             </div>
-
+            <ErrorAlert />
             <Footer />
         </div >
     )

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import { ErrorProvider } from './contexts/ErrorContext';
 import { UserProvider } from './contexts/UserContext';
 
 import Home from './pages/Home';
@@ -14,15 +15,17 @@ import './styles/theme.css';
 function App() {
     return (
         <React.StrictMode>
-            <UserProvider>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/:deckName" element={<AddCard />} />
-                        <Route path="/auth" element={<AuthenticationPage />} />
-                    </Routes>
-                </BrowserRouter>
-            </UserProvider>
+            <ErrorProvider>
+                <UserProvider>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/:deckName" element={<AddCard />} />
+                            <Route path="/auth" element={<AuthenticationPage />} />
+                        </Routes>
+                    </BrowserRouter>
+                </UserProvider>
+            </ErrorProvider>
         </React.StrictMode>
     );
 }
