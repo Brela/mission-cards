@@ -1,9 +1,9 @@
 module.exports = {
     ensureAuth: function (req, res, next) {
         if (req.isAuthenticated()) {
-            return next()
+            return next();
         } else {
-            res.redirect('/')
+            res.status(401).json({ message: 'Please login to use this feature' });
         }
     }
-}
+};

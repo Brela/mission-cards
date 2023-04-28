@@ -14,6 +14,8 @@ export async function createCard(deckName: string, front: string, back: string):
             'Content-Type': 'application/json'
         },
     });
+
+
     return response.json();
 }
 
