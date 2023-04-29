@@ -11,6 +11,7 @@ import AuthenticationPage from './pages/Authentication';
 import './styles/reset.css';
 import './styles/index.css';
 import './styles/theme.css';
+import './styles/gptBot/gptBot.css'
 
 function App() {
     return (

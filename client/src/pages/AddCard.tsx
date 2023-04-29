@@ -5,7 +5,6 @@ import '../styles/header.css'
 import '../styles/footer.css'
 import '../styles/addCard/pageLayout.css'
 import '../styles/addCard/addCardFrontBack.css'
-import '../styles/addCard/gptBot.css'
 import '../styles/addCard/displayCardsContainer.css'
 import { CardListContext } from '../contexts/CardListContext'
 
