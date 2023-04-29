@@ -30,15 +30,27 @@ require('dotenv').config({ path: './.env' });
 
 // Passport config
 require('./config/passport')(passport)
-
+app.use((req, res, next) => {
+    console.log("req.user:", req.user);
+    next();
+});
 connectDB();
 
-app.use(cors());
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            // Allow all origins or check the origin against a list of allowed origins
+            callback(null, true);
+        },
+        credentials: true,
+    })
+);
+
 app.use(express.static('client/public'));  // Serve the React app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // this allows json post requests to be read by express
 app.use(logger('dev'))
-// Sessions
+// User session, this is saved in mongoDB
 app.use(
     session({
         secret: 'keyboard cat',

@@ -9,6 +9,7 @@ export async function getDecks(): Promise<DeckType[]> {
 export async function createDeck(deckName: string) {
     const response = await fetch(`${API_URL}/decks`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -17,6 +17,7 @@ module.exports = {
     },
 
     createDeck: async (req, res) => {
+        console.log(req.user)
         try {
             const newDeck = new DeckModel({
                 deckName: req.body.deckName,
