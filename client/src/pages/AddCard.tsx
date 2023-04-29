@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CardType from '../types/CardType'
 import ErrorAlert from '../components/popups/ErrorAlert';
 
 import '../styles/header.css'
@@ -11,8 +12,8 @@ import { CardListContext } from '../contexts/CardListContext'
 import Header from '../components/Header';
 import AddCardContainer from '../components/addCard/AddCardContainer'
 import DisplayCardsForDeck from '../components/addCard/DisplayCardsContainer'
+import GptBot from '../components/GptBot';
 import Footer from '../components/Footer';
-import CardType from '../types/CardType'
 
 function AddCard() {
     const [cards, setCards] = useState<CardType[]>([]);
@@ -28,7 +29,7 @@ function AddCard() {
                 </CardListContext.Provider>
             </div>
             <div className='gpt-bot-container'>
-                <div className='gpt-bot-sub-container'></div>
+                <GptBot />
             </div>
             <ErrorAlert />
             <Footer />

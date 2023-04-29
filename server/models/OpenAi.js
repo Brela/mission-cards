@@ -8,7 +8,6 @@ const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
     endpoint: "https://api.openai.com/v1/chat/completions",
 });
-console.log(configuration)
 const openai = new OpenAIApi(configuration);
 
 module.exports = openai;
