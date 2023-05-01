@@ -3,10 +3,12 @@
     width: 20vw;
     margin-right: 10vw;
     margin-top: 20px;
-    background-color: rgb(138, 138, 138);
-    background-color: var(--background-2);
+    /*     background-color: rgb(138, 138, 138);
+    background-color: var(--background-2); */
     overflow: auto;
-    color: var(--text-color);
+    color: rgb(255, 255, 255);
+    background-color: rgba(93, 93, 93, 0.363);
+    box-shadow: 0px 1px 8px rgb(57, 57, 57);
     border-radius: 6px;
     scrollbar-width: none;
     /* Firefox */
@@ -25,15 +27,16 @@
 }
 
 .card-list-item {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(192, 203, 205);
     border-bottom-width: 80%;
-    border-bottom: 1px solid var(--accent-color-3);
+    /* border-bottom: 1px solid var(--accent-color-3); */
     padding: 30px 10px;
     margin: 0 10px;
 }
 
 .display-card-front {
     font-size: 1em;
+    margin-bottom: 5px;
 }
 
 .display-card-back {
