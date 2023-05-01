@@ -48,9 +48,9 @@ function SignupWindow() {
     }
 
     // ---------------------- google button with popup window -------------------------------------------------------------
-    useEffect(() => {
-        window.gapi.load('auth2', renderGoogleButton);
-    }, [])
+    /*     useEffect(() => {
+            window.gapi.load('auth2', renderGoogleButton);
+        }, []) */
 
     function renderGoogleButton() {
         window.gapi.signin2.render('google-button', {
@@ -145,15 +145,16 @@ function SignupWindow() {
                         <button type="submit" className="btn-text sign-in-with-email">Sign up with email</button>
                     </li>
 
-                    <li className='or-container'>
+                    {/*  google sign up buton  
+                          <li className='or-container'>
                         <span></span>
                         <p className='or'>or</p>
                         <span></span>
-                    </li>
-
+                    </li> 
+                    
                     <li className='google-button-container'>
                         <div id="google-button"></div>
-                    </li>
+                    </li> */}
 
 
                     {/*            

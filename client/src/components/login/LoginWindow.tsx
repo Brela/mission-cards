@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, SyntheticEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { Snackbar } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import { SnackbarCloseReason } from '@mui/material';
@@ -15,9 +16,7 @@ declare global {
 }
 
 function LoginWindow() {
-    const { isAuthenticated, setIsAuthenticated, user, setUser, justSignedUp, setJustSignedUp } = useContext(
-        UserContext
-    );
+    const { isAuthenticated, setIsAuthenticated, user, setUser, justSignedUp, setJustSignedUp } = useContext(UserContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -74,9 +73,9 @@ function LoginWindow() {
 
 
     // ---------------------- google button with popup window -------------------------------------------------------------
-    useEffect(() => {
-        window.gapi.load('auth2', renderGoogleButton);
-    }, [])
+    /*     useEffect(() => {
+            window.gapi.load('auth2', renderGoogleButton);
+        }, []) */
 
     function renderGoogleButton() {
         window.gapi.signin2.render('google-button', {
@@ -143,18 +142,16 @@ function LoginWindow() {
                         <p className='or'>or</p>
                         <span></span>
                     </li>
-
-                    <li className='google-button-container'>
-                        <div id="google-button"></div>
-
-                        {/*          <div id="google-button" className="google-btn">
-                            <div className="google-icon-wrapper">
-                                <img className="google-icon-svg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-                            </div>
-                            <p className="btn-text"><b>Sign in with Google</b></p>
-                        </div> */}
-
+                    <li className='guest-signin-description'>to view app without access to features</li>
+                    <li className="sign-up-button google-btn">
+                        <button type="submit" className="btn-text sign-in-with-email">
+                            <Link to="/">Guest sign in
+                            </Link>
+                        </button>
                     </li>
+                    {/*         <li className='google-button-container'>
+                        <div id="google-button"></div>
+                    </li> */}
                 </ul>
             </form>
             <Snackbar

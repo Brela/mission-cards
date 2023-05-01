@@ -32,13 +32,13 @@ function AuthenticationPage() {
                 {/* <h3 className='title subtitle'>Take your studying to the next level with your custom mission and ChatGPT as your personal assistant</h3> */}
                 <div className="auth-window-container">
                     <div className='title-section'>
-                        <h1 className='h1'>Welcome to Mission ChatGPT</h1>
-                        <h4 className='subheading'>testing grounds for chatGPT settings and features</h4>
+                        <h1 className='h1'>Welcome to Mission Cards</h1>
+                        <h4 className='subheading'>Flashcards with an AI assistant</h4>
                     </div>
                     {showLoginWindow ? <LoginWindow /> : <SignupWindow />}
                     <div>
                         <button className='go-to-button' onClick={handleToggle}>
-                            {showLoginWindow ? 'Go to Signup' : 'Go to Login'}
+                            {showLoginWindow ? 'Go To Signup' : 'Go to Login'}
                         </button>
                     </div>
                 </div>

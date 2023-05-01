@@ -131,12 +131,19 @@ li.email-pass label {
     width: 20px;
 }
 
+.guest-signin-description {
+    color: white;
+    font-size: .8rem;
+    text-align: center;
+    padding-left: 5px;
+}
+
 .auth-window-container .go-to-button {
     background-color: rgba(255, 255, 255, 0);
-    color: rgb(62, 236, 239);
-    color: var(--accent-color-3);
+    color: var(--accent-color-4);
+    color: white;
     border: none;
-    padding: 3px 10px;
+    padding: 50px 10px 3px 10px;
 }
 
 /* google button */

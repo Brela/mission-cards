@@ -45,7 +45,7 @@ export const UserProvider: React.FC<Props> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(initialIsAuthenticated);
     const [user, setUser] = useState<UserType | null>(initialUser);
     const [justSignedUp, setJustSignedUp] = useState(false)
-    const [showLoginWindow, setShowLoginWindow] = useState(false);
+    const [showLoginWindow, setShowLoginWindow] = useState(true);
 
     useEffect(() => {
         localStorage.setItem('isAuthenticated', isAuthenticated.toString());
