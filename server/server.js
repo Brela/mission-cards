@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 connectDB();
 
 const allowedOrigins = ['http://localhost:4000', 'https://missionchatgpt.com/'];
+
 app.use(
     cors({
         origin: function (origin, callback) {
