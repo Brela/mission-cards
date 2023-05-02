@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import ErrorContext from '../../contexts/ErrorContext';
+import { UserContext } from '../../contexts/UserContext';
 import DeckType from '../../types/DeckType'
 import { deleteDeck } from '../../services/deckAPI'
 
@@ -11,9 +12,15 @@ interface DotsPopupProps {
 
 
 export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPopupProps): JSX.Element {
+    const { user } = useContext(UserContext);
     const { setError } = useContext(ErrorContext);
 
     async function handleDeleteDeck(event: React.MouseEvent<HTMLButtonElement>, deckId: string) {
+        // front end route protection
+        if (!user) {
+            setError('Please login to use this feature');
+            return;
+        }
         const response = await deleteDeck(deckId);
         if ('error' in response) {
             setError(response.error || null);

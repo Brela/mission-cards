@@ -17,6 +17,8 @@ module.exports = {
     },
 
     createDeck: async (req, res) => {
+
+        console.log(req.isAuthenticated())
         console.log(req.user)
         try {
             const newDeck = new DeckModel({
@@ -33,6 +35,8 @@ module.exports = {
     },
 
     deleteDeck: async (req, res) => {
+        console.log(req.isAuthenticated())
+        console.log(req.user)
         const { deckId } = req.params;
         const deck = await Deck.findByIdAndDelete(deckId);
         res.json(deck)

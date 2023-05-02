@@ -24,7 +24,7 @@ function GptBot() {
 
     async function handleGptPrompt(e: React.FormEvent) {
         e.preventDefault();
-        // front end req protection
+        // front end route protection
         if (!user) {
             setError('Please login to use this feature');
             return;

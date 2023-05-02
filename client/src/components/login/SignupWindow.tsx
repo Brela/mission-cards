@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { createUserWithEmail } from '../../services/authAPI';
-import { createUserWithGoogle } from '../../services/authAPI';
+// import { createUserWithGoogle } from '../../services/authAPI';
 import { UserContext } from '../../contexts/UserContext';
 
 type Props = {
@@ -34,65 +34,44 @@ function SignupWindow() {
         }
     }
 
-    async function handleCreateUserWithGoogle(idToken: string) {
-        const response = await createUserWithGoogle(idToken);
-        if (response.status === 200) {
-            setJustSignedUp(true)
-            setShowLoginWindow(true)
-            /*  setIsAuthenticated(true);
-             setUser(response.data.user);
-             window.location.href = '/'; */
-        } else {
-            alert(response.data.error);
-        }
-    }
+    /* 
+   async function handleCreateUserWithGoogle(idToken: string) {
+       const response = await createUserWithGoogle(idToken);
+       if (response.status === 200) {
+           setJustSignedUp(true)
+           setShowLoginWindow(true)
+       } else {
+           alert(response.data.error);
+       }
+   }
 
-    // ---------------------- google button with popup window -------------------------------------------------------------
-    /*     useEffect(() => {
-            window.gapi.load('auth2', renderGoogleButton);
-        }, []) */
+   // ---------------------- google button with popup window -------------------------------------------------------------
+      useEffect(() => {
+           window.gapi.load('auth2', renderGoogleButton);
+       }, []) 
 
-    function renderGoogleButton() {
-        window.gapi.signin2.render('google-button', {
-            scope: 'profile email',
-            // width: 184,
-            // height: 100,
-            longtitle: true,
-            theme: 'none',
-            onsuccess: onGoogleSignInSuccess,
-            onfailure: onGoogleSignInFailure,
-        });
-    }
+   function renderGoogleButton() {
+       window.gapi.signin2.render('google-button', {
+           scope: 'profile email',
+           // width: 184,
+           // height: 100,
+           longtitle: true,
+           theme: 'none',
+           onsuccess: onGoogleSignInSuccess,
+           onfailure: onGoogleSignInFailure,
+       });
+   }
 
-    function onGoogleSignInSuccess(googleUser: any) {
-        const idToken = googleUser.getAuthResponse().id_token;
-        handleCreateUserWithGoogle(idToken);
-    }
+   function onGoogleSignInSuccess(googleUser: any) {
+       const idToken = googleUser.getAuthResponse().id_token;
+       handleCreateUserWithGoogle(idToken);
+   }
 
-    function onGoogleSignInFailure(error: any) {
-        console.error("Google Sign-In error:", error);
-    }
+   function onGoogleSignInFailure(error: any) {
+       console.error("Google Sign-In error:", error);
+   } */
+
     // -----------------------------------------------------------------------------------
-
-    /* async function signUpWithGoogle() {
-        try {
-            const auth = await useGoogleLogin();
-            await auth.signIn();
-
-            const id_token = auth.currentUser.get().getAuthResponse().id_token;
-
-            // Call your API to sign up with the Google token
-            const response = await signUpWithGoogle(id_token);
-            if (response.status === 200) {
-                setJustSignedUp(true);
-                setShowLoginWindow(true);
-            } else {
-                console.log(response.data.error);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    } */
 
     useEffect(() => {
     }, []);

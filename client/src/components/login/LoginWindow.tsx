@@ -4,7 +4,7 @@ import { Snackbar } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import { SnackbarCloseReason } from '@mui/material';
 import { loginWithEmail } from '../../services/authAPI';
-import { loginWithGoogle } from '../../services/authAPI';
+// import { loginWithGoogle } from '../../services/authAPI';
 import { UserContext } from '../../contexts/UserContext';
 
 type Props = {};
@@ -60,7 +60,7 @@ function LoginWindow() {
         }
     }
 
-    async function handleLoginUserWithGoogle(idToken: string) {
+    /* async function handleLoginUserWithGoogle(idToken: string) {
         const response = await loginWithGoogle(idToken);
         if (response.status === 200) {
             setIsAuthenticated(true);
@@ -69,13 +69,13 @@ function LoginWindow() {
         } else {
             alert(response.data.error);
         }
-    }
+    } */
 
 
     // ---------------------- google button with popup window -------------------------------------------------------------
     /*     useEffect(() => {
             window.gapi.load('auth2', renderGoogleButton);
-        }, []) */
+        }, []) 
 
     function renderGoogleButton() {
         window.gapi.signin2.render('google-button', {
@@ -90,14 +90,15 @@ function LoginWindow() {
     }
 
 
-    function onGoogleSignInSuccess(googleUser: any) {
-        const idToken = googleUser.getAuthResponse().id_token;
-        handleLoginUserWithGoogle(idToken);
-    }
+   function onGoogleSignInSuccess(googleUser: any) {
+           const idToken = googleUser.getAuthResponse().id_token;
+           handleLoginUserWithGoogle(idToken);
+       } 
 
     function onGoogleSignInFailure(error: any) {
         console.error("Google Sign-In error:", error);
     }
+    */
     // -----------------------------------------------------------------------------------
 
     /* 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ErrorContext from '../../contexts/ErrorContext';
+import { UserContext } from '../../contexts/UserContext';
+import { useCardContext, CardListContext } from '../../contexts/CardListContext';
 import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
 import { getDecks } from '../../services/deckAPI';
@@ -7,6 +9,8 @@ import DeckType from '../../types/DeckType';
 
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
+    const { user } = useContext(UserContext);
+    const { cards, setCards } = useCardContext();
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
     let { deckName } = useParams()
@@ -27,6 +31,11 @@ function AddCardToDeck() {
 
     async function handleCreateCard(e: React.FormEvent) {
         e.preventDefault();
+        // to only send req if user is logged in
+        if (!user) {
+            setError('Please login to use this feature');
+            return;
+        }
         const response = await createCard(deckName!, frontText, backText)
         if ('error' in response) {
             setError(response.error || null);
@@ -34,6 +43,8 @@ function AddCardToDeck() {
 
             setFrontText('');
             setBackText('');
+            // add new card to cards list context cards array
+            setCards([...cards, response]);
         }
 
     }

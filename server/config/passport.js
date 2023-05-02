@@ -18,47 +18,59 @@ module.exports = function (passport) {
             user.comparePassword(password, (err, isMatch) => {
                 if (err) { return done(err) }
                 if (isMatch) {
-                    return done(null, user)
+                    console.log("User authenticated (LocalStrategy):", user);
+                    return done(null, user);
                 }
                 return done(null, false, { msg: 'Invalid email or password.' })
             })
         })
     }))
-
-    // Set up Google OAuth 2.0 authentication strategy
-    passport.use(new GoogleStrategy({
-        clientID: `${process.env.GOOGLE_CLIENT_ID}`,
-        clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
-        callbackURL: "http://localhost:7778/auth/google/callback",
-        passReqToCallback: true,
-        scope: ['profile', 'email']
-    }, function (request, accessToken, refreshToken, profile, done) {
-        // Here, you can retrieve the user's profile data from the `profile` object
-        // and use it to authenticate or create a user account in your application.
-        // The `done` function should be called with the user object when authentication is successful.
-        User.findOne({ googleId: profile.id }, function (err, user) {
-            if (err) { return done(err); }
-            if (user) { return done(null, user); }
-            else {
-                const newUser = new User({
-                    googleId: profile.id,
-                    displayName: profile.displayName,
-                    email: profile.email
-                });
-                newUser.save(function (err) {
-                    if (err) { return done(err); }
-                    return done(null, newUser);
-                });
-            }
-        });
-    }));
-
+    /* 
+        // Set up Google OAuth 2.0 authentication strategy
+        passport.use(new GoogleStrategy({
+            clientID: `${process.env.GOOGLE_CLIENT_ID}`,
+            clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
+            callbackURL: "http://localhost:7778/auth/google/callback",
+            passReqToCallback: true,
+            scope: ['profile', 'email']
+        }, function (request, accessToken, refreshToken, profile, done) {
+            // Here, you can retrieve the user's profile data from the `profile` object
+            // and use it to authenticate or create a user account in your application.
+            // The `done` function should be called with the user object when authentication is successful.
+            User.findOne({ googleId: profile.id }, function (err, user) {
+                if (err) { return done(err); }
+                if (user) { return done(null, user); }
+                else {
+                    const newUser = new User({
+                        googleId: profile.id,
+                        displayName: profile.displayName,
+                        email: profile.email
+                    });
+                    newUser.save(function (err) {
+                        if (err) { return done(err); }
+                        return done(null, newUser);
+                    });
+                }
+            });
+        }));
+    */
 
     passport.serializeUser((user, done) => {
-        done(null, user.id)
-    })
+        // console.log('Serialized user:', user); check
+        done(null, user.id);
+    });
+
 
     passport.deserializeUser((id, done) => {
-        User.findById(id, (err, user) => done(err, user))
-    })
+        User.findById(id, (err, user) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Deserialized user:', user);
+            }
+            done(err, user);
+        });
+    });
+
+
 }

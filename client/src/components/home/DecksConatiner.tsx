@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ErrorContext from '../../contexts/ErrorContext';
+import { UserContext } from '../../contexts/UserContext';
 import Deck from './Deck';
 import DeckType from '../../types/DeckType';
 import { getDecks } from '../../services/deckAPI';
@@ -12,6 +13,7 @@ interface DeckProps {
 
 
 function DecksContainer() {
+    const { user } = useContext(UserContext);
     const { setError } = useContext(ErrorContext);
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
@@ -27,6 +29,11 @@ function DecksContainer() {
 
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault();
+        // front end route protection
+        if (!user) {
+            setError('Please login to use this feature');
+            return;
+        }
         const response = await createDeck(deckName);
         if ('error' in response) {
             setError(response.error);

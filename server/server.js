@@ -36,17 +36,27 @@ app.use((req, res, next) => {
 });
 connectDB();
 
+const allowedOrigins = ['http://localhost:4000', 'https://missionchatgpt.com/'];
 app.use(
     cors({
         origin: function (origin, callback) {
-            // Allow all origins or check the origin against a list of allowed origins
-            callback(null, true);
+            if (!origin) return callback(null, true);
+            if (allowedOrigins.indexOf(origin) === -1) {
+                const msg = `The CORS policy for this site does not allow access from ${origin}.`;
+                return callback(new Error(msg), false);
+            }
+            return callback(null, true);
         },
         credentials: true,
+        preflightContinue: true,
     })
 );
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 
-app.use(express.static('client/public'));  // Serve the React app
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // this allows json post requests to be read by express
 app.use(logger('dev'))
@@ -57,14 +67,31 @@ app.use(
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({ client: mongoose.connection.getClient() }),
+        cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
     })
-)
-
+);
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+// check that the user is being logged in correctly, and the session is being updated with the user information
+// - the issue is related to the session not being updated correctly after the user logs in.
+app.use((req, res, next) => {
+    if (!req.user && req.session && req.session.passport && req.session.passport.user) {
+        User.findById(req.session.passport.user, (err, user) => {
+            if (err) {
+                console.log(err);
+            } else {
+                req.user = user;
+            }
+            next();
+        });
+    } else {
+        console.log('passed checks', req.user)
+        next();
+    }
+});
 
-app.use(flash())
+// app.use(flash())
 
 
 app.use('/auth', authRoutes)

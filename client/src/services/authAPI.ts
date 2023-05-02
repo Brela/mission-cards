@@ -5,6 +5,7 @@ import UserType from '../types/UserType';
 export async function createUserWithEmail(email: string, password: string, confirmPassword: string) {
     const response = await fetch(`${API_URL}/auth/signup`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -24,6 +25,7 @@ export async function loginWithEmail(email: string, password: string) {
     try {
         const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -41,6 +43,17 @@ export async function loginWithEmail(email: string, password: string) {
     }
 }
 
+/* Passport automatically attaches the logged-in user's information to the req object, 
+so there's no need to send the user ID explicitly in this case. */
+export async function logoutUser() {
+    const response = await fetch(`${API_URL}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+    });
+    return response;
+}
+
+/* 
 // send a POST request to server to create a new user with the provided Google ID token.
 export async function createUserWithGoogle(idToken: string) {
     try {
@@ -82,16 +95,9 @@ export async function loginWithGoogle(idToken: string) {
         return { status: err.status, data };
     }
 }
+ */
 
 
 
-/* Passport automatically attaches the logged-in user's information to the req object, 
-so there's no need to send the user ID explicitly in this case. */
-export async function logoutUser() {
-    const response = await fetch(`${API_URL}/auth/logout`, {
-        method: 'POST',
-    });
-    return response;
-}
 
 
