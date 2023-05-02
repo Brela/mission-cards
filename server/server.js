@@ -36,8 +36,8 @@ app.use((req, res, next) => {
 });
 connectDB();
 
-const allowedOrigins = ['http://localhost:4000', 'https://missionchatgpt.com/'];
-/* 
+const allowedOrigins = ['http://localhost:4000', 'https://missionchatgpt.com'];
+
 app.use(
     cors({
         origin: function (origin, callback) {
@@ -51,10 +51,10 @@ app.use(
         credentials: true,
         preflightContinue: true,
     })
-); */
-app.use(
-    cors()
 );
+/* app.use(
+    cors()
+); */
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Credentials", "true");
