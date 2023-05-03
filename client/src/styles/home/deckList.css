@@ -5,9 +5,11 @@
     height: 500px;
     padding-top: 20px;
     overflow: auto;
-    background-color: var(--background-2);
-    color: var(--text-color);
+    background-color: var(--background-1);
+    color: var(--accent-color-3);
+    color: var(--accent-color-1);
     border-radius: 6px;
+    box-shadow: 0px 1px 8px rgb(57, 57, 57);
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
@@ -43,7 +45,7 @@ li.deck-list-item {
     margin-right: 5%;
     /* first one is a backup color */
     border-bottom: 1px solid rgb(129, 221, 36);
-    border-bottom: 1px solid var(--accent-color-1);
+    border-bottom: 1px solid rgb(208, 221, 227);
     margin-top: 8px;
     padding-bottom: 8px;
 }
@@ -75,9 +77,9 @@ li .cards-remaining {
     padding-bottom: 10px;
     border-width: 1.2px;
     border-radius: 3px;
-    color: black;
-    background-color: white;
-    box-shadow: 0 0 0 white;
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0px 1px 8px rgb(57, 57, 57);
     height: 20px;
     display: flex;
     align-items: center;
@@ -86,6 +88,7 @@ li .cards-remaining {
 .create-deck {
     padding-top: 50px;
     padding-left: 60px;
+    color: aliceblue;
 }
 
 .create-deck input {
@@ -101,6 +104,16 @@ li .cards-remaining {
 @media only screen and (max-width: 1000px) {
     .decks-container {
         width: 75vw;
-        height: 70vh;
+        height: 60vh;
     }
+
+
+}
+
+@media only screen and (max-width: 500px) {
+    .decks-container {
+        width: 88vw;
+        height: 60vh;
+    }
+
 }
