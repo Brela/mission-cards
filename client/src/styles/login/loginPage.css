@@ -36,12 +36,11 @@
     position: relative;
     padding: 10vh 0 3vh 0;
     margin-bottom: 30px;
-    border: 1px solid white;
-    box-shadow: 0px 10px 20px var(--accent-color-5);
+    box-shadow: 0px 0px 20px var(--accent-color-4);
     border-radius: 8px;
     width: 40vw;
     min-height: 35vh;
-    background-color: rgb(158, 179, 155);
+    background-color: rgba(158, 179, 155, 0);
     color: var(--accent-color-2);
     display: flex;
     justify-content: space-between;
@@ -98,7 +97,8 @@ li.email-pass label {
 }
 
 .auth-window-container .sign-up-button button {
-    background-color: var(--accent-color-5);
+    background-color: var(--accent-color-3);
+    background-color: white;
     color: #757575;
     border: none;
     width: 100%;
