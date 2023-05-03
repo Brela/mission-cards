@@ -11,7 +11,6 @@ interface DeckProps {
     loadDecks: () => void;
 }
 
-
 function DecksContainer() {
     const { user } = useContext(UserContext);
     const { setError } = useContext(ErrorContext);
