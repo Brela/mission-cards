@@ -55,7 +55,7 @@ module.exports = {
 
     loginUser: (req, res, next) => {
         passport.authenticate('local', (err, user, info) => {
-            console.log('login user controller - user: ', user)
+            // console.log('login user controller - user: ', user)
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
