@@ -16,5 +16,8 @@
     --accent-color-5: rgb(184, 228, 144);
     --accent-color-6: rgb(175, 201, 149);
 
+    --heading-color: rgb(208, 208, 208);
+    --heading-size: .85em;
     --text-color: rgb(30, 26, 26);
+    --box-shadow: 0px 1px 8px rgb(57, 57, 57);
 }

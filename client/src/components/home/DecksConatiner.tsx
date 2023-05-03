@@ -6,6 +6,10 @@ import DeckType from '../../types/DeckType';
 import { getDecks } from '../../services/deckAPI';
 import { createDeck } from '../../services/deckAPI';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+// usage -- {<FontAwesomeIcon icon={faSearch} />}
+
 interface DeckProps {
     deck: DeckType;
     loadDecks: () => void;
@@ -57,7 +61,7 @@ function DecksContainer() {
             </ul>
             <form onSubmit={handleCreateDeck}>
                 <div className='create-deck'>
-                    <label htmlFor="deck-title">Deck Name </label>
+                    <label htmlFor="deck-title">Add Deck</label>
                     <input
                         id="deck-title"
                         value={deckName}
@@ -65,7 +69,12 @@ function DecksContainer() {
                             setDeckName(e.target.value);
                         }}
                     />
-                    <button type="submit">Add</button>
+                    <button type="submit" className='faPlus-icon-button'>
+                        <FontAwesomeIcon
+                            className='faPlus-icon'
+                            icon={faPlus}
+                        />
+                    </button>
                 </div>
             </form>
         </div>

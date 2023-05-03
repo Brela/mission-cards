@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import path from 'path';
-/* import { FontAwesomeIcon } from "@fortwesome/react-fontawesome";
-import { fa5 } from `../../../node_modules/@fortawesome/fontawesome-svg-core` */
+// add icons to each component that needs them instead of app
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faPalette, faCog } from '@fortawesome/free-solid-svg-icons';
+// usage -- {<FontAwesomeIcon icon={faSearch} />}
+
 
 function DecksToolbar() {
     const [activeItem, setActiveItem] = useState('');
@@ -51,9 +53,9 @@ function DecksToolbar() {
                         onClick={handleItemClick}
                         ref={popupsRefs[popupItem]}
                     >
-                        {popupItem === 'search' && <i className="fa-solid fa-magnifying-glass"></i>}
-                        {popupItem === 'palette' && <i className="fa-solid fa-palette"></i>}
-                        {popupItem === 'gear' && <i className="fa-solid fa-gear"></i>}
+                        {popupItem === 'search' && <FontAwesomeIcon icon={faSearch} />}
+                        {popupItem === 'palette' && <FontAwesomeIcon icon={faPalette} />}
+                        {popupItem === 'gear' && <FontAwesomeIcon icon={faCog} />}
                     </div>
                 ))}
             </div>
@@ -61,8 +63,8 @@ function DecksToolbar() {
             <div className={`popup search ${activeItem === 'search' ? 'active' : ''}`}>
                 <div className="popup-box">
                     <div className="popup-content">
-                        <h2>keyword search</h2>
-                        <h4>search all cards by keywords</h4>
+                        <h2>Keyword Search</h2>
+                        <h4>Coming Soon!</h4>
                         <input />
                     </div>
                     <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
@@ -72,7 +74,7 @@ function DecksToolbar() {
                 <div className="popup-box">
                     <div className="popup-content">
                         <h2>Theme</h2>
-                        <p>This is the popup content for the palette.</p>
+                        <p>Coming Soon!</p>
                     </div>
                     <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
                 </div>
@@ -81,7 +83,7 @@ function DecksToolbar() {
                 <div className="popup-box">
                     <div className="popup-content">
                         <h2>Preferences</h2>
-                        <p>Change your preferences here</p>
+                        <p>Coming Soon!</p>
                     </div>
                     <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
                 </div>

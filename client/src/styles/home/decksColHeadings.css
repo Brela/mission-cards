@@ -10,11 +10,15 @@
     flex-basis: 50%;
     padding-left: 10%;
     color: rgb(187, 187, 187);
+    color: var(--heading-color);
+    font-size: var(--heading-size);
     margin-bottom: 5px;
 }
 
 .card-heading {
-    color: rgb(175, 175, 175);
+    color: rgb(187, 187, 187);
+    color: var(--heading-color);
+    font-size: var(--heading-size);
     padding-right: 40px;
     margin-bottom: 5px;
     flex-basis: 50%;

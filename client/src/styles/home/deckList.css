@@ -21,16 +21,6 @@
     /* Safari and Chrome */
 }
 
-.plus {
-    font-size: 1.5em;
-    font-weight: 900;
-    color: rgb(143, 204, 52);
-    padding: 5%;
-    padding-left: 15%;
-    text-shadow: -0px 0px 10px rgb(129, 221, 36);
-    text-shadow: -0px 0px 10px var(--accent-color-1);
-}
-
 /* .decks {
     display: flex;
     flex-direction: column;
@@ -91,6 +81,12 @@ li .cards-remaining {
     color: aliceblue;
 }
 
+.create-deck label {
+    margin-right: 8px;
+    font-size: var(--heading-size);
+    color: var(--heading-color);
+}
+
 .create-deck input {
     background-color: var(--background-1);
 }
@@ -98,6 +94,13 @@ li .cards-remaining {
 .create-deck button {
     margin-left: 10px;
     width: 60px;
+    background-color: rgba(55, 110, 158, 0);
+    box-shadow: var(--box-shadow);
+}
+
+.faPlus-icon {
+    color: white;
+    color: var(--heading-color);
 }
 
 

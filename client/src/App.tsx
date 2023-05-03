@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import { ErrorProvider } from './contexts/ErrorContext';
 import { UserProvider } from './contexts/UserContext';
 
@@ -12,6 +11,7 @@ import './styles/reset.css';
 import './styles/index.css';
 import './styles/theme.css';
 import './styles/gptBot/gptBot.css'
+
 
 function App() {
     return (

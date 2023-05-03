@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--heading-color);
+    font-size: var(--heading-size);
 }
 
 .addcardtodeck select {
@@ -44,7 +46,7 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    gap: 15px;
+    gap: 20px;
 }
 
 .add-cards-sub-container label {
@@ -53,15 +55,11 @@
     color: var(--accent-color-1);
 }
 
-.add-cards-sub-container>div {
-    flex-basis: 200px;
-
-}
-
 .add-cards-sub-container .card-text {
+    border-radius: 2px;
     padding: 10px;
     vertical-align: top;
-    width: 500px;
+    width: 32vw;
     height: 150px;
     /* background-color: rgb(165, 165, 165);
     background-color: var(--accent-color-3) */
@@ -86,4 +84,22 @@
 .card-back .card-text {
     font-size: 1.2em;
     background-color: var(--background-2);
+}
+
+@media screen and (max-width: 700px) {
+    .addcardtodeck {
+        width: 100vw;
+    }
+
+    .add-cards-container {
+        width: 100vw;
+    }
+
+    .add-cards-sub-container .card-text {
+        padding: 10px;
+        vertical-align: top;
+        width: 80vw;
+        height: 100px;
+
+    }
 }

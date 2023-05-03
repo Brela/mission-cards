@@ -24,6 +24,8 @@
 .card-list-heading {
     display: flex;
     justify-content: flex-start;
+    color: var(--heading-color);
+    font-size: var(--heading-size);
 }
 
 .card-list-item {
@@ -41,4 +43,25 @@
 
 .display-card-back {
     font-size: .7em;
+}
+
+
+@media screen and (max-width: 700px) {
+    .display-cards-container {
+        height: 10vh;
+        width: 70vw;
+        margin-right: 0vw;
+        margin-top: 20px;
+        scrollbar-width: 10px;
+        /* Firefox */
+        -ms-overflow-style: inherit;
+        /* Internet Explorer and Edge */
+    }
+
+    .card-list-heading {
+        display: flex;
+        justify-content: flex-start;
+        color: var(--heading-color);
+        font-size: var(--heading-size);
+    }
 }
