@@ -29,9 +29,11 @@
 
 }
 
+
 .gpt-bot-sub-container input {
     padding-left: 5px;
-    width: 93%;
+    margin-right: 25px;
+    width: 88%;
     background-color: rgba(240, 248, 255, 0);
     height: 20px;
     border: none;
@@ -45,4 +47,43 @@
 .gpt-bot-sub-container input:focus {
     outline: none;
     box-shadow: none;
+}
+
+.gpt-bot-sub-container button {
+    background-color: rgba(48, 79, 106, 0);
+    box-shadow: var(--box-shadow);
+}
+
+@media screen and (max-width: 700px) {
+    .gpt-bot-container {
+        width: 40vw;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        max-height: 100vh;
+    }
+
+    .gpt-bot-sub-container {
+        box-sizing: border-box;
+        padding: 10px;
+        position: absolute;
+        bottom: 100px;
+        width: 85%;
+        height: 20%;
+        background-color: rgba(0, 0, 0, 0);
+        /* color: aliceblue; */
+        box-shadow: 0px 1px 10px rgb(26, 26, 26);
+        border-radius: 6px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .gpt-bot-sub-container input {
+        padding-left: 5px;
+        width: 63%;
+
+    }
+
 }

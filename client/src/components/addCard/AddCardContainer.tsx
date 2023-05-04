@@ -7,6 +7,9 @@ import { createCard } from '../../services/cardAPI'
 import { getDecks } from '../../services/deckAPI';
 import DeckType from '../../types/DeckType';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
     const { user } = useContext(UserContext);
@@ -111,7 +114,12 @@ function AddCardToDeck() {
                             />
 
                         </div>
-                        <button type="submit">Create Card</button>
+                        <button type="submit">
+                            <FontAwesomeIcon
+                                className='faPlus-icon'
+                                icon={faPlus}
+                            />
+                        </button>
                     </div >
                 </form >
             </div >

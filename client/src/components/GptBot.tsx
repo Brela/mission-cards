@@ -6,6 +6,9 @@ import { chatWithGPT } from '../services/openAiAPI';
 import styled from '@emotion/styled';
 import { MoonLoader } from 'react-spinners';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+
 function GptBot() {
     const { setError } = useContext(ErrorContext);
     const { user } = useContext(UserContext);
@@ -49,7 +52,12 @@ function GptBot() {
         <div className='gpt-bot-sub-container'>
             <form onSubmit={handleGptPrompt}>
                 <input placeholder='Ask me anything' type="text" value={userPrompt} onChange={handleInputChange} />
-                <button type="submit">Send</button>
+                <button type="submit">
+                    <FontAwesomeIcon
+                        className='faPlus-icon'
+                        icon={faPaperPlane}
+                    />
+                </button>
             </form>
 
             <section>
