@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Snackbar } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import { SnackbarCloseReason } from '@mui/material';
-import { loginWithEmail } from '../../services/userAPI';
+import { loginWithEmail, loginAsGuest } from '../../services/userAPI';
 // import { loginWithGoogle } from '../../services/authAPI';
 import { UserContext } from '../../contexts/UserContext';
 
@@ -47,6 +47,22 @@ function LoginWindow() {
     async function handleLoginUserWithEmail(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const response = await loginWithEmail(email, password);
+        // console.log(response);
+        if (response.status === 200) {
+            // Redirect to home page after successful login
+            setIsAuthenticated(true);
+            console.log('response', response);
+            setUser(response.data.user);
+            window.location.href = '/';
+        } else {
+            // Display error message if login fails
+            alert(response.data.error);
+        }
+    }
+    async function handleLoginUserAsGuest(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        // email and pass for guest is set in userAPI call
+        const response = await loginAsGuest();
         // console.log(response);
         if (response.status === 200) {
             // Redirect to home page after successful login
@@ -143,16 +159,27 @@ function LoginWindow() {
                         <p className='or'>or</p>
                         <span></span>
                     </li>
-                    <li className='guest-signin-description'>to view app without access to features</li>
-                    <li className="sign-up-button google-btn">
+                    <li className='guest-signin-description'>view app with limited access to features</li>
+                    {/*      <li className="sign-up-button google-btn">
+                        <button type="submit" className="btn-text sign-in-with-email">
+                            <Link to="/">Guest sign in
+                            </Link>
+                        </button>
+                    </li> */}
+                    {/*         <li className='google-button-container'>
+                        <div id="google-button"></div>
+                    </li> */}
+                </ul>
+            </form>
+            <form onSubmit={handleLoginUserAsGuest}>
+                <ul>
+                    <li className="sign-up-button google-btn guest-sign-in">
                         <button type="submit" className="btn-text sign-in-with-email">
                             <Link to="/">Guest sign in
                             </Link>
                         </button>
                     </li>
-                    {/*         <li className='google-button-container'>
-                        <div id="google-button"></div>
-                    </li> */}
+
                 </ul>
             </form>
             <Snackbar

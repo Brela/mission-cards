@@ -76,6 +76,7 @@ li.email-pass {
 li.email-pass label {
     width: 100%;
     font-size: 15px;
+    color: var(--accent-color-3);
 }
 
 .auth-window-container li label {
@@ -114,6 +115,10 @@ li.email-pass label {
     padding-left: 0;
 }
 
+.auth-window-container .sign-up-button.guest-sign-in {
+    margin-top: 20px;
+}
+
 .auth-window-container .or-container {
     margin-top: 15px;
     display: flex;
@@ -129,6 +134,8 @@ li.email-pass label {
 
 .auth-window-container .or {
     width: 20px;
+    color: white;
+    color: var(--accent-color-3);
 }
 
 .guest-signin-description {
@@ -219,4 +226,45 @@ li.email-pass label {
     background: #F8F8F8;
     color: #fff;
     user-select: none
+}
+
+@media screen and (max-width: 1000px) {
+    .auth-window-container ul {
+        align-items: center;
+    }
+
+    /*     .auth-window-container input {
+        margin-right: 0;
+        padding-right: 0;
+        width: 100%;
+    } */
+
+}
+
+@media screen and (max-width: 767px) {
+    .auth-window-container {
+        padding: 10vh 0 3vh 0;
+        margin-top: 80px;
+        margin-bottom: 40px;
+        width: 80vw;
+        min-height: 35vh;
+    }
+
+    .auth-page .title-section .h1 {
+        display: none;
+    }
+
+    .auth-page .title-section {
+        top: -40px;
+        min-height: 5vh;
+    }
+
+    .auth-page .title-section .subheading {
+        font-size: 17px;
+        color: var(--accent-color-3);
+    }
+
+    .guest-signin-description {
+        width: 70%;
+    }
 }

@@ -90,6 +90,27 @@ export async function loginWithEmail(email: string, password: string) {
         return { status: err.status, data };
     }
 }
+export async function loginAsGuest() {
+    try {
+        const response = await fetch(`${API_URL}/user/login`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: 'powerfulguest@gmail.com',
+                password: 'NoOneCanHackThisloljkItIsOnGitHub123',
+            }),
+        });
+        const data = await response.json();
+        return { status: response.status, data };
+    } catch (error: unknown) {
+        const err = error as Response;
+        const data = await err.json();
+        return { status: err.status, data };
+    }
+}
 
 /* Passport automatically attaches the logged-in user's information to the req object, 
 so there's no need to send the user ID explicitly in this case. */
