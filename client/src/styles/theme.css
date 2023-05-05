@@ -6,10 +6,10 @@
     background-color: rgb(57, 62, 58);
     background-color: var(--background-1);
 
-    --background-2: rgb(158, 179, 155);
+    --background-2: rgba(167, 167, 167, 0.224);
 
     --accent-color-1: rgb(157, 253, 73);
-    --accent-color-2: rgb(164, 242, 248);
+    --accent-color-2: rgb(157, 253, 73, .05);
 
     --accent-color-3: rgb(62, 236, 239);
     --accent-color-4: rgb(57, 57, 57);

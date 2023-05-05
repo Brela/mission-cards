@@ -7,14 +7,14 @@
 }
 
 .addcardtodeck select {
-    color: var(--accent-color-5);
+    color: var(--accent-color-1);
     margin-left: 20px;
     padding: 2px 10px;
     background-color: rgba(240, 248, 255, 0);
 }
 
 .addcardtodeck option {
-    color: var(--accent-color-5);
+    color: var(--accent-color-1);
     margin: 50px 0;
     background-color: rgba(0, 0, 0, 0.625);
 }
@@ -80,12 +80,12 @@
 
 .card-front .card-text {
     font-size: 1.4em;
-    background-color: var(--background-2);
+    background-color: var(--accent-color-2);
 }
 
 .card-back .card-text {
     font-size: 1.2em;
-    background-color: var(--background-2);
+    background-color: var(--accent-color-2);
 }
 
 @media screen and (max-width: 700px) {

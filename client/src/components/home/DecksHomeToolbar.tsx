@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ColorPicker from '../popups/ColorPicker_Theme';
 
 // add icons to each component that needs them instead of app
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -73,8 +74,7 @@ function DecksToolbar() {
             <div className={`popup palette ${activeItem === 'palette' ? 'active' : ''}`}>
                 <div className="popup-box">
                     <div className="popup-content">
-                        <h2>Theme</h2>
-                        <p>Coming Soon!</p>
+                        <ColorPicker />
                     </div>
                     <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
                 </div>
