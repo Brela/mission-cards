@@ -5,6 +5,7 @@ type Name = string;
 export async function createCard(deckName: string, front: string, back: string): Promise<CardType> {
     const response = await fetch(`${API_URL}/cards/${deckName}/newcard`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({
             deckName,
             front,
@@ -25,6 +26,8 @@ export async function createCard(deckName: string, front: string, back: string):
 }
 
 export async function getAllCardsForDeck(deckName: Name): Promise<CardType[]> {
-    const response = await fetch(`${API_URL}/cards/${deckName}`);
+    const response = await fetch(`${API_URL}/cards/${deckName}`, {
+        credentials: 'include',
+    });
     return await response.json();
-} 
+}

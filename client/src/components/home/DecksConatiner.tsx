@@ -5,6 +5,7 @@ import Deck from './Deck';
 import DeckType from '../../types/DeckType';
 import { getDecks } from '../../services/deckAPI';
 import { createDeck } from '../../services/deckAPI';
+import { loadUserThemeColor } from '../../services/userAPI'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -21,10 +22,21 @@ function DecksContainer() {
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
 
+    useEffect(() => {
+        async function fetchData() {
+            if (user) {
+                await loadUserThemeColor(user._id);
+                loadDecks();
+            }
+        }
+        fetchData();
+    }, [user]);
+
     async function loadDecks() {
-        const loadedDecks = await getDecks()
+        const loadedDecks = await getDecks();
         setDecks(loadedDecks);
     }
+
 
     useEffect(() => {
         loadDecks();

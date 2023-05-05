@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import ColorPicker from '../popups/ColorPicker_Theme';
-import { loadUserThemeColor } from '../../services/userAPI'
 import { UserContext } from '../../contexts/UserContext';
 
 // add icons to each component that needs them instead of app
@@ -17,12 +16,6 @@ function DecksToolbar() {
         palette: useRef<HTMLDivElement>(null),
         gear: useRef<HTMLDivElement>(null),
     };
-
-    useEffect(() => {
-        if (user) {
-            loadUserThemeColor(user._id)
-        }
-    }, [])
 
     const handleItemClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const popupName = (e.currentTarget as HTMLDivElement).dataset.popup || '';

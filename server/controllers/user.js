@@ -38,7 +38,6 @@ module.exports = {
 
     loginUser: (req, res, next) => {
         passport.authenticate('local', (err, user, info) => {
-            // console.log('login user controller - user: ', user)
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
@@ -49,9 +48,12 @@ module.exports = {
                 if (err) {
                     return res.status(500).json({ error: err.message });
                 }
+                // Check for req.user after logging in
+                console.log('req.user after login: ', req.user);
                 // Modify the success response to include the user object
                 return res.status(200).json({ message: 'Success! You are logged in.', user });
             });
+
         })(req, res, next);
     },
 

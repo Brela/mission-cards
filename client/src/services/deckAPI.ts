@@ -32,6 +32,7 @@ export async function createDeck(deckName: string) {
 export async function deleteDeck(deckId: string) {
     const response = await fetch(`${API_URL}/decks/${deckId}`, {
         method: 'DELETE',
+        credentials: 'include',
     });
     // --------------- this error is caused by user not being logged in --------------
     // -------------   error is sent to error context then mui error popup  -------

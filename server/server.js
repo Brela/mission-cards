@@ -31,9 +31,11 @@ require('dotenv').config({ path: './.env' });
 // Passport config
 require('./config/passport')(passport)
 app.use((req, res, next) => {
-    console.log("req.user:", req.user);
+    console.log("server.js line 34 - req.session:  ", req.session);
+    console.log("server.js line 34 - req.user:  ", req.user);
     next();
 });
+
 connectDB();
 
 const allowedOrigins = ['http://localhost:4000', 'https://missionchatgpt.com'];
@@ -56,31 +58,38 @@ app.use(
     cors()
 ); */
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     res.header("Access-Control-Allow-Credentials", "true");
     next();
-});
+}); */
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // this allows json post requests to be read by express
+/* app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); */
 app.use(logger('dev'))
 // User session, this is saved in mongoDB
 app.use(
     session({
-        secret: 'keyboard cat',
+        secret: `${process.env.SESSION_SECRET}`,
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({ client: mongoose.connection.getClient() }),
-        cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
+        // cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
     })
 );
+
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
-// check that the user is being logged in correctly, and the session is being updated with the user information
-// - the issue is related to the session not being updated correctly after the user logs in.
+// If you are experiencing issues with req.user being undefined, it's more likely to be an issue 
+// with your session management, Passport.js configuration, or client-side request handling. 
+// You should investigate those areas first before considering adding a custom middleware like 
+// the one in the code snippet..
 app.use((req, res, next) => {
+    // works here but not in else
+    // console.log('req.user:   ', req.user)
     if (!req.user && req.session && req.session.passport && req.session.passport.user) {
         User.findById(req.session.passport.user, (err, user) => {
             if (err) {

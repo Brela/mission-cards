@@ -26,6 +26,7 @@ export async function updateUser(userId: string, updates: { themeColor: string }
     try {
         const response = await fetch(`${API_URL}/user/update`, {
             method: 'PATCH',
+            credentials: 'include',
             body: JSON.stringify({
                 userId,
                 themeColor,
