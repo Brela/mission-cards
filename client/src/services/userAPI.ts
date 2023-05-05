@@ -2,8 +2,36 @@ import { API_URL } from './_config';
 import UserType from '../types/UserType';
 
 
+export async function updateUser(userId: string, updates: { themeColor: string }) {
+    const { themeColor } = updates;
+
+    try {
+        const response = await fetch(`${API_URL}/user/update`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                userId,
+                themeColor,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update theme color');
+        }
+        const responseData = await response.json();
+        return responseData;
+
+    } catch (error) {
+        console.error('Failed to update theme color', error);
+        // You can handle the error further, such as displaying an error message to the user
+    }
+}
+
+
 export async function createUserWithEmail(email: string, password: string, confirmPassword: string) {
-    const response = await fetch(`${API_URL}/auth/signup`, {
+    const response = await fetch(`${API_URL}/user/signup`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -23,7 +51,7 @@ export async function createUserWithEmail(email: string, password: string, confi
 
 export async function loginWithEmail(email: string, password: string) {
     try {
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(`${API_URL}/user/login`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -46,7 +74,7 @@ export async function loginWithEmail(email: string, password: string) {
 /* Passport automatically attaches the logged-in user's information to the req object, 
 so there's no need to send the user ID explicitly in this case. */
 export async function logoutUser() {
-    const response = await fetch(`${API_URL}/auth/logout`, {
+    const response = await fetch(`${API_URL}/user/logout`, {
         method: 'POST',
         credentials: 'include',
     });
@@ -57,7 +85,7 @@ export async function logoutUser() {
 // send a POST request to server to create a new user with the provided Google ID token.
 export async function createUserWithGoogle(idToken: string) {
     try {
-        const response = await fetch(`${API_URL}/auth/google/signup`, {
+        const response = await fetch(`${API_URL}/user/google/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -78,7 +106,7 @@ export async function createUserWithGoogle(idToken: string) {
 // send a POST request to server to authenticate the user with the provided Google ID token.
 export async function loginWithGoogle(idToken: string) {
     try {
-        const response = await fetch(`${API_URL}/auth/google/login`, {
+        const response = await fetch(`${API_URL}/user/google/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

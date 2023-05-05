@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Snackbar } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import { SnackbarCloseReason } from '@mui/material';
-import { loginWithEmail } from '../../services/authAPI';
+import { loginWithEmail } from '../../services/userAPI';
 // import { loginWithGoogle } from '../../services/authAPI';
 import { UserContext } from '../../contexts/UserContext';
 

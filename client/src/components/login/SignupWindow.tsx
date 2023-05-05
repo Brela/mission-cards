@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { createUserWithEmail } from '../../services/authAPI';
+import { createUserWithEmail } from '../../services/userAPI';
 // import { createUserWithGoogle } from '../../services/authAPI';
 import { UserContext } from '../../contexts/UserContext';
 

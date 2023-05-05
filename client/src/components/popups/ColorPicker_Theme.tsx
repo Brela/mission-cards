@@ -1,6 +1,8 @@
-import React, { createRef, FunctionComponent, MutableRefObject, RefObject, useEffect, useRef } from 'react';
+import React, { createRef, FunctionComponent, MutableRefObject, RefObject, useEffect, useRef, useContext } from 'react';
 import iro from '@jaames/iro';
 import '../../styles/popups/colorPicker.css'
+import { updateUser } from '../../services/userAPI';
+import { UserContext } from '../../contexts/UserContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +28,9 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
     onChange = () => {
     }
 }) => {
+
+
+    const { user } = useContext(UserContext)
     let colorPicker: MutableRefObject<IroColorPicker | null> = useRef<IroColorPicker | null>(null);
     let el: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
 
@@ -71,13 +76,24 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     };
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         if (colorPicker.current) {
             const selectedColor = colorPicker.current.color.hexString;
             const secondAccentColor = hexToRgba(selectedColor, 0.05);
             // Update the global CSS variable
             document.documentElement.style.setProperty('--accent-color-1', selectedColor);
             document.documentElement.style.setProperty('--accent-color-2', secondAccentColor);
+
+            try {
+                if (user) {
+                    await updateUser(user._id, { themeColor: selectedColor });
+
+                } else {
+                    console.error('User is null');
+                }
+            } catch (error) {
+                console.error('Failed to update theme color', error);
+            }
         }
     };
 

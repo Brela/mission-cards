@@ -21,7 +21,7 @@ const MongoStore = require('connect-mongo');
 const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database.js');
-const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 const deckRoutes = require('./routes/deckRoutes');
 const cardRoutes = require('./routes/cardRoutes');
 const openAiRoutes = require('./routes/openAiRoutes');
@@ -99,7 +99,7 @@ app.use((req, res, next) => {
 // app.use(flash())
 
 
-app.use('/auth', authRoutes)
+app.use('/user', userRoutes)
 app.use('/decks', deckRoutes);
 app.use('/cards', cardRoutes);
 app.use('/openai', openAiRoutes);
