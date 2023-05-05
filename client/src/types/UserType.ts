@@ -3,7 +3,7 @@ interface UserType {
     userName: string;
     email: string;
     password: string;
-    theme: string;
+    themeColor: string;
 }
 
 export default UserType;

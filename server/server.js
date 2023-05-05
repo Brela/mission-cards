@@ -91,7 +91,7 @@ app.use((req, res, next) => {
             next();
         });
     } else {
-        console.log('passed checks', req.user)
+        // console.log('passed checks', req.user)
         next();
     }
 });

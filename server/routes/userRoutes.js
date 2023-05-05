@@ -7,6 +7,7 @@ router.post('/signup', userController.createUser)
 router.post('/logout', userController.logoutUser)
 router.post('/login', userController.loginUser)
 router.patch('/update', userController.updateUser)
+router.get('/:userId', userController.getUser)
 
 router.post('/google/login', userController.loginUserWithGoogle)
 router.post('/google/signup', userController.createUserWithGoogle)

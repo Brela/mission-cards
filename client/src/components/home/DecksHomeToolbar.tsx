@@ -1,5 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import ColorPicker from '../popups/ColorPicker_Theme';
+import { loadUserThemeColor } from '../../services/userAPI'
+import { UserContext } from '../../contexts/UserContext';
 
 // add icons to each component that needs them instead of app
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +10,7 @@ import { faSearch, faPalette, faCog } from '@fortawesome/free-solid-svg-icons';
 
 
 function DecksToolbar() {
+    const { user } = useContext(UserContext)
     const [activeItem, setActiveItem] = useState('');
     const popupsRefs: Record<string, React.RefObject<HTMLDivElement>> = {
         search: useRef<HTMLDivElement>(null),
@@ -15,13 +18,15 @@ function DecksToolbar() {
         gear: useRef<HTMLDivElement>(null),
     };
 
+    useEffect(() => {
+        if (user) {
+            loadUserThemeColor(user._id)
+        }
+    }, [])
 
     const handleItemClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const popupName = (e.currentTarget as HTMLDivElement).dataset.popup || '';
         setActiveItem(popupName);
-
-        console.log(popupName)
-        console.log(activeItem)
     };
 
 

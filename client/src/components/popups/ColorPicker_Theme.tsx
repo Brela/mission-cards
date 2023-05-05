@@ -3,6 +3,7 @@ import iro from '@jaames/iro';
 import '../../styles/popups/colorPicker.css'
 import { updateUser } from '../../services/userAPI';
 import { UserContext } from '../../contexts/UserContext';
+import ErrorContext from '../../contexts/ErrorContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -29,8 +30,9 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
     }
 }) => {
 
-
     const { user } = useContext(UserContext)
+    const { setError } = useContext(ErrorContext);
+
     let colorPicker: MutableRefObject<IroColorPicker | null> = useRef<IroColorPicker | null>(null);
     let el: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
 
@@ -77,8 +79,13 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
     };
 
     const handleButtonClick = async () => {
+        // front end route protection
+        if (!user) {
+            setError('Please login to use this feature');
+            return;
+        }
         if (colorPicker.current) {
-            const selectedColor = colorPicker.current.color.hexString;
+            const selectedColor = hexToRgba(colorPicker.current.color.hexString, 1);
             const secondAccentColor = hexToRgba(selectedColor, 0.05);
             // Update the global CSS variable
             document.documentElement.style.setProperty('--accent-color-1', selectedColor);

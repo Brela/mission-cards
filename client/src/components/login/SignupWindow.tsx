@@ -22,8 +22,11 @@ function SignupWindow() {
 
     async function handleSignupUserWithEmail(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        // Get the current value of the CSS global variable
+        const defaultThemeColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color-1');
+
         if (password === confirmPassword) {
-            const response = await createUserWithEmail(email, password, confirmPassword);
+            const response = await createUserWithEmail(email, password, confirmPassword, defaultThemeColor);
             if (response.user) {
                 setJustSignedUp(true)
                 setShowLoginWindow(true)

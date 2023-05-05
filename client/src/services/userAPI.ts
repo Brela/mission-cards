@@ -1,6 +1,24 @@
 import { API_URL } from './_config';
 import UserType from '../types/UserType';
 
+export async function loadUserThemeColor(userId: string) {
+    try {
+        const response = await fetch(`${API_URL}/user/${userId}`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const userData = await response.json();
+        const themeColor = userData.user.themeColor;
+
+        // Set the CSS global variable
+        document.documentElement.style.setProperty('--accent-color-1', themeColor);
+    } catch (error) {
+        console.error('Failed to fetch user data:', error);
+    }
+}
+
 
 export async function updateUser(userId: string, updates: { themeColor: string }) {
     const { themeColor } = updates;
@@ -30,7 +48,7 @@ export async function updateUser(userId: string, updates: { themeColor: string }
 }
 
 
-export async function createUserWithEmail(email: string, password: string, confirmPassword: string) {
+export async function createUserWithEmail(email: string, password: string, confirmPassword: string, themeColor: string) {
     const response = await fetch(`${API_URL}/user/signup`, {
         method: 'POST',
         credentials: 'include',
@@ -41,7 +59,9 @@ export async function createUserWithEmail(email: string, password: string, confi
             // userName,
             email,
             password,
-            confirmPassword
+            confirmPassword,
+            // give the user the default color theme of the current css var
+            themeColor,
         }),
     });
     const responseData = await response.json();
