@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 // import { Outlet, Link } from "react-router-dom";
 import '../styles/login/loginPage.css';
 import { UserContext } from '../contexts/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '../components/Header';
 import LoginWindow from '../components/login/LoginWindow';
@@ -26,7 +28,7 @@ function AuthenticationPage() {
             <div className='auth-page'>
                 <div className="mission">
                     {/* <Link to='/'> */}
-                    <h2><i className="fa-solid fa-layer-group"></i>mission</h2>
+                    <h2><FontAwesomeIcon icon={faLayerGroup} />mission</h2>
                     {/* </Link > */}
                 </div>
                 {/* <h3 className='title subtitle'>Take your studying to the next level with your custom mission and ChatGPT as your personal assistant</h3> */}

@@ -51,6 +51,7 @@ footer .logout-message {
 .studycards-button {
     height: 20px;
     padding-right: 2vw;
+    padding-bottom: 5px;
 }
 
 .login-to-use-features-message {

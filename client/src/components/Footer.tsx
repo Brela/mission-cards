@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { UserContext } from '../contexts/UserContext';
 import Alert from '@mui/material/Alert';
 import Grow from '@mui/material/Grow';
@@ -12,6 +12,8 @@ function Footer() {
 
     const [showSignUpMessage, setShowSignUpMessage] = useState(false);
 
+    const location = useLocation();
+
     // this is used to show the "logout successful message" if they were logged in then logged out
     useEffect(() => {
         if (prevIsAuthenticated && !isAuthenticated) {
@@ -21,7 +23,9 @@ function Footer() {
             }, 10000);
         }
     }, [isAuthenticated]);
-
+    // these are what dynamically change the text and link for the button to send to either addcards or study cards page
+    const studyCardsButtonLink = location.pathname === '/studycards' ? '/addcards' : '/studycards';
+    const studyCardsButtonText = location.pathname === '/studycards' ? 'Add' : 'Study';
 
     return (
         <footer className='footer'>
@@ -51,8 +55,8 @@ function Footer() {
                 </div>
             </div>
             <div className='studycards-button'>
-                <Link to='/studycards'>
-                    <button>Study<span> Cards</span></button>
+                <Link to={studyCardsButtonLink}>
+                    <button>{studyCardsButtonText}<span> Cards</span></button>
                 </Link>
             </div>
         </footer>

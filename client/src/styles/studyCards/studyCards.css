@@ -1,5 +1,5 @@
 .study-cards-container {
-    border: 1px solid pink;
+    box-shadow: var(--box-shadow);
     width: 70vw;
     height: 50vh;
     overflow-y: scroll;
