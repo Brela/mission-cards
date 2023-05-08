@@ -5,6 +5,7 @@ footer.footer {
     bottom: 0;
     display: flex;
     flex-direction: row;
+    justify-content: end;
     align-items: center;
     width: 90vw;
     height: 80px;
@@ -62,9 +63,25 @@ footer .login button {
 }
 
 footer .logout-message {
+    min-width: 30vw;
     position: absolute;
+    width: auto;
     top: 0;
     right: 100px;
+}
+
+.login-to-use-features-message {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 50vw;
+    font-size: .9em;
+}
+
+.custom-alert-close {
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 5px;
 }
 
 @media screen and (max-width: 700px) {

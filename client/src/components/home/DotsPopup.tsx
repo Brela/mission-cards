@@ -18,7 +18,7 @@ export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPop
     async function handleDeleteDeck(event: React.MouseEvent<HTMLButtonElement>, deckId: string) {
         // front end route protection
         if (!user) {
-            setError('Please login to use this feature');
+            setError('Please sign up to use this feature');
             return;
         }
         const response = await deleteDeck(deckId);

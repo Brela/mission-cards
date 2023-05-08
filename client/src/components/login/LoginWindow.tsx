@@ -63,12 +63,12 @@ function LoginWindow() {
         e.preventDefault();
         // email and pass for guest is set in userAPI call
         const response = await loginAsGuest();
-        // console.log(response);
         if (response.status === 200) {
             // Redirect to home page after successful login
-            setIsAuthenticated(true);
-            console.log('response', response);
-            setUser(response.data.user);
+            // for guest, we don't authenticate because we don't want them having access to features
+            setIsAuthenticated(false);
+            // so, we also don't set the user for this guest acct
+            // setUser(response.data.user);
             window.location.href = '/';
         } else {
             // Display error message if login fails
@@ -175,11 +175,9 @@ function LoginWindow() {
                 <ul>
                     <li className="sign-up-button google-btn guest-sign-in">
                         <button type="submit" className="btn-text sign-in-with-email">
-                            <Link to="/">Guest sign in
-                            </Link>
+                            Guest sign in
                         </button>
                     </li>
-
                 </ul>
             </form>
             <Snackbar

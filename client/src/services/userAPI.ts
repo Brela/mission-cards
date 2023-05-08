@@ -66,7 +66,7 @@ export async function createUserWithEmail(email: string, password: string, confi
         }),
     });
     const responseData = await response.json();
-    console.log('done', responseData.userName);
+    console.log('done', responseData);
     return responseData;
 }
 

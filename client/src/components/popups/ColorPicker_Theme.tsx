@@ -81,7 +81,7 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
     const handleButtonClick = async () => {
         // front end route protection
         if (!user) {
-            setError('Please login to use this feature');
+            setError('Please sign up to use this feature');
             return;
         }
         if (colorPicker.current) {

@@ -36,7 +36,7 @@ function AddCardToDeck() {
         e.preventDefault();
         // to only send req if user is logged in
         if (!user) {
-            setError('Please login to use this feature');
+            setError('Please sign up to use this feature');
             return;
         }
         const response = await createCard(deckName!, frontText, backText)

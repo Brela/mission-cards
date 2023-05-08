@@ -27,6 +27,7 @@ function SignupWindow() {
 
         if (password === confirmPassword) {
             const response = await createUserWithEmail(email, password, confirmPassword, defaultThemeColor);
+            console.log(response)
             if (response.user) {
                 setJustSignedUp(true)
                 setShowLoginWindow(true)

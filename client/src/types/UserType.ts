@@ -1,6 +1,6 @@
 interface UserType {
     _id: string;
-    userName: string;
+    // userName: string;
     email: string;
     password: string;
     themeColor: string;

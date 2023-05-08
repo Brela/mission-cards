@@ -10,7 +10,9 @@ function Footer() {
     const [showLogoutMessage, setShowLogoutMessage] = useState(false);
     const [prevIsAuthenticated, setPrevIsAuthenticated] = useState(isAuthenticated);
 
-    // this is used to show the "logout successful message"
+    const [showSignUpMessage, setShowSignUpMessage] = useState(false);
+
+    // this is used to show the "logout successful message" if they were logged in then logged out
     useEffect(() => {
         if (prevIsAuthenticated && !isAuthenticated) {
             setShowLogoutMessage(true);
@@ -20,11 +22,44 @@ function Footer() {
         }
     }, [isAuthenticated]);
 
+    /* // if they are signed in as guest or not signed in, this message will appear until they close it
+    useEffect(() => {
+        if (!user) {
+            setShowSignUpMessage(true);
+            setTimeout(() => {
+                setShowLogoutMessage(false);
+            }, 10000);
+        }
+    }, [isAuthenticated, user]);
+
+    const handleCloseSignUpMessage = () => {
+        setShowSignUpMessage(false);
+    };
+ */
     return (
         <footer className='footer'>
-            <div className="quote">
-                <div></div>
-            </div>
+
+            {/* this message is only for if they aren't signed in */}
+            {/*   <div className="login-to-use-features-message">
+                {!isAuthenticated && showSignUpMessage && (
+                    <Alert
+                        severity="info"
+                        className="custom-alert"
+                        action={
+                            <span
+                                className="custom-alert-close"
+                                onClick={() => setShowSignUpMessage(false)}
+                            >
+                                &times;
+                            </span>
+                        }
+                    >
+                        Please sign up for full access to features
+                    </Alert>
+                )}
+
+            </div> */}
+            {/* end message */}
             <div className="login">
                 {isAuthenticated ? (
                     <button onClick={logout}>Logout</button>

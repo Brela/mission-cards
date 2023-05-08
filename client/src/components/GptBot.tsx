@@ -29,7 +29,7 @@ function GptBot() {
         e.preventDefault();
         // front end route protection
         if (!user) {
-            setError('Please login to use this feature');
+            setError('Please sign up to use this feature');
             return;
         }
         setIsLoading(true);
