@@ -7,7 +7,6 @@ import '../styles/footer.css'
 import '../styles/addCard/pageLayout.css'
 import '../styles/addCard/addCardFrontBack.css'
 import '../styles/addCard/displayCardsContainer.css'
-import { CardListContext } from '../contexts/CardListContext'
 
 import Header from '../components/Header';
 import AddCardContainer from '../components/addCard/AddCardContainer'
@@ -23,10 +22,8 @@ function AddCard() {
             <Header />
 
             <div className='add-cards-and-card-preview-container'>
-                <CardListContext.Provider value={{ cards, setCards }}>
-                    <AddCardContainer />
-                    <DisplayCardsForDeck />
-                </CardListContext.Provider>
+                <AddCardContainer />
+                <DisplayCardsForDeck />
             </div>
             <div className='gpt-bot-container'>
                 <GptBot />

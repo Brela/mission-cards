@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ErrorContext from '../../contexts/ErrorContext';
 import { UserContext } from '../../contexts/UserContext';
-import { useCardContext, CardListContext } from '../../contexts/CardListContext';
+import { useCardContext } from '../../contexts/CardListContext';
 import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
 import { getDecks } from '../../services/deckAPI';
@@ -13,7 +13,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
     const { user } = useContext(UserContext);
-    const { cards, setCards } = useCardContext();
+    const { cardsForDeck, setCardsForDeck } = useCardContext();
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
     let { deckName } = useParams()
@@ -47,7 +47,7 @@ function AddCardToDeck() {
             setFrontText('');
             setBackText('');
             // add new card to cards list context cards array
-            setCards([...cards, response]);
+            setCardsForDeck([...cardsForDeck, response]);
         }
 
     }

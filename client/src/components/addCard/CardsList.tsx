@@ -7,13 +7,13 @@ type Props = {
 };
 
 function CardList({ deckName }: Props) {
-    const { cards, setCards } = useCardContext();
+    const { cardsForDeck, setCardsForDeck } = useCardContext();
 
     deckName = deckName.replaceAll('-', ' ');
 
     async function fetchCards() {
         const response = await getAllCardsForDeck(deckName);
-        setCards(response);
+        setCardsForDeck(response);
     }
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function CardList({ deckName }: Props) {
     return (
         <div className="">
             <ul>
-                {cards.map((card) => (
+                {cardsForDeck.map((card) => (
                     <li
                         className='card-list-item'
                         key={card._id}>

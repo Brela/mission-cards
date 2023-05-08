@@ -2,6 +2,13 @@
     display: flex;
 }
 
+.add-card-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: auto 5vw;
+}
+
 .add-cards-and-card-preview-container {
     display: flex;
     flex-direction: row;

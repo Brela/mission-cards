@@ -31,3 +31,9 @@ export async function getAllCardsForDeck(deckName: Name): Promise<CardType[]> {
     });
     return await response.json();
 }
+export async function getAllCards(): Promise<CardType[]> {
+    const response = await fetch(`${API_URL}/cards/`, {
+        credentials: 'include',
+    });
+    return await response.json();
+}

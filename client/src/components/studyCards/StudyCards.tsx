@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useCardContext } from '../../contexts/CardListContext';
+import { CardListContext } from '../../contexts/CardListContext';
 import { getAllCardsForDeck } from '../../services/cardAPI';
 import { DeckContext } from '../../contexts/DeckContext';
 
@@ -8,27 +8,28 @@ type Props = {
 };
 
 function StudyCards() {
-    const { cards, setCards } = useCardContext();
+    const { cardsForDeck, setCardsForDeck, allCards } = useContext(CardListContext)
     const { deckName, setDeckName } = useContext(DeckContext);
 
     async function fetchCards() {
         const response = await getAllCardsForDeck(deckName);
-        setCards(response);
+        setCardsForDeck(response);
     }
 
     useEffect(() => {
-        if (!deckName) {
-            console.log('No deckName prop passed to StudyCards component');
-            return;
-        }
+        /*    if (!deckName) {
+               console.log('No deckName prop passed to StudyCards component');
+               return;
+           } */
 
         fetchCards();
     }, [deckName]);
 
     return (
-        <div className="">
+        <div className="study-cards-container">
+
             <ul>
-                {cards.map((card) => (
+                {allCards.map((card) => (
                     <li
                         className='card-list-item'
                         key={card._id}>

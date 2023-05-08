@@ -28,12 +28,6 @@ a {
   padding: auto 5vw;
 }
 
-.add-card-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: auto 5vw;
-}
 
 button {
   padding: 3px 10px;

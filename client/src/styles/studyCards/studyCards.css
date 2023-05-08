@@ -1,0 +1,13 @@
+.study-cards-container {
+    border: 1px solid pink;
+    width: 70vw;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.study-cards-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: auto 5vw;
+}
