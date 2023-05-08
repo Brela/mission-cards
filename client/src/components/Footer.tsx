@@ -22,44 +22,10 @@ function Footer() {
         }
     }, [isAuthenticated]);
 
-    /* // if they are signed in as guest or not signed in, this message will appear until they close it
-    useEffect(() => {
-        if (!user) {
-            setShowSignUpMessage(true);
-            setTimeout(() => {
-                setShowLogoutMessage(false);
-            }, 10000);
-        }
-    }, [isAuthenticated, user]);
 
-    const handleCloseSignUpMessage = () => {
-        setShowSignUpMessage(false);
-    };
- */
     return (
         <footer className='footer'>
 
-            {/* this message is only for if they aren't signed in */}
-            {/*   <div className="login-to-use-features-message">
-                {!isAuthenticated && showSignUpMessage && (
-                    <Alert
-                        severity="info"
-                        className="custom-alert"
-                        action={
-                            <span
-                                className="custom-alert-close"
-                                onClick={() => setShowSignUpMessage(false)}
-                            >
-                                &times;
-                            </span>
-                        }
-                    >
-                        Please sign up for full access to features
-                    </Alert>
-                )}
-
-            </div> */}
-            {/* end message */}
             <div className="login">
                 {isAuthenticated ? (
                     <button onClick={logout}>Logout</button>
@@ -83,6 +49,11 @@ function Footer() {
                         </Alert>
                     </Grow>
                 </div>
+            </div>
+            <div className='studycards-button'>
+                <Link to='/studycards'>
+                    <button>Study<span> Cards</span></button>
+                </Link>
             </div>
         </footer>
     );

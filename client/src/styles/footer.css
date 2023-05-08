@@ -5,57 +5,31 @@ footer.footer {
     bottom: 0;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    width: 90vw;
+    width: 100vw;
     height: 80px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+
 
 }
 
-footer .quote {
+/* footer .quote {
     flex-basis: 50%;
     display: flex;
     font-size: 1.3em;
-
-
 }
-
-footer .quote input {
-
-    margin-left: 20px;
-    height: 30px;
-    width: 350px;
-    background-color: rgb(153, 169, 169);
-    background-color: var(--accent-color-3);
-    text-align: center;
-    color: white;
-    resize: horizontal;
-}
-
-/* For WebKit-based browsers */
-footer .quote input::-webkit-input-placeholder {
-    text-align: center;
-}
-
-/* For modern browsers */
-footer .quote input::placeholder {
-    color-scheme: light;
-    color: white;
-    text-align: center;
-}
-
-
-footer .quote input:focus {
-    color: rgb(0, 0, 0);
-    background-color: var(--accent-color-3);
+ */
+footer button {
+    min-width: 100px;
 }
 
 footer .login {
     position: relative;
-    flex-basis: 50%;
+    /* flex-basis: 50%; */
     display: flex;
     justify-content: flex-end;
+    padding-left: 2vw;
 }
 
 footer .login button {
@@ -63,11 +37,20 @@ footer .login button {
 }
 
 footer .logout-message {
-    min-width: 30vw;
     position: absolute;
-    width: auto;
-    top: 0;
-    right: 100px;
+    left: 8vw;
+    bottom: 30px;
+    min-width: 30vw;
+    margin-left: 30px;
+    height: 20px;
+    /* position: absolute;
+    width: auto; */
+    /* right: 100px; */
+}
+
+.studycards-button {
+    height: 20px;
+    padding-right: 2vw;
 }
 
 .login-to-use-features-message {
@@ -86,9 +69,57 @@ footer .logout-message {
 
 @media screen and (max-width: 700px) {
     footer.footer {
-
         height: 80px;
         margin-bottom: 0px;
-
     }
+
+    footer .logout-message {
+
+        left: 70px;
+        bottom: 70px;
+        min-width: 50vw;
+        margin-left: 30px;
+        height: 20px;
+        /* position: absolute;
+        width: auto; */
+        /* right: 100px; */
+    }
+
+    .studycards-button span {
+        display: none;
+    }
+
 }
+
+
+/* 
+footer .quote input {
+
+    margin-left: 20px;
+    height: 30px;
+    width: 350px;
+    background-color: rgb(153, 169, 169);
+    background-color: var(--accent-color-3);
+    text-align: center;
+    color: white;
+    resize: horizontal;
+}
+
+
+footer .quote input::-webkit-input-placeholder {
+    text-align: center;
+}
+
+
+footer .quote input::placeholder {
+    color-scheme: light;
+    color: white;
+    text-align: center;
+}
+
+
+footer .quote input:focus {
+    color: rgb(0, 0, 0);
+    background-color: var(--accent-color-3);
+}
+*/
