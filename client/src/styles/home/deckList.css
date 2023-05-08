@@ -1,7 +1,7 @@
 /* ----------------------- DECKS CONTAINER / row 2-------------------------- */
 
 .decks-container {
-    width: 50vw;
+    width: 45vw;
     height: 500px;
     padding-top: 20px;
     overflow: auto;
@@ -27,6 +27,7 @@
 } */
 
 li.deck-list-item {
+    height: auto;
     position: relative;
 
     display: flex;
@@ -46,21 +47,24 @@ li.deck-list-item:last-child {
 
 li .deck-name {
     padding-left: 10px;
-    width: 60%;
+    height: auto;
+    width: 90%;
     margin: auto 3%;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 li .cards-remaining {
-    width: 20%;
+
     margin: auto 3%;
     text-align: center;
 }
 
 .more {
-    width: 10%;
+    width: 33%;
     display: flex;
-    justify-content: center;
-    padding-right: 10px;
+    justify-content: flex-end;
+    padding-right: 5%;
 }
 
 .more-btn {
@@ -78,6 +82,7 @@ li .cards-remaining {
 .create-deck {
     padding-top: 50px;
     padding-left: 60px;
+    padding-bottom: 60px;
     color: aliceblue;
 }
 
@@ -125,7 +130,24 @@ li .cards-remaining {
 @media only screen and (max-width: 500px) {
     .decks-container {
         width: 88vw;
-        height: 60vh;
+        height: 65vh;
+    }
+
+    .create-deck {
+        padding-top: 50px;
+        padding-left: 35px;
+        color: aliceblue;
+    }
+
+    .create-deck input {
+        width: 40%;
+    }
+
+    .create-deck button {
+        margin-left: 10px;
+        width: 40px;
+        background-color: rgba(55, 110, 158, 0);
+        box-shadow: var(--box-shadow);
     }
 
 }

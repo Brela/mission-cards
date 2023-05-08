@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import ErrorContext from '../../contexts/ErrorContext';
 import { UserContext } from '../../contexts/UserContext';
 import { useCardContext } from '../../contexts/CardListContext';
+import { DeckContext } from '../../contexts/DeckContext';
 import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
 import { getDecks } from '../../services/deckAPI';
@@ -9,6 +10,8 @@ import DeckType from '../../types/DeckType';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { loadUserThemeColor } from '../../services/userAPI'
+
 
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
@@ -16,11 +19,22 @@ function AddCardToDeck() {
     const { cardsForDeck, setCardsForDeck } = useCardContext();
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
-    let { deckName } = useParams()
-    deckName = deckName?.replaceAll('-', ' ')
+    /*  let { deckName } = useParams()
+     deckName = deckName?.replaceAll('-', ' ') */
+    const { deckName, setDeckName } = useContext(DeckContext);
     const [decks, setDecks] = useState<DeckType[]>([]);
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        async function fetchData() {
+            if (user) {
+                await loadUserThemeColor(user._id);
+                loadDecks();
+            }
+        }
+        fetchData();
+    }, [user]);
 
     async function loadDecks() {
         const loadedDecks = await getDecks()
@@ -30,6 +44,7 @@ function AddCardToDeck() {
     useEffect(() => {
         loadDecks();
     }, []);
+
 
 
     async function handleCreateCard(e: React.FormEvent) {
@@ -60,8 +75,14 @@ function AddCardToDeck() {
             loadDecks();
         }, []); */
 
+    useEffect(() => {
+        setDeckName(deckName);
+    }, [deckName]);
+
+
     function handleSelectDeck(e: React.ChangeEvent<HTMLSelectElement>) {
         const deckNameNoSpaces = e.target.value.toLowerCase().replaceAll(' ', '-');
+        setDeckName(e.target.value);
         navigate(`/${deckNameNoSpaces}`);
     }
 
@@ -116,7 +137,7 @@ function AddCardToDeck() {
                         </div>
                         <button type="submit">
                             <FontAwesomeIcon
-                                className='faPlus-icon'
+                                className='faPlus-icon add-card-plus-button'
                                 icon={faPlus}
                             />
                         </button>

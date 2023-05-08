@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CardType from '../types/CardType'
 import ErrorAlert from '../components/popups/ErrorAlert';
 
@@ -13,6 +13,9 @@ import AddCardContainer from '../components/addCard/AddCardContainer'
 import DisplayCardsForDeck from '../components/addCard/DisplayCardsContainer'
 import GptBot from '../components/GptBot';
 import Footer from '../components/Footer';
+
+
+
 
 function AddCard() {
     const [cards, setCards] = useState<CardType[]>([]);

@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useCardContext } from '../../contexts/CardListContext';
 import { getAllCardsForDeck } from '../../services/cardAPI';
+import { DeckContext } from '../../contexts/DeckContext';
 
 type Props = {
     deckName: string;
 };
 
-function CardList({ deckName }: Props) {
+function CardList() {
     const { cardsForDeck, setCardsForDeck } = useCardContext();
+    const { deckName } = useContext(DeckContext)
 
-    deckName = deckName.replaceAll('-', ' ');
+    // deckName = deckName.replaceAll('-', ' ');
 
     async function fetchCards() {
         const response = await getAllCardsForDeck(deckName);

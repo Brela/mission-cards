@@ -13,9 +13,11 @@
     bottom: 50px;
     width: 65%;
     height: 20%;
-    background-color: rgba(0, 0, 0, 0);
+    overflow-y: auto;
+    background-color: var(--accent-color-1-full-trans);
+    /* background-color: var(--accent-color-1-full-trans); */
     /* color: aliceblue; */
-    box-shadow: 0px 1px 10px rgb(26, 26, 26);
+    box-shadow: var(--box-shadow);
     border-radius: 6px;
     display: flex;
     justify-content: flex-start;
@@ -31,13 +33,15 @@
 
 
 .gpt-bot-sub-container input {
-    padding-left: 5px;
+    padding-left: 30px;
     margin-right: 25px;
-    width: 88%;
-    background-color: rgba(240, 248, 255, 0);
-    height: 20px;
+    margin-left: 18px;
+    width: 86.5%;
+    /* background-color: var(--addCard-theme); */
+    background-color: rgba(0, 0, 0, 0);
+    height: 30px;
     border: none;
-    outline: .5px solid rgba(234, 234, 234, 0.419);
+    outline: .5px solid rgba(234, 234, 234, 0.184);
 }
 
 .gpt-bot-sub-container input::placeholder {
@@ -52,6 +56,20 @@
 .gpt-bot-sub-container button {
     background-color: rgba(48, 79, 106, 0);
     box-shadow: var(--box-shadow);
+}
+
+.send-gpt-prompt-button {
+    color: var(--accent-color-1);
+}
+
+@media screen and (max-width: 1000px) {
+
+    .gpt-bot-sub-container input {
+        padding-left: 5px;
+        width: 80%;
+
+    }
+
 }
 
 @media screen and (max-width: 700px) {

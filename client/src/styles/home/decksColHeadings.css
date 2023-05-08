@@ -8,7 +8,7 @@
 
 .deck-heading {
     flex-basis: 50%;
-    padding-left: 10%;
+    padding-left: 13%;
     color: rgb(187, 187, 187);
     color: var(--heading-color);
     font-size: var(--heading-size);
@@ -19,9 +19,9 @@
     color: rgb(187, 187, 187);
     color: var(--heading-color);
     font-size: var(--heading-size);
-    padding-right: 40px;
+    padding-right: 15%;
     margin-bottom: 5px;
-    flex-basis: 50%;
+    flex-basis: 53%;
     display: flex;
     justify-content: space-around;
 }
@@ -33,14 +33,23 @@
     }
 
     .card-heading {
-        padding-right: 10px;
+        padding-right: 27%;
+        flex-basis: 0%;
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 700px) {
     body .row-1 {
-
         height: 4vh;
+    }
 
+    .deck-heading {
+        flex-basis: 40%;
+        padding-left: 6%;
+    }
+
+    .card-heading {
+        padding-right: 19%;
+        flex-basis: 0%;
     }
 }

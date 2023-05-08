@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import DeckType from '../../types/DeckType'
 import { getNumCardsForDeck } from '../../utils/getNumCardsForDeck';
+import { DeckContext } from '../../contexts/DeckContext';
 import DotsPopup from './DotsPopup'
 
 /* interface DeckProps {
@@ -18,6 +19,7 @@ interface DeckProps {
 }
 
 function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
+    const { setDeckName } = useContext(DeckContext);
     const [deckId, setDeckId] = useState('');
     const [popupIsOpen, setPopupIsOpen] = useState(false);
 
@@ -31,6 +33,10 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
         }
         fetchNumCards();
     }, [deck.deckName]);
+
+    const handleDeckClick = () => {
+        setDeckName(deck.deckName);
+    };
 
     const handleOpenPopupClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setPopupIsOpen(true);
@@ -54,7 +60,12 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
 
     return (
         <li className='deck-list-item' key={deck._id}>
-            <h5 className="deck-name">  <Link key={deck._id} to={`${deckNameNoSpaces}`}>{deck.deckName}</Link></h5>
+            <h5 className="deck-name">
+                <Link
+                    key={deck._id}
+                    to={`${deckNameNoSpaces}`}
+                    onClick={handleDeckClick}
+                >{deck.deckName}</Link></h5>
             {/* the loaded class is used in the css file to transition the nums to full opacity once in */}
             <div className={`cards-remaining${numCards !== null ? " loaded" : ""}`}>{numCards}</div>
             <div className="more">

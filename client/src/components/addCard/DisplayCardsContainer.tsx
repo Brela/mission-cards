@@ -10,7 +10,7 @@ function DisplayCardsForDeck() {
         <div>
             <div className='card-list-heading'><h3>Cards Preview</h3></div>
             <div className='display-cards-container theme-color'>
-                <CardList deckName={deckName ? deckName : ''} />
+                <CardList />
             </div>
         </div>
     );

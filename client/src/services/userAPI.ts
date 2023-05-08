@@ -1,6 +1,7 @@
 import { API_URL } from './_config';
 import UserType from '../types/UserType';
 
+// called from decksContainer component
 export async function loadUserThemeColor(userId: string) {
     try {
         const response = await fetch(`${API_URL}/user/${userId}`);
@@ -12,12 +13,24 @@ export async function loadUserThemeColor(userId: string) {
         const userData = await response.json();
         const themeColor = userData.user.themeColor;
 
-        // Set the CSS global variable
+        const rgbaFromRgb = (rgb: string, alpha: number) => {
+            const [r, g, b] = rgb.match(/\d+/g)!.map(x => parseInt(x, 10));
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        };
+
+        // Set the CSS global variable for the first accent color
         document.documentElement.style.setProperty('--accent-color-1', themeColor);
+
+        // Set the CSS global variables for the second and third accent colors
+        const semiTransAccentColor = rgbaFromRgb(themeColor, 0.20);
+        const fullTransAccentColor = rgbaFromRgb(themeColor, 0.05);
+        document.documentElement.style.setProperty('--accent-color-1-semi-trans', semiTransAccentColor);
+        document.documentElement.style.setProperty('--accent-color-1-full-trans', fullTransAccentColor);
     } catch (error) {
         console.error('Failed to fetch user data:', error);
     }
 }
+
 
 
 export async function updateUser(userId: string, updates: { themeColor: string }) {

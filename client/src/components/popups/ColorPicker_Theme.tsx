@@ -85,11 +85,14 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
             return;
         }
         if (colorPicker.current) {
-            const selectedColor = hexToRgba(colorPicker.current.color.hexString, 1);
-            const secondAccentColor = hexToRgba(selectedColor, 0.05);
+            const selectedColor = colorPicker.current.color.hexString;
+            const primaryAccentColor = hexToRgba(selectedColor, 1);
+            const secondAccentColor = hexToRgba(selectedColor, 0.2);
+            const thirdAccentColor = hexToRgba(selectedColor, 0.04);
             // Update the global CSS variable
             document.documentElement.style.setProperty('--accent-color-1', selectedColor);
-            document.documentElement.style.setProperty('--accent-color-2', secondAccentColor);
+            document.documentElement.style.setProperty('--accent-color-1-semi-trans', secondAccentColor);
+            document.documentElement.style.setProperty('--accent-color-1-full-trans', thirdAccentColor);
 
             try {
                 if (user) {

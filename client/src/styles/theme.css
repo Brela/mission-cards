@@ -9,15 +9,17 @@
     --background-2: rgba(167, 167, 167, 0.224);
 
     --accent-color-1: rgb(157, 253, 73);
-    --accent-color-2: rgb(157, 253, 73, .05);
+    --accent-color-1-semi-trans: rgba(117, 139, 98, 0.2);
+    --accent-color-1-full-trans: rgb(157, 253, 73, .05);
+    --addCard-theme: rgba(239, 242, 244, 0.235);
 
     --accent-color-3: rgb(62, 236, 239);
-    --accent-color-4: rgb(57, 57, 57);
+    --accent-color-4: rgba(1, 1, 1, 0.148);
     --accent-color-5: rgb(184, 228, 144);
     --accent-color-6: rgb(175, 201, 149);
 
     --heading-color: rgb(208, 208, 208);
     --heading-size: .85em;
     --text-color: rgb(30, 26, 26);
-    --box-shadow: 0px 1px 8px rgb(57, 57, 57);
+    --box-shadow: 0px 1px 8px rgba(49, 49, 49, 0.808);
 }

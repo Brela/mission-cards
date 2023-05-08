@@ -54,7 +54,7 @@ function GptBot() {
                 <input placeholder='Ask me anything' type="text" value={userPrompt} onChange={handleInputChange} />
                 <button type="submit">
                     <FontAwesomeIcon
-                        className='faPlus-icon'
+                        className='faPlus-icon send-gpt-prompt-button'
                         icon={faPaperPlane}
                     />
                 </button>
