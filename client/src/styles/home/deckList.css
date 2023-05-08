@@ -103,6 +103,15 @@ li .cards-remaining {
     color: var(--heading-color);
 }
 
+.cards-remaining {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.cards-remaining.loaded {
+    opacity: 1;
+}
+
 
 @media only screen and (max-width: 1000px) {
     .decks-container {

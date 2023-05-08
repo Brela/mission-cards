@@ -21,7 +21,7 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
     const [deckId, setDeckId] = useState('');
     const [popupIsOpen, setPopupIsOpen] = useState(false);
 
-    const [numCards, setNumCards] = useState(0);
+    const [numCards, setNumCards] = useState<number | null>(null);
     const deckNameNoSpaces = deck.deckName.replaceAll(' ', '-')
 
     useEffect(() => {
@@ -55,7 +55,8 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
     return (
         <li className='deck-list-item' key={deck._id}>
             <h5 className="deck-name">  <Link key={deck._id} to={`${deckNameNoSpaces}`}>{deck.deckName}</Link></h5>
-            <div className="cards-remaining">{numCards}</div>
+            {/* the loaded class is used in the css file to transition the nums to full opacity once in */}
+            <div className={`cards-remaining${numCards !== null ? " loaded" : ""}`}>{numCards}</div>
             <div className="more">
                 <button className="more-btn" id={deck._id} onClick={handleOpenPopupClick}>...</button>
                 {popupIsOpen && (
