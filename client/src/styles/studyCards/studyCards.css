@@ -1,4 +1,6 @@
 .study-cards-container {
+    color: var(--accent-color-1);
+    background-color: var(--addCard-theme);
     box-shadow: var(--box-shadow);
     width: 70vw;
     height: 50vh;

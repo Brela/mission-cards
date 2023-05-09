@@ -7,6 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
 import { getDecks } from '../../services/deckAPI';
 import DeckType from '../../types/DeckType';
+import { Snackbar } from '@mui/material';
+import { SnackbarCloseReason } from '@mui/material';
+import Alert from '@mui/material/Alert';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +22,7 @@ function AddCardToDeck() {
     const { cardsForDeck, setCardsForDeck, addCard } = useCardContext();
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
+    const [justAddedCard, setJustAddedCard] = useState(false);
     /*  let { deckName } = useParams()
      deckName = deckName?.replaceAll('-', ' ') */
     const { deckName, setDeckName } = useContext(DeckContext);
@@ -61,6 +65,7 @@ function AddCardToDeck() {
 
             setFrontText('');
             setBackText('');
+            setJustAddedCard(true)
             // add new card to cards list context cards array
             setCardsForDeck([...cardsForDeck, response]);
             // for the Card context which the study card page relys on
@@ -87,6 +92,13 @@ function AddCardToDeck() {
         setDeckName(e.target.value);
         navigate(`/${deckNameNoSpaces}`);
     }
+
+    const handleSnackbarClose = (event: React.SyntheticEvent<Element, Event> | Event, reason: SnackbarCloseReason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setJustAddedCard(false);
+    };
 
 
     return (
@@ -145,6 +157,18 @@ function AddCardToDeck() {
                         </button>
                     </div >
                 </form >
+                <div className='added-card-alert'>
+                    <Snackbar
+                        open={justAddedCard}
+                        autoHideDuration={40000}
+                        onClose={handleSnackbarClose as (event: Event | React.SyntheticEvent<any, Event>, reason: SnackbarCloseReason) => void}
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                    >
+                        <Alert severity="success" onClose={handleSnackbarClose as (event: React.SyntheticEvent<Element, Event>) => void}>
+                            {`Card Added to ${deckName}`}
+                        </Alert>
+                    </Snackbar>
+                </div>
             </div >
         </div>
     );

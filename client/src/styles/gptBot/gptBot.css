@@ -23,6 +23,7 @@
     justify-content: flex-start;
     flex-direction: column;
     gap: 30px;
+    color: var(--accent-color-1);
 }
 
 .gpt-bot-sub-container form {
@@ -33,7 +34,6 @@
 
 
 .gpt-bot-sub-container input {
-    padding-left: 30px;
     margin-right: 25px;
     margin-left: 18px;
     width: 86.5%;
@@ -46,11 +46,13 @@
 
 .gpt-bot-sub-container input::placeholder {
     color: var(--heading-color);
+    /* padding-left: 30px; */
 }
 
 .gpt-bot-sub-container input:focus {
     outline: none;
     box-shadow: none;
+    color: var(--accent-color-1);
 }
 
 .gpt-bot-sub-container button {

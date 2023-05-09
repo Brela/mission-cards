@@ -22,6 +22,8 @@ footer.footer {
  */
 footer button {
     min-width: 100px;
+    background-color: var(--addCard-theme);
+    color: var(--accent-color-1);
 }
 
 footer .login {

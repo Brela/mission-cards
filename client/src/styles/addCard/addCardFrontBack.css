@@ -41,6 +41,7 @@
 }
 
 .add-cards-sub-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,6 +84,7 @@
     background-color: var(--addCard-theme);
     border: none;
     box-shadow: var(--box-shadow);
+    color: var(--accent-color-1);
 }
 
 .card-back .card-text {
@@ -90,12 +92,19 @@
     background-color: var(--addCard-theme);
     border: none;
     box-shadow: var(--box-shadow);
+    color: var(--accent-color-1);
 }
 
 .add-card-plus-button {
     color: var(--accent-color-1);
 }
 
+/* deosnt work yet with mui alert
+.added-card-alert {
+    position: absolute;
+    bottom: 50vh;
+}
+ */
 @media screen and (max-width: 700px) {
     .addcardtodeck {
         width: 100vw;
