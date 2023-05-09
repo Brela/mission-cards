@@ -8,7 +8,7 @@ function Header() {
         <header className='header'>
 
             <div className="mission">
-                <Link to='/decks/'>
+                <Link to='/decks'>
                     <h2><FontAwesomeIcon icon={faLayerGroup} />mission</h2>
                 </Link >
             </div>
