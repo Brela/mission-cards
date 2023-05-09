@@ -5,7 +5,7 @@ The purpose of this site is to create a captivating flashcards application where
 * add *.env* file to *server/config/* -> add port and DB_string to env file
 * cd client -> npm install -> npm run dev
 * cd server -> npm install -> npm run dev
-* go to http://localhost:5173/ in browser
+* go to http://localhost:4000/ in browser
 
 ### notes
 * The front-end (client folder) uses typeScript because I wanted to learn typeScript
