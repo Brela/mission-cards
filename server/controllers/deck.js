@@ -5,7 +5,7 @@ const Deck = DeckModel;
 module.exports = {
 
     getDecks: async (req, res) => {
-        console.log('req.user in getDeck:  ', req.user)
+        // console.log('req.user in getDeck:  ', req.user)
         // the find() method in express will get all decks if it has no params
         const decks = await Deck.find();
         res.json(decks);

@@ -48,6 +48,11 @@ module.exports = {
                 if (err) {
                     return res.status(500).json({ error: err.message });
                 }
+                // Check if the session object is being populated correctly
+                console.log("req.session: ", req.session);
+
+                // Check if the passport object inside the session is being populated correctly
+                console.log("req.session.passport: ", req.session.passport);
                 // Check for req.user after logging in
                 console.log('req.user after login: ', req.user);
                 // Modify the success response to include the user object
