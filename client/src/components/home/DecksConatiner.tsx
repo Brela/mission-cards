@@ -5,7 +5,7 @@ import Deck from './Deck';
 import DeckType from '../../types/DeckType';
 import { getDecks } from '../../services/deckAPI';
 import { createDeck } from '../../services/deckAPI';
-import { loadUserThemeColor } from '../../services/userAPI'
+import { loadUserThemeColor, loginAsGuest } from '../../services/userAPI'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,7 @@ interface DeckProps {
 }
 
 function DecksContainer() {
-    const { user } = useContext(UserContext);
+    const { user, setUser, setIsAuthenticated, isAuthenticated } = useContext(UserContext);
     const { setError } = useContext(ErrorContext);
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
@@ -31,8 +31,22 @@ function DecksContainer() {
         }
         fetchData();
     }, [user]);
+    async function handleLoginUserAsGuest() {
+        const response = await loginAsGuest();
+        if (response.status === 200) {
+            setIsAuthenticated(false);
+            setUser(response.data.user);
+            window.location.href = '/';
+        } else {
+            // Display error message if login fails
+            alert(response.data.error);
+        }
+    }
 
     async function loadDecks() {
+        if (!user) {
+            await handleLoginUserAsGuest()
+        }
         const loadedDecks = await getDecks();
         setDecks(loadedDecks);
     }
@@ -45,7 +59,7 @@ function DecksContainer() {
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault();
         // front end route protection
-        if (!user) {
+        if (!isAuthenticated) {
             setError('Please sign up to use this feature');
             return;
         }

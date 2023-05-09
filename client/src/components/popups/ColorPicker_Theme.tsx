@@ -30,7 +30,7 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
     }
 }) => {
 
-    const { user } = useContext(UserContext)
+    const { user, isAuthenticated } = useContext(UserContext)
     const { setError } = useContext(ErrorContext);
 
     let colorPicker: MutableRefObject<IroColorPicker | null> = useRef<IroColorPicker | null>(null);
@@ -80,7 +80,7 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
 
     const handleButtonClick = async () => {
         // front end route protection
-        if (!user) {
+        if (!isAuthenticated) {
             setError('Please sign up to use this feature');
             return;
         }

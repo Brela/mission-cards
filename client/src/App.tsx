@@ -29,14 +29,14 @@ function App() {
                             <BrowserRouter>
                                 <Routes>
                                     {/* home shows the list of decks */}
-                                    {/*      <Route path="/" element={<Home />} />
+                                    <Route path="/" element={<Home />} />
                                     <Route path="/:deckName" element={<AddCard />} />
                                     <Route path="/studycards" element={<StudyCardsPage />} />
-                                    <Route path="/auth" element={<AuthenticationPage />} /> */}
-                                    <Route path="/" element={<AuthenticationPage />} />
+                                    <Route path="/auth" element={<AuthenticationPage />} />
+                                    {/*     <Route path="/" element={<AuthenticationPage />} />
                                     <Route path="/:deckName" element={<AddCard />} />
                                     <Route path="/studycards" element={<StudyCardsPage />} />
-                                    <Route path="/decks" element={<Home />} />
+                                    <Route path="/decks" element={<Home />} /> */}
                                 </Routes>
                             </BrowserRouter>
                         </UserProvider>

@@ -11,7 +11,7 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 function GptBot() {
     const { setError } = useContext(ErrorContext);
-    const { user } = useContext(UserContext);
+    const { user, isAuthenticated } = useContext(UserContext);
     const [userPrompt, setUserPrompt] = useState('');
     const [botResponse, setBotResponse] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ function GptBot() {
     async function handleGptPrompt(e: React.FormEvent) {
         e.preventDefault();
         // front end route protection
-        if (!user) {
+        if (!isAuthenticated) {
             setError('Please sign up to use this feature');
             return;
         }

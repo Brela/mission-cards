@@ -15,7 +15,7 @@ import { loadUserThemeColor } from '../../services/userAPI'
 
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
-    const { user } = useContext(UserContext);
+    const { user, isAuthenticated } = useContext(UserContext);
     const { cardsForDeck, setCardsForDeck, addCard } = useCardContext();
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
@@ -50,7 +50,7 @@ function AddCardToDeck() {
     async function handleCreateCard(e: React.FormEvent) {
         e.preventDefault();
         // to only send req if user is logged in
-        if (!user) {
+        if (!isAuthenticated) {
             setError('Please sign up to use this feature');
             return;
         }

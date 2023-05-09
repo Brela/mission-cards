@@ -12,12 +12,12 @@ interface DotsPopupProps {
 
 
 export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPopupProps): JSX.Element {
-    const { user } = useContext(UserContext);
+    const { user, isAuthenticated } = useContext(UserContext);
     const { setError } = useContext(ErrorContext);
 
     async function handleDeleteDeck(event: React.MouseEvent<HTMLButtonElement>, deckId: string) {
         // front end route protection
-        if (!user) {
+        if (!isAuthenticated) {
             setError('Please sign up to use this feature');
             return;
         }

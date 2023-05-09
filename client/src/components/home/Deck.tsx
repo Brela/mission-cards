@@ -65,7 +65,7 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
             <h5 className="deck-name">
                 <Link
                     key={deck._id}
-                    to={`/${deckNameNoSpaces}`}
+                    to={`${deckNameNoSpaces}`}
                     onClick={handleDeckClick}
                 >{deck.deckName}</Link></h5>
             {/* the loaded class is used in the css file to transition the nums to full opacity once in */}
