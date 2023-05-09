@@ -82,22 +82,18 @@ app.use(passport.session())
     next();
 }); */
 
-// req.user is avaiable here but not in routes
+
 
 app.use((req, res, next) => {
     console.log("Req.user in server.js line 100:", req.user);
     next();
 });
 
-
+// req.user is avaiable here but not in deckRoutes
 app.use('/decks', deckRoutes);
-// req.user logs correctly here after decks route
-/* app.use((req, res, next) => {
-    console.log("server.js after -----deckRoutes ---- req.user:  ", req.user);
-    next();
-});
- */
+// req.user logs correctly here after decks route and inside cardRoutes
 app.use('/cards', cardRoutes);
+// req.user becomes undefined here again
 app.use('/openai', openAiRoutes);
 app.use('/user', userRoutes)
 

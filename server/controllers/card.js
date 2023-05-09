@@ -4,6 +4,7 @@ const Card = CardModel;
 module.exports = {
 
     getAllCardsForDeck: async (req, res) => {
+        // req.user is defined here
         const { deckName } = req.params;
         const cards = await Card.find({ deckName })
         res.json(cards);
