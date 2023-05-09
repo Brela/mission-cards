@@ -24,22 +24,22 @@ function StudyCards() {
 
         fetchCards();
     }, [deckName]);
+    useEffect(() => {
+        console.log(allCards)
+    }, [deckName]);
 
     return (
         <div className="study-cards-container">
-
-            <ul>
-                {allCards.map((card) => (
-                    <li
-                        className='card-list-item'
-                        key={card._id}>
-
-                        <div className='display-card-front'>{card.front}</div>
-                        <div className='display-card-back'>{card.back}</div>
-
-                    </li>
-                ))}
-            </ul>
+            {allCards.length === 0 ? <p className='no-cards'>Add cards then view them here</p> : (
+                <ul>
+                    {allCards.map((card) => (
+                        <li className='card-list-item' key={card._id}>
+                            <div className='display-card-front'>{card.front}</div>
+                            <div className='display-card-back'>{card.back}</div>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }

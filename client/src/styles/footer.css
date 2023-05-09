@@ -90,6 +90,21 @@ footer .logout-message {
         display: none;
     }
 
+    footer .login button, .studycards-button button {
+        background-color: rgba(240, 248, 255, 0);
+        color: var(--accent-color-1);
+        box-shadow: var(--box-shadow-2);
+    }
+
+    .studycards-button {
+        padding-right: 6vw;
+
+    }
+
+    footer .login {
+        padding-left: 6vw;
+    }
+
 }
 
 

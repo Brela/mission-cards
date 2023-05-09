@@ -14,7 +14,7 @@
     width: 65%;
     height: 20%;
     overflow-y: auto;
-    background-color: var(--accent-color-1-full-trans);
+    background-color: var(--addCard-theme);
     /* background-color: var(--accent-color-1-full-trans); */
     /* color: aliceblue; */
     box-shadow: var(--box-shadow);
@@ -45,7 +45,7 @@
 }
 
 .gpt-bot-sub-container input::placeholder {
-    color: rgb(205, 204, 204);
+    color: var(--heading-color);
 }
 
 .gpt-bot-sub-container input:focus {
@@ -88,9 +88,6 @@
         bottom: 100px;
         width: 85%;
         height: 20%;
-        background-color: rgba(0, 0, 0, 0);
-        /* color: aliceblue; */
-        box-shadow: 0px 1px 10px rgb(26, 26, 26);
         border-radius: 6px;
         display: flex;
         justify-content: flex-start;

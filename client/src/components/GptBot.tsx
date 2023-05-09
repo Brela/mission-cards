@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { MoonLoader } from 'react-spinners';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 function GptBot() {
     const { setError } = useContext(ErrorContext);

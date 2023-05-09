@@ -3,6 +3,22 @@
     width: 70vw;
     height: 50vh;
     overflow-y: scroll;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer and Edge */
+}
+
+.study-cards-container::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+
+.study-cards-container .no-cards {
+    color: var(--heading-color);
+    margin-top: 10%;
+    text-align: center;
 }
 
 .study-cards-page {

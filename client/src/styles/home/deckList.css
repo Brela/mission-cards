@@ -5,11 +5,12 @@
     height: 500px;
     padding-top: 20px;
     overflow: auto;
-    background-color: var(--background-1);
+    /* background-color: var(--background-1); */
+    background-color: var(--addCard-theme);
     color: var(--accent-color-3);
     color: var(--accent-color-1);
     border-radius: 6px;
-    box-shadow: 0px 1px 8px rgb(57, 57, 57);
+    box-shadow: var(--box-shadow);
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
@@ -29,14 +30,13 @@
 li.deck-list-item {
     height: auto;
     position: relative;
-
     display: flex;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
     /* first one is a backup color */
     border-bottom: 1px solid rgb(129, 221, 36);
-    border-bottom: 1px solid rgb(208, 221, 227);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.307);
     margin-top: 8px;
     padding-bottom: 8px;
 }
@@ -48,6 +48,7 @@ li.deck-list-item:last-child {
 li .deck-name {
     padding-left: 10px;
     height: auto;
+    min-height: 1.1em;
     width: 90%;
     margin: auto 3%;
     overflow-x: hidden;
@@ -68,12 +69,12 @@ li .cards-remaining {
 }
 
 .more-btn {
-    padding-bottom: 10px;
+    font-size: .7em;
     border-width: 1.2px;
     border-radius: 3px;
-    color: rgb(255, 255, 255);
+    color: var(--accent-color-1);
     background-color: rgba(255, 255, 255, 0);
-    box-shadow: 0px 1px 8px rgb(57, 57, 57);
+    box-shadow: var(--box-shadow-2);
     height: 20px;
     display: flex;
     align-items: center;
@@ -94,13 +95,15 @@ li .cards-remaining {
 
 .create-deck input {
     background-color: var(--background-1);
+    /* border: 1px solid rgba(87, 86, 86, 0.626); */
+    border: none;
 }
 
 .create-deck button {
     margin-left: 10px;
-    width: 60px;
+    width: 45px;
     background-color: rgba(55, 110, 158, 0);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-2);
 }
 
 .faPlus-icon {

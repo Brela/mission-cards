@@ -22,7 +22,7 @@
 
 .auth-page .title-section .subheading {
     font-size: 17px;
-    color: var(--accent-color-3);
+    color: var(--accent-color-1);
 }
 
 .auth-page .mission {
@@ -40,8 +40,8 @@
     border-radius: 8px;
     width: 40vw;
     min-height: 35vh;
-    background-color: rgba(158, 179, 155, 0);
-    color: var(--accent-color-2);
+    background-color: var(--addCard-theme);
+    color: var(--accent-color-1);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -76,7 +76,7 @@ li.email-pass {
 li.email-pass label {
     width: 100%;
     font-size: 15px;
-    color: var(--accent-color-3);
+    color: var(--accent-color-1);
 }
 
 .auth-window-container li label {
@@ -98,7 +98,7 @@ li.email-pass label {
 }
 
 .auth-window-container .sign-up-button button {
-    background-color: var(--accent-color-3);
+    background-color: var(--accent-color-1);
     background-color: white;
     color: #757575;
     border: none;
@@ -127,7 +127,7 @@ li.email-pass label {
 }
 
 .or-container span {
-    border-bottom: 1px solid var(--accent-color-3);
+    border-bottom: 1px solid var(--accent-color-1);
     height: 12px;
     width: 40%;
 }
@@ -135,11 +135,11 @@ li.email-pass label {
 .auth-window-container .or {
     width: 20px;
     color: white;
-    color: var(--accent-color-3);
+    color: var(--accent-color-1);
 }
 
 .guest-signin-description {
-    color: white;
+    color: var(--accent-color-1);
     font-size: .8rem;
     text-align: center;
     padding-left: 5px;
@@ -147,8 +147,7 @@ li.email-pass label {
 
 .auth-window-container .go-to-button {
     background-color: rgba(255, 255, 255, 0);
-    color: var(--accent-color-4);
-    color: white;
+    color: var(--accent-color-1);
     border: none;
     padding: 50px 10px 3px 10px;
 }
@@ -261,7 +260,6 @@ li.email-pass label {
 
     .auth-page .title-section .subheading {
         font-size: 17px;
-        color: var(--accent-color-3);
     }
 
     .guest-signin-description {

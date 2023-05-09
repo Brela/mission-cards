@@ -4,6 +4,8 @@ import DeckType from '../../types/DeckType'
 import { getNumCardsForDeck } from '../../utils/getNumCardsForDeck';
 import { DeckContext } from '../../contexts/DeckContext';
 import DotsPopup from './DotsPopup'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 /* interface DeckProps {
     deck: DeckType;
@@ -69,7 +71,12 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
             {/* the loaded class is used in the css file to transition the nums to full opacity once in */}
             <div className={`cards-remaining${numCards !== null ? " loaded" : ""}`}>{numCards}</div>
             <div className="more">
-                <button className="more-btn" id={deck._id} onClick={handleOpenPopupClick}>...</button>
+                <button className="more-btn" id={deck._id} onClick={handleOpenPopupClick}>
+                    <FontAwesomeIcon
+                        className='fa-icon'
+                        icon={faEllipsis}
+                    />
+                </button>
                 {popupIsOpen && (
                     <DotsPopup
                         deck={deck}

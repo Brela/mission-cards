@@ -114,7 +114,7 @@ const ColorInput: FunctionComponent<ColorInputProps> = ({
                 <div ref={el} />
                 <button onClick={handleButtonClick}>
                     <FontAwesomeIcon
-                        className='faPlus-icon'
+                        className='fa-icon'
                         icon={faPaperPlane}
                     />
                 </button>
