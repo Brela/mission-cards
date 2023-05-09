@@ -33,11 +33,11 @@ module.exports = function (passport) {
 
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
-            if (err) {
-                console.log(err);
-            } else {
-                // console.log('Deserialized user:', user);
-            }
+            /*    if (err) {
+                   console.log(err);
+               } else {
+                   // console.log('Deserialized user:', user);
+               } */
             done(err, user);
         });
     });

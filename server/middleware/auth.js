@@ -3,7 +3,8 @@ module.exports = {
         if (req.isAuthenticated()) {
             return next();
         } else {
-            res.status(401).json({ message: 'Please login to use this feature' });
+            // Return a 401 Unauthorized status if the user is not authenticated
+            res.status(401).json({ message: 'Unauthorized' });
         }
     }
 };

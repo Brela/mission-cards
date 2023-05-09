@@ -1,10 +1,9 @@
 import { API_URL } from './_config';
 
-
-
 export async function chatWithGPT(userPrompt: string) {
     const response = await fetch(`${API_URL}/openai`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },

@@ -18,7 +18,13 @@ const DeckSchema = new mongoose.Schema({
   creationDate: {
     type: Date,
     default: Date.now
-  }
+  },
+  // this connects each deck to it's user
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
 })
 
 const DeckModel = mongoose.model('Deck', DeckSchema)

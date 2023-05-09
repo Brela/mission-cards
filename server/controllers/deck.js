@@ -5,23 +5,21 @@ const Deck = DeckModel;
 module.exports = {
 
     getDecks: async (req, res) => {
-        // console.log('req.user in getDeck:  ', req.user)
-        // the find() method in express will get all decks if it has no params
-        const decks = await Deck.find();
-        res.json(decks);
-    },
-
-    updateDeck: async (req, res) => {
-        const { deckId } = req.params;
-        const deck = await Deck.updateOne(deckId);
-        res.json(deck)
+        try {
+            const decks = await Deck.find({ user: req.user._id });
+            res.json(decks);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Server error' });
+        }
     },
 
     createDeck: async (req, res) => {
         try {
             const newDeck = new DeckModel({
                 deckName: req.body.deckName,
-                creationDate: new Date()
+                creationDate: new Date(),
+                user: req.user._id,
             });
 
             const createdDeck = await newDeck.save();
@@ -32,10 +30,37 @@ module.exports = {
         }
     },
 
+    updateDeck: async (req, res) => {
+        const { deckId } = req.params;
+        try {
+            const deck = await Deck.findOne({ _id: deckId, user: req.user._id });
+            if (!deck) {
+                return res.status(404).json({ error: 'Deck not found' });
+            }
+
+            // Update the deck fields as needed
+            // For example: deck.deckName = req.body.deckName;
+
+            await deck.save();
+            res.json(deck);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Server error' });
+        }
+    },
+
     deleteDeck: async (req, res) => {
         const { deckId } = req.params;
-        const deck = await Deck.findByIdAndDelete(deckId);
-        res.json(deck)
+        try {
+            const deck = await Deck.findOneAndDelete({ _id: deckId, user: req.user._id });
+            if (!deck) {
+                return res.status(404).json({ error: 'Deck not found' });
+            }
+            res.json(deck);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Server error' });
+        }
     },
 
 }

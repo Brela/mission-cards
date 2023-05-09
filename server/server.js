@@ -84,11 +84,11 @@ app.use(passport.session())
 
 
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     console.log("Req.user in server.js line 100:", req.user);
     next();
-});
-
+}); */
+/* 
 // req.user is avaiable here but not in deckRoutes
 app.use('/decks', deckRoutes);
 // req.user logs correctly here after decks route and inside cardRoutes
@@ -97,11 +97,14 @@ app.use('/cards', cardRoutes);
 app.use('/openai', openAiRoutes);
 app.use('/user', userRoutes)
 
-app.get('/', (req, res) => {
-    // Handle the request for the root URL
-    // You can send a response, render a template, or redirect to another page
-    res.send('Hello, World!');
-});
+ */
+
+
+
+app.use('/cards', cardRoutes);
+app.use('/openai', openAiRoutes);
+app.use('/user', userRoutes)
+app.use('/decks', deckRoutes);
 
 // Railway sets the PORT environment variable automatically, so you don't need to make any changes to this code for it to work correctly on Railway.
 app.listen(process.env.PORT, () => {
