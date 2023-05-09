@@ -34,7 +34,7 @@ function Footer() {
                 {isAuthenticated ? (
                     <button onClick={logout}>Logout</button>
                 ) : (
-                    <Link to='/'>
+                    <Link to='/auth'>
                         <button>Login</button>
                     </Link>
                 )}
