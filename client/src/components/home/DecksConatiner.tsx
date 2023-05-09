@@ -44,9 +44,9 @@ function DecksContainer() {
     }
 
     async function loadDecks() {
-        if (!user) {
-            await handleLoginUserAsGuest()
-        }
+        /*   if (!user) {
+              await handleLoginUserAsGuest()
+          } */
         const loadedDecks = await getDecks();
         setDecks(loadedDecks);
     }
