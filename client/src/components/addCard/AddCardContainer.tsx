@@ -16,7 +16,7 @@ import { loadUserThemeColor } from '../../services/userAPI'
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
     const { user } = useContext(UserContext);
-    const { cardsForDeck, setCardsForDeck } = useCardContext();
+    const { cardsForDeck, setCardsForDeck, addCard } = useCardContext();
     const [frontText, setFrontText] = useState('');
     const [backText, setBackText] = useState('');
     /*  let { deckName } = useParams()
@@ -63,6 +63,8 @@ function AddCardToDeck() {
             setBackText('');
             // add new card to cards list context cards array
             setCardsForDeck([...cardsForDeck, response]);
+            // for the Card context which the study card page relys on
+            addCard(response)
         }
 
     }

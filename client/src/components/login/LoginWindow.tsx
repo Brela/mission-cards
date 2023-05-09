@@ -53,7 +53,7 @@ function LoginWindow() {
             setIsAuthenticated(true);
             console.log('response', response);
             setUser(response.data.user);
-            window.location.href = '/';
+            window.location.href = '/decks/';
         } else {
             // Display error message if login fails
             alert(response.data.error);
@@ -69,7 +69,7 @@ function LoginWindow() {
             setIsAuthenticated(false);
             // so, we also don't set the user for this guest acct
             // setUser(response.data.user);
-            window.location.href = '/';
+            window.location.href = '/decks/';
         } else {
             // Display error message if login fails
             alert(response.data.error);

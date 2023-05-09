@@ -7,6 +7,7 @@ type CardContextType = {
     setCardsForDeck: React.Dispatch<React.SetStateAction<CardType[]>>;
     allCards: CardType[];
     setAllCards: React.Dispatch<React.SetStateAction<CardType[]>>;
+    addCard: (newCard: CardType) => Promise<void>;
 };
 
 export const CardListContext = createContext<CardContextType>({
@@ -14,6 +15,7 @@ export const CardListContext = createContext<CardContextType>({
     setCardsForDeck: () => { },
     allCards: [],
     setAllCards: () => { },
+    addCard: async () => { },
 });
 
 interface CardListProviderProps {
@@ -29,6 +31,14 @@ export function CardListProvider({ children }: CardListProviderProps) {
         setCardsForDeck(response);
     }
 
+    async function addCard(newCard: CardType) {
+        // Add the new card to the allCards array
+        setAllCards((prevCards) => [...prevCards, newCard]);
+
+        // Call fetchAllCards to update the list of cards
+        await fetchAllCards();
+    }
+
     async function fetchAllCards() {
         const response = await getAllCards();
         setAllCards(response);
@@ -42,7 +52,8 @@ export function CardListProvider({ children }: CardListProviderProps) {
             cardsForDeck,
             setCardsForDeck,
             allCards,
-            setAllCards
+            setAllCards,
+            addCard
         }}>
             {children}
         </CardListContext.Provider>
