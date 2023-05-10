@@ -6,10 +6,10 @@ import DeckType from '../../types/DeckType';
 import { getDecks } from '../../services/deckAPI';
 import { createDeck } from '../../services/deckAPI';
 import { loadUserThemeColor, loginAsGuest } from '../../services/userAPI'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 // usage -- {<FontAwesomeIcon icon={faSearch} />}
+
 
 interface DeckProps {
     deck: DeckType;
@@ -44,21 +44,34 @@ function DecksContainer() {
         }
     }
 
+    function isValidDecksArray(decks: any[]): boolean {
+        return decks.every(deck => {
+            return (
+                deck.hasOwnProperty("_id") &&
+                deck.hasOwnProperty("deckName") &&
+                deck.hasOwnProperty("creationDate")
+            );
+        });
+    }
+
     async function loadDecks() {
-        // check passed
         try {
             if (!user) {
                 await handleLoginUserAsGuest();
             }
-            // Now load decks after loginGuest has completed
             const loadedDecks = await getDecks();
-            console.log(loadedDecks)
-            setDecks(loadedDecks);
+            if (isValidDecksArray(loadedDecks)) {
+                console.log(loadedDecks);
+                setDecks(loadedDecks);
+            } else {
+                throw new Error("Invalid decks data");
+            }
         } catch (error) {
-            // Handle the error
             console.error(error);
+            alert("Error loading decks: " + (error as Error).message); // Display an alert with the error message
         }
     }
+
 
 
 
@@ -89,6 +102,7 @@ function DecksContainer() {
                 <div className="">
 
                     {decks.map((deck) => (
+
                         // check passed for Deck component and styles
                         <Deck
                             key={deck._id}
