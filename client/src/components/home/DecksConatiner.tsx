@@ -32,6 +32,7 @@ function DecksContainer() {
         }
         fetchData();
     }, [user]);
+
     async function handleLoginUserAsGuest() {
         const response = await loginAsGuest();
         if (response.status === 200) {
@@ -77,7 +78,7 @@ function DecksContainer() {
     return (
         <div className="decks-container">
             <ul>
-                <div className="">
+                {/*          <div className="">
                     {decks.map((deck) => (
                         <Deck
                             key={deck._id}
@@ -85,7 +86,7 @@ function DecksContainer() {
                             loadDecks={loadDecks}
                         />
                     ))}
-                </div>
+                </div> */}
             </ul>
             <form onSubmit={handleCreateDeck}>
                 <div className='create-deck'>

@@ -37,7 +37,8 @@ function Home() {
     <div className="home-page">
       <Header />
       <ColumnHeadings />
-      {/* <DecksContainer /> */}
+      {/* problem is in DecksContainer */}
+      <DecksContainer />
       <DecksToolbar />
       <ErrorAlert />
       <Footer />

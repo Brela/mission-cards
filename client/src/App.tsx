@@ -29,7 +29,6 @@ function App() {
                             <BrowserRouter>
                                 <Routes>
                                     {/* home shows the list of decks */}
-                                    {/* check passed using auth as home page '/'> */}
                                     <Route path="/" element={<Home />} />
                                     <Route path="/:deckName" element={<AddCard />} />
                                     <Route path="/studycards" element={<StudyCardsPage />} />
