@@ -45,14 +45,6 @@ function DecksContainer() {
         }
     }
 
-    useEffect(() => {
-        async function fetchData() {
-            if (!user) {
-                await handleLoginUserAsGuest();
-            }
-        }
-        fetchData();
-    }, []);
 
 
     async function loadDecks() {
@@ -65,11 +57,17 @@ function DecksContainer() {
         }
     }
 
-
-
     useEffect(() => {
-        loadDecks();
+        async function loadData() {
+            if (!user) {
+                await handleLoginUserAsGuest();
+            }
+            await loadDecks();
+        }
+        loadData();
     }, []);
+
+
 
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault();
