@@ -45,10 +45,19 @@ function DecksContainer() {
         }
     }
 
-
-
     async function loadDecks() {
+        // check passed
         try {
+            const checkUser = async () => {
+                if (!user) {
+                    await handleLoginUserAsGuest();
+                }
+            };
+
+            // Wait for checkUser to complete
+            await checkUser();
+
+            // Now load decks after checkUser has completed
             const loadedDecks = await getDecks();
             setDecks(loadedDecks);
         } catch (error) {
@@ -57,17 +66,12 @@ function DecksContainer() {
         }
     }
 
+
+
+
     useEffect(() => {
-        async function loadData() {
-            if (!user) {
-                await handleLoginUserAsGuest();
-            }
-            await loadDecks();
-        }
-        loadData();
+        loadDecks();
     }, []);
-
-
 
     async function handleCreateDeck(e: React.FormEvent) {
         e.preventDefault();
