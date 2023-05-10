@@ -78,15 +78,18 @@ function DecksContainer() {
     return (
         <div className="decks-container">
             <ul>
-                {/*          <div className="">
+                <div className="">
                     {decks.map((deck) => (
+                        <p key={deck._id}> hello </p>
+                    ))}
+                    {/*  {decks.map((deck) => (
                         <Deck
                             key={deck._id}
                             deck={deck}
                             loadDecks={loadDecks}
                         />
-                    ))}
-                </div> */}
+                    ))} */}
+                </div>
             </ul>
             <form onSubmit={handleCreateDeck}>
                 <div className='create-deck'>
