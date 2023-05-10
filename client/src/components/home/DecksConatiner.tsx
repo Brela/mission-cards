@@ -22,15 +22,16 @@ function DecksContainer() {
     const [decks, setDecks] = useState<DeckType[]>([]);
     const [deckName, setDeckName] = useState('');
 
-    /*    useEffect(() => {
-           async function fetchData() {
-               if (user) {
-                   await loadUserThemeColor(user._id);
-                   loadDecks();
-               }
-           }
-           fetchData();
-       }, [user]); */
+    // check passed
+    useEffect(() => {
+        async function fetchData() {
+            if (user) {
+                await loadUserThemeColor(user._id);
+                loadDecks();
+            }
+        }
+        fetchData();
+    }, [user]);
     async function handleLoginUserAsGuest() {
         const response = await loginAsGuest();
         if (response.status === 200) {
@@ -44,9 +45,10 @@ function DecksContainer() {
     }
 
     async function loadDecks() {
-        /*   if (!user) {
-              await handleLoginUserAsGuest()
-          } */
+        // check passed
+        if (!user) {
+            await handleLoginUserAsGuest()
+        }
         const loadedDecks = await getDecks();
         setDecks(loadedDecks);
     }
