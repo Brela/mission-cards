@@ -50,9 +50,15 @@ function DecksContainer() {
         if (!user) {
             await handleLoginUserAsGuest()
         }
-        const loadedDecks = await getDecks();
-        setDecks(loadedDecks);
+        try {
+            const loadedDecks = await getDecks();
+            setDecks(loadedDecks);
+        } catch (error) {
+            // Handle the error
+            console.error(error);
+        }
     }
+
 
 
     useEffect(() => {
@@ -81,7 +87,7 @@ function DecksContainer() {
                 <div className="">
 
                     {decks.map((deck) => (
-                        // check passed for Deck
+                        // check passed for Deck component and styles
                         <Deck
                             key={deck._id}
                             deck={deck}
