@@ -3,10 +3,10 @@ import '../styles/footer.css'
 
 import '../styles/home/decksColHeadings.css'
 import '../styles/home/decksToolbar.css'
-import '../styles/home/deckList.css'
+/* import '../styles/home/deckList.css' 
 
 import '../styles/popups/deckMorePopup.css'
-import '../styles/popups/homeToolbarPopup.css'
+import '../styles/popups/homeToolbarPopup.css'*/
 
 import Header from '../components/Header';
 import ColumnHeadings from '../components/home/DecksColHeading'
