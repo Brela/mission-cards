@@ -2,7 +2,7 @@
 interface DeckType {
     _id: string;
     deckName: string;
-    creationDate: string;
+    creationDate: Date;
 }
 
 export default DeckType
