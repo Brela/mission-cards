@@ -13,7 +13,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 interface DeckProps {
     deck: DeckType;
-    loadDecks: () => void;
 }
 
 function DecksContainer() {
@@ -53,6 +52,7 @@ function DecksContainer() {
             }
             // Now load decks after loginGuest has completed
             const loadedDecks = await getDecks();
+            console.log(loadedDecks)
             setDecks(loadedDecks);
         } catch (error) {
             // Handle the error
@@ -93,7 +93,6 @@ function DecksContainer() {
                         <Deck
                             key={deck._id}
                             deck={deck}
-                            loadDecks={loadDecks}
                         />
                     ))}
                 </div>

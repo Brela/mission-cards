@@ -2,16 +2,15 @@ import React, { useEffect, useContext } from "react";
 import ErrorContext from '../../contexts/ErrorContext';
 import { UserContext } from '../../contexts/UserContext';
 import DeckType from '../../types/DeckType'
-import { deleteDeck } from '../../services/deckAPI'
+import { deleteDeck, getDecks } from '../../services/deckAPI'
 
 interface DotsPopupProps {
     deck: DeckType;
-    loadDecks: () => void;
     handleClosePopup: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 
-export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPopupProps): JSX.Element {
+export default function DotsPopup({ deck, handleClosePopup }: DotsPopupProps): JSX.Element {
     const { user, isAuthenticated } = useContext(UserContext);
     const { setError } = useContext(ErrorContext);
 
@@ -25,7 +24,7 @@ export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPop
         if ('error' in response) {
             setError(response.error || null);
         } else {
-            loadDecks();
+            getDecks();
             handleClosePopup(event);
         }
 

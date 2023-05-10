@@ -17,10 +17,9 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 } */
 interface DeckProps {
     deck: DeckType;
-    loadDecks: () => void;
 }
 
-function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
+function Deck({ deck }: DeckProps): JSX.Element {
     const { setDeckName } = useContext(DeckContext);
     const [deckId, setDeckId] = useState('');
     const [popupIsOpen, setPopupIsOpen] = useState(false);
@@ -81,7 +80,6 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
                 {popupIsOpen && (
                     <DotsPopup
                         deck={deck}
-                        loadDecks={loadDecks}
                         handleClosePopup={handleClosePopupClick}
                     />
                 )}
