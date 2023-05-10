@@ -6,7 +6,26 @@ module.exports = {
 
     getDecks: async (req, res) => {
         try {
-            const decks = await Deck.find({ user: req.user._id });
+            const mockData = [
+                {
+                    _id: "645bc091c0c9287c24252e1e",
+                    deckName: 'mock 1',
+                    creationDate: ' 2023 - 05 - 10T16: 04: 33.400Z',
+                    user: "645a775a03b52f31c710e5d1",
+
+                },
+                {
+                    _id: "645bc091c0c9287c24252e1e",
+                    deckName: 'mock 2',
+                    creationDate: '2023 - 05 - 10T16: 04: 33.400Z',
+                    user: "645a775a03b52f31c710e5d1",
+
+                },
+
+            ];
+            const decks = mockData
+            // const decks = await Deck.find({ user: req.user._id });
+            console.log(decks)
             res.json(decks);
         } catch (err) {
             console.error(err);
