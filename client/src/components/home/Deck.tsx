@@ -60,6 +60,7 @@ function Deck({ deck, loadDecks }: DeckProps): JSX.Element {
         setPopupIsOpen(false);
     }
 
+
     return (
         <li className='deck-list-item' key={deck._id}>
             <h5 className="deck-name">

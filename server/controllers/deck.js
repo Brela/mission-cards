@@ -6,31 +6,23 @@ module.exports = {
 
     getDecks: async (req, res) => {
         try {
-            const mockData = [
-                {
-                    _id: "645bc091c0c9287c24252e1e",
-                    deckName: 'mock 1',
-                    creationDate: ' 2023 - 05 - 10T16: 04: 33.400Z',
+            // user prop in decks is causing ios chrome to not load app!!!!!!
+            const decksFromDb = await Deck.find({ user: req.user._id });
 
-
-                },
-                {
-                    _id: "645bc091c0c9287c24252e1e",
-                    deckName: 'mock 2',
-                    creationDate: '2023 - 05 - 10T16: 04: 33.400Z',
-
-                },
-
-            ];
-            // check passed at controller and database - mock data back here cause same problem though
-            const decks = mockData
-            // const decks = await Deck.find({ user: req.user._id });
+            // Convert Mongoose documents to plain JavaScript objects and remove the user property
+            const decks = decksFromDb.map(deck => {
+                const plainDeck = deck.toObject();
+                delete plainDeck.user;
+                return plainDeck;
+            });
+            console.log(decks)
             res.json(decks);
         } catch (err) {
             console.error(err);
             res.status(500).json({ error: 'Server error' });
         }
     },
+
 
     createDeck: async (req, res) => {
         try {
