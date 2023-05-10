@@ -10,7 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 // usage -- {<FontAwesomeIcon icon={faSearch} />}
 
-
+interface DecksContainerProps {
+    decks: DeckType[];
+}
 interface DeckProps {
     deck: DeckType;
 }
@@ -64,18 +66,22 @@ function DecksContainer() {
             if (!user) {
                 await handleLoginUserAsGuest();
             }
+
             const loadedDecks = await getDecks();
-            if (isValidDecksArray(loadedDecks)) {
-                console.log(loadedDecks);
+
+            if (Array.isArray(loadedDecks)) {
                 setDecks(loadedDecks);
             } else {
-                throw new Error("Invalid decks data");
+                throw new Error('Invalid decks data received from server.');
             }
         } catch (error) {
-            console.error(error);
-            alert("Error loading decks: " + (error as Error).message); // Display an alert with the error message
+            console.error('Error loading decks:', (error as Error).message);
+            alert('Error loading decks: ' + (error as Error).message);
         }
     }
+
+
+
 
 
 
