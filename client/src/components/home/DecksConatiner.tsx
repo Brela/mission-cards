@@ -15,6 +15,8 @@ interface DecksContainerProps {
 }
 interface DeckProps {
     deck: DeckType;
+    decks: DeckType[];
+    loadDecks: () => Promise<void>;
 }
 
 function DecksContainer() {
@@ -76,7 +78,7 @@ function DecksContainer() {
             }
         } catch (error) {
             console.error('Error loading decks:', (error as Error).message);
-            alert('Error loading decks: ' + (error as Error).message);
+            // alert('Error loading decks: ' + (error as Error).message);
         }
     }
 
@@ -118,6 +120,8 @@ function DecksContainer() {
                         <Deck
                             key={deck._id}
                             deck={deck}
+                            decks={decks}
+                            loadDecks={loadDecks}
                         />
                     ))}
                 </div>

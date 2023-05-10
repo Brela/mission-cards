@@ -1,17 +1,21 @@
 import React, { useEffect, useContext } from "react";
 import ErrorContext from '../../contexts/ErrorContext';
 import { UserContext } from '../../contexts/UserContext';
+import { DeckContext } from '../../contexts/DeckContext';
 import DeckType from '../../types/DeckType'
 import { deleteDeck, getDecks } from '../../services/deckAPI'
 
 interface DotsPopupProps {
     deck: DeckType;
+    // decks: DeckType[];
+    loadDecks: () => Promise<void>;
     handleClosePopup: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 
-export default function DotsPopup({ deck, handleClosePopup }: DotsPopupProps): JSX.Element {
+export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPopupProps): JSX.Element {
     const { user, isAuthenticated } = useContext(UserContext);
+    const { reloadDecks } = useContext(DeckContext);
     const { setError } = useContext(ErrorContext);
 
     async function handleDeleteDeck(event: React.MouseEvent<HTMLButtonElement>, deckId: string) {
@@ -20,11 +24,12 @@ export default function DotsPopup({ deck, handleClosePopup }: DotsPopupProps): J
             setError('Please sign up to use this feature');
             return;
         }
+        console.log(deckId)
         const response = await deleteDeck(deckId);
         if ('error' in response) {
             setError(response.error || null);
         } else {
-            getDecks();
+            loadDecks();
             handleClosePopup(event);
         }
 

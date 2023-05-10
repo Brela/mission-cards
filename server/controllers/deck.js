@@ -62,6 +62,7 @@ module.exports = {
     deleteDeck: async (req, res) => {
         const { deckId } = req.params;
         try {
+            console.log(deckId, req.user)
             const deck = await Deck.findOneAndDelete({ _id: deckId, user: req.user._id });
             if (!deck) {
                 return res.status(404).json({ error: 'Deck not found' });

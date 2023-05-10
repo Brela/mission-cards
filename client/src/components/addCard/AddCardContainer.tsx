@@ -160,7 +160,7 @@ function AddCardToDeck() {
                 <div className='added-card-alert'>
                     <Snackbar
                         open={justAddedCard}
-                        autoHideDuration={40000}
+                        autoHideDuration={4000}
                         onClose={handleSnackbarClose as (event: Event | React.SyntheticEvent<any, Event>, reason: SnackbarCloseReason) => void}
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                     >

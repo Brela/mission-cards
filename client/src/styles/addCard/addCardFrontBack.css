@@ -16,12 +16,11 @@
 .addcardtodeck option {
     color: var(--accent-color-1);
     margin: 50px 0;
-    background-color: rgba(0, 0, 0, 0.625);
+    background-color: rgb(208, 208, 208);
 }
 
 .addcardtodeck option:checked {
-
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(164, 168, 169);
 }
 
 .add-cards-container {

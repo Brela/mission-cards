@@ -28,10 +28,10 @@ function GptBot() {
     async function handleGptPrompt(e: React.FormEvent) {
         e.preventDefault();
         // front end route protection
-        if (!isAuthenticated) {
-            setError('Please sign up to use this feature');
-            return;
-        }
+        /*  if (!isAuthenticated) {
+             setError('Please sign up to use this feature');
+             return;
+         } */
         setIsLoading(true);
         const response = await chatWithGPT(userPrompt);
 
@@ -51,7 +51,7 @@ function GptBot() {
     return (
         <div className='gpt-bot-sub-container'>
             <form onSubmit={handleGptPrompt}>
-                <input placeholder='Ask me anything' type="text" value={userPrompt} onChange={handleInputChange} />
+                <input placeholder='I am chatGPT. Ask me anything' type="text" value={userPrompt} onChange={handleInputChange} />
                 <button type="submit">
                     <FontAwesomeIcon
                         className='faPlus-icon send-gpt-prompt-button'
@@ -60,10 +60,10 @@ function GptBot() {
                 </button>
             </form>
 
-            <section>
+            <section className='laoding-icon'>
                 {isLoading ? (
                     <StyledLoaderContainer>
-                        <MoonLoader color="#000" loading={isLoading} size={35} />
+                        <MoonLoader color="#000" loading={isLoading} size={30} />
                     </StyledLoaderContainer>
                 ) : (
                     <p>{botResponse}</p>

@@ -8,7 +8,7 @@ const TOKEN_LIMIT = 4096;
 let tokenCount;
 
 let conversationHistory = [
-    { "role": "system", "content": "You are a helpful assistant who is very enthusiastic." },
+    { "role": "system", "content": "Keep responses short, 2 short sentences max." },
 ];
 
 function addUserMessage(content) {

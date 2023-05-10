@@ -1,4 +1,4 @@
-import { API_URL } from './_config';
+import { API_URL, GUEST_USERNAME, GUEST_PASSWORD } from './_config';
 import UserType from '../types/UserType';
 
 // called from decksContainer component
@@ -113,8 +113,8 @@ export async function loginAsGuest() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: 'powerfulguest@gmail.com',
-                password: 'NoOneCanHackThisloljkItIsOnGitHub123',
+                email: `${GUEST_USERNAME}`,
+                password: `${GUEST_PASSWORD}`,
             }),
         });
         const data = await response.json();
