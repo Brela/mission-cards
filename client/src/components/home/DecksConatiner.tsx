@@ -51,6 +51,7 @@ function DecksContainer() {
             if (!user) {
                 await handleLoginUserAsGuest();
             }
+
             // code worked on IOS with mock data
             /*     const mockData = [
                     { _id: '1', deckName: 'Deck 1', creationDate: '' },
