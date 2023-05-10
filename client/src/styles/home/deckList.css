@@ -154,3 +154,13 @@ li .cards-remaining {
     }
 
 }
+
+@media only screen and (max-height: 500px) {
+    .decks-container {
+        width: 88vw;
+        height: 55vh;
+    }
+
+
+
+}
