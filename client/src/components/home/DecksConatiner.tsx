@@ -44,15 +44,20 @@ function DecksContainer() {
         }
     }
 
-    function isValidDecksArray(decks: any[]): boolean {
-        return decks.every(deck => {
+    function isValidDecksArray(decks: any): decks is DeckType[] {
+        if (!Array.isArray(decks)) {
+            return false;
+        }
+
+        return decks.every((deck) => {
             return (
-                deck.hasOwnProperty("_id") &&
-                deck.hasOwnProperty("deckName") &&
-                deck.hasOwnProperty("creationDate")
+                typeof deck._id === "string" &&
+                typeof deck.deckName === "string" &&
+                typeof deck.creationDate === "string"
             );
         });
     }
+
 
     async function loadDecks() {
         try {
