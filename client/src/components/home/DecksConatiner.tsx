@@ -45,11 +45,17 @@ function DecksContainer() {
         }
     }
 
-    async function loadDecks() {
-        // check passed
-        if (!user) {
-            await handleLoginUserAsGuest()
+    useEffect(() => {
+        async function fetchData() {
+            if (!user) {
+                await handleLoginUserAsGuest();
+            }
         }
+        fetchData();
+    }, []);
+
+
+    async function loadDecks() {
         try {
             const loadedDecks = await getDecks();
             setDecks(loadedDecks);
