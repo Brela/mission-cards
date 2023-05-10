@@ -48,17 +48,21 @@ function DecksContainer() {
     async function loadDecks() {
         // check passed
         try {
-            const checkUser = async () => {
-                if (!user) {
-                    await handleLoginUserAsGuest();
-                }
-            };
+            if (!user) {
+                await handleLoginUserAsGuest();
+            }
 
-            // Wait for checkUser to complete
-            await checkUser();
+            const mockData = [
+                { _id: '1', deckName: 'Deck 1', creationDate: '' },
+                { _id: '2', deckName: 'Deck 2', creationDate: '' },
+                { _id: '3', deckName: 'Deck 3', creationDate: '' },
+                { _id: '4', deckName: 'Deck 4', creationDate: '' },
+            ];
 
-            // Now load decks after checkUser has completed
-            const loadedDecks = await getDecks();
+
+            // Now load decks after loginGuest has completed
+            // const loadedDecks = await getDecks();
+            const loadedDecks = mockData;
             setDecks(loadedDecks);
         } catch (error) {
             // Handle the error
