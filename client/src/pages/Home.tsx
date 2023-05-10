@@ -38,8 +38,8 @@ function Home() {
       <Header />
       <ColumnHeadings />
       <DecksContainer />
-      <DecksToolbar />
-      <ErrorAlert />
+      {/*       <DecksToolbar />
+      <ErrorAlert /> */}
       <Footer />
     </div>
   )
