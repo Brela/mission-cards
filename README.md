@@ -15,7 +15,6 @@ The purpose of this site is to create a captivating flashcards application where
 ## tech used
 Vite, TypeScript, MongoDB, Express, React, and Node
 
-### organization of components and functions
-- DecksContainer contains the popupOpen state and passes down through the Deck component to the DotsPopup
-(change this to using context?)
-- DeleteDeck is in DotsPopup component where the delete button is located
+## Hosted on
+* Netlify - front end
+* Railway - back end
