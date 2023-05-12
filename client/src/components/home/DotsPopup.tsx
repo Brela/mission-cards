@@ -7,13 +7,12 @@ import { deleteDeck, getDecks } from '../../services/deckAPI'
 
 interface DotsPopupProps {
     deck: DeckType;
-    // decks: DeckType[];
     loadDecks: () => Promise<void>;
-    handleClosePopup: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    openedPopupId: any;
+    handleClosePopup: () => void; // Update the type here
 }
 
-
-export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPopupProps): JSX.Element {
+export default function DotsPopup({ deck, loadDecks, openedPopupId, handleClosePopup }: DotsPopupProps): JSX.Element {
     const { user, isAuthenticated } = useContext(UserContext);
     const { reloadDecks } = useContext(DeckContext);
     const { setError } = useContext(ErrorContext);
@@ -30,27 +29,28 @@ export default function DotsPopup({ deck, loadDecks, handleClosePopup }: DotsPop
             setError(response.error || null);
         } else {
             loadDecks();
-            handleClosePopup(event);
+            handleClosePopup();
         }
-
     }
 
-
     return (
-        <div className="more-popup">
-            <div className='more-popup-box'>
-                <div className='more-popup-content'>
-                    <p>
-                        Are you sure you want to delete
-                        <br />
-                        -- {deck.deckName} --?
-                    </p>
+        <React.Fragment>
+            {openedPopupId && (
+                <div className="more-popup">
+                    <div className='more-popup-box'>
+                        <div className='more-popup-content'>
+                            <p>
+                                Are you sure you want to delete
+                                <br />
+                                -- {deck.deckName} --?
+                            </p>
 
-                    <button className="more-popup-btn delete-btn" onClick={(event) => event && handleDeleteDeck(event, deck._id)}>Delete</button>
-                    {/* cancel button simply sets the state of showDeletePopup to false which closes it */}
-                    <button className="more-popup-btn cancel-btn" onClick={(event) => { handleClosePopup(event) }}>Cancel</button>
+                            <button className="more-popup-btn delete-btn" onClick={(event) => event && handleDeleteDeck(event, deck._id)}>Delete</button>
+                            <button className="more-popup-btn cancel-btn" onClick={handleClosePopup}>Cancel</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    )
+            )}
+        </React.Fragment>
+    );
 }

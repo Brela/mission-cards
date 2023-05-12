@@ -2,12 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useCardContext } from '../../contexts/CardListContext';
 import { getAllCardsForDeck } from '../../services/cardAPI';
 import { DeckContext } from '../../contexts/DeckContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
-    deckName: string;
+    deleteAndEditButtons: boolean,
 };
 
-function CardList() {
+function CardList({ deleteAndEditButtons }: Props) {
     const { cardsForDeck, setCardsForDeck } = useCardContext();
     const { deckName } = useContext(DeckContext)
 
@@ -34,10 +36,27 @@ function CardList() {
                     <li
                         className='card-list-item'
                         key={card._id}>
+                        <div className='card-front-and-back'>
+                            <div className='display-card-front'>{card.front}</div>
+                            <div className='display-card-back'>{card.back}</div>
+                        </div>
+                        <div className='edit-delete-buttons' id='fa-icon'>
+                            <button type="submit" className='fa-icon' >
+                                <FontAwesomeIcon
+                                    className='faPlus-icon'
+                                    icon={faPen}
+                                />
+                            </button>
+                            <button type="submit" className='fa-icon'>
+                                <FontAwesomeIcon
+                                    className='faPlus-icon'
+                                    icon={faTrash}
+                                />
+                            </button>
+                        </div>
+                        <div>
 
-                        <div className='display-card-front'>{card.front}</div>
-                        <div className='display-card-back'>{card.back}</div>
-
+                        </div>
                     </li>
                 ))}
             </ul>

@@ -10,7 +10,7 @@ function DisplayCardsForDeck() {
         <div>
             <div className='card-list-heading'><h3>Cards Preview</h3></div>
             <div className='display-cards-container theme-color'>
-                <CardList />
+                <CardList deleteAndEditButtons={true} />
             </div>
         </div>
     );

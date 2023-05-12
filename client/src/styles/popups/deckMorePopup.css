@@ -1,5 +1,6 @@
 .more-popup {
-    position: fixed;
+    position: absolute;
+    right: 100px;
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 5001;
