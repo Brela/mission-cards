@@ -12,6 +12,7 @@
     display: flex;
     flex-basis: 70%;
     font-size: 1.3em;
+    color: var(--heading-color);
 }
 
 .quote input {

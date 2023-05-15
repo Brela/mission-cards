@@ -7,6 +7,10 @@
     width: 45%;
 }
 
+.popup {
+    color: var(--heading-color);
+}
+
 .row-3 {
     display: flex;
     justify-content: space-between;
@@ -15,7 +19,7 @@
 }
 
 .row-3 .fa-solid {
-    color: rgb(175, 175, 175);
+    color: var(--heading-color);
 }
 
 .row-3 .item {

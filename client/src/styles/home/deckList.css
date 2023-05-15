@@ -31,6 +31,7 @@ li.deck-list-item {
     height: auto;
     position: relative;
     display: flex;
+    justify-content: space-between;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
@@ -46,23 +47,23 @@ li.deck-list-item:last-child {
 }
 
 li .deck-name {
+    width: 35%;
     padding-left: 10px;
     height: auto;
     min-height: 1.1em;
-    width: 90%;
+    /* width: 90%; */
     margin: auto 3%;
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
 li .cards-remaining {
-
     margin: auto 3%;
     text-align: center;
 }
 
 .more {
-    width: 33%;
+    width: 25%;
     display: flex;
     justify-content: flex-end;
     padding-right: 5%;
@@ -153,6 +154,9 @@ li .cards-remaining {
         box-shadow: var(--box-shadow);
     }
 
+    li .deck-name {
+        width: 100px;
+    }
 }
 
 @media only screen and (max-height: 500px) {

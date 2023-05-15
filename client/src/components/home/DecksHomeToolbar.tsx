@@ -52,9 +52,9 @@ function DecksToolbar() {
                         onClick={handleItemClick}
                         ref={popupsRefs[popupItem]}
                     >
-                        {popupItem === 'search' && <FontAwesomeIcon icon={faSearch} />}
-                        {popupItem === 'palette' && <FontAwesomeIcon icon={faPalette} />}
-                        {popupItem === 'gear' && <FontAwesomeIcon icon={faCog} />}
+                        {popupItem === 'search' && <FontAwesomeIcon icon={faSearch} className='fa-solid' />}
+                        {popupItem === 'palette' && <FontAwesomeIcon icon={faPalette} className='fa-solid' />}
+                        {popupItem === 'gear' && <FontAwesomeIcon icon={faCog} className='fa-solid' />}
                     </div>
                 ))}
             </div>
