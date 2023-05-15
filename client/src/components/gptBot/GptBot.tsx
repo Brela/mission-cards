@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ErrorContext from '../contexts/ErrorContext';
-import { UserContext } from '../contexts/UserContext';
-import { chatWithGPT } from '../services/openAiAPI';
+import ErrorContext from '../../contexts/ErrorContext';
+import { UserContext } from '../../contexts/UserContext';
+import { chatWithGPT } from '../../services/openAiAPI';
 
 import styled from '@emotion/styled';
 import { MoonLoader } from 'react-spinners';

@@ -11,7 +11,8 @@ import '../styles/addCard/displayCardsContainer.css'
 import Header from '../components/Header';
 import AddCardContainer from '../components/addCard/AddCardContainer'
 import DisplayCardsForDeck from '../components/addCard/DisplayCardsContainer'
-import GptBot from '../components/GptBot';
+import GptBot from '../components/gptBot/GptBot';
+import GptBotTextControls from '../components/gptBot/GptBotTextControls';
 import Footer from '../components/Footer';
 
 
@@ -29,6 +30,9 @@ function AddCard() {
                 <DisplayCardsForDeck />
             </div>
             <div className='gpt-bot-container'>
+                <div className='text-controls-box'>
+                    <GptBotTextControls />
+                </div>
                 <GptBot />
             </div>
             <ErrorAlert />

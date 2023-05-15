@@ -8,7 +8,7 @@ import '../styles/studyCards/studyCards.css'
 
 import Header from '../components/Header';
 import StudyCards from '../components/studyCards/StudyCards';
-import GptBot from '../components/GptBot';
+import GptBot from '../components/gptBot/GptBot';
 import Footer from '../components/Footer';
 
 function StudyCardsPage() {
