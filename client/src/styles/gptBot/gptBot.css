@@ -71,7 +71,7 @@
 
 
 .gpt-bot-sub-container input {
-
+    color: var(--accent-color-1);
     margin-right: 25px;
     width: 100%;
     /* background-color: var(--addCard-theme); */

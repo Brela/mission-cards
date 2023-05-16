@@ -94,6 +94,12 @@
     color: aliceblue;
 }
 
+@media screen and (max-width: 1200px) {
+    .display-cards-container {
+        width: 30vw;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .display-cards-container {
         /* hide on mobile for now */

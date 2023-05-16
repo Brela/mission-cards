@@ -10,7 +10,7 @@
     color: var(--accent-color-1);
     margin-left: 20px;
     padding: 2px 10px;
-    background-color: rgba(240, 248, 255, 0);
+    background-color: var(--addCard-theme);
 }
 
 .addcardtodeck option {
@@ -67,9 +67,9 @@
 
 .add-cards-sub-container>button {
     flex-basis: 30px;
-    width: 200px;
+    width: 40%;
     margin-bottom: 30px;
-    background-color: rgba(97, 147, 191, 0);
+    background-color: var(--addCard-theme);
     box-shadow: var(--box-shadow);
 }
 
