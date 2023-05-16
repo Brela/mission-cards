@@ -2,7 +2,8 @@
 * Create deck & add study cards to deck
 * Choose a theme color
 * Chat with ChatGPT - Send your chat prompt to the front of the flashcard and the response to the back.
-## live site: <a href="https://missionchatgpt.com/" target="_blank"></a> 
+## live site: 
+<a href="https://missionchatgpt.com/" target="_blank"></a> 
 ## start it up
 * add *.env* file to *server/config/* -> add port and DB_string to env file
 * cd client -> npm install -> npm run dev
