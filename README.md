@@ -3,7 +3,7 @@
 * Choose a theme color
 * Chat with ChatGPT - Send your chat prompt to the front of the flashcard and the response to the back.
 ## live site
-"https://missionchatgpt.com/"
+https://missionchatgpt.com/
 ## start it up
 * add *.env* file to *server/config/* -> add port and DB_string to env file
 * cd client -> npm install -> npm run dev
