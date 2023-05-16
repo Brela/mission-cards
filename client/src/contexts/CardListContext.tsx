@@ -8,6 +8,14 @@ type CardContextType = {
     allCards: CardType[];
     setAllCards: React.Dispatch<React.SetStateAction<CardType[]>>;
     addCard: (newCard: CardType) => Promise<void>;
+    userPrompt: string;
+    setUserPrompt: React.Dispatch<React.SetStateAction<string>>;
+    botResponse: string;
+    setBotResponse: React.Dispatch<React.SetStateAction<string>>;
+    frontText: string;
+    setFrontText: React.Dispatch<React.SetStateAction<string>>;
+    backText: string;
+    setBackText: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const CardListContext = createContext<CardContextType>({
@@ -16,6 +24,15 @@ export const CardListContext = createContext<CardContextType>({
     allCards: [],
     setAllCards: () => { },
     addCard: async () => { },
+    userPrompt: '',
+    setUserPrompt: () => { },
+    botResponse: '',
+    setBotResponse: () => { },
+    // front and back of cards in AddCardToDeck component
+    frontText: '',
+    setFrontText: () => { },
+    backText: '',
+    setBackText: () => { },
 });
 
 interface CardListProviderProps {
@@ -25,6 +42,10 @@ interface CardListProviderProps {
 export function CardListProvider({ children }: CardListProviderProps) {
     const [cardsForDeck, setCardsForDeck] = useState<CardType[]>([]);
     const [allCards, setAllCards] = useState<CardType[]>([]);
+    const [frontText, setFrontText] = useState<string>('');
+    const [backText, setBackText] = useState<string>('');
+    const [userPrompt, setUserPrompt] = useState<string>('');
+    const [botResponse, setBotResponse] = useState<string>('');
 
     async function fetchCardsForDeck(deckName: string) {
         const response = await getAllCardsForDeck(deckName);
@@ -53,7 +74,15 @@ export function CardListProvider({ children }: CardListProviderProps) {
             setCardsForDeck,
             allCards,
             setAllCards,
-            addCard
+            addCard,
+            userPrompt,
+            setUserPrompt,
+            botResponse,
+            setBotResponse,
+            frontText,
+            setFrontText,
+            backText,
+            setBackText
         }}>
             {children}
         </CardListContext.Provider>

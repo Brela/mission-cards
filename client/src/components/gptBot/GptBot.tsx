@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ErrorContext from '../../contexts/ErrorContext';
 import { UserContext } from '../../contexts/UserContext';
+import { CardListContext } from '../../contexts/CardListContext';
 import { chatWithGPT } from '../../services/openAiAPI';
 
 import styled from '@emotion/styled';
@@ -12,8 +13,9 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 function GptBot() {
     const { setError } = useContext(ErrorContext);
     const { user, isAuthenticated } = useContext(UserContext);
-    const [userPrompt, setUserPrompt] = useState('');
-    const [botResponse, setBotResponse] = useState('');
+    const { userPrompt, setUserPrompt, botResponse, setBotResponse } = useContext(CardListContext);
+    /*     const [userPrompt, setUserPrompt] = useState('');
+        const [botResponse, setBotResponse] = useState(''); */
     const [isLoading, setIsLoading] = useState(false);
 
     const StyledLoaderContainer = styled.div`

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ErrorContext from '../../contexts/ErrorContext';
 import { UserContext } from '../../contexts/UserContext';
-import { useCardContext } from '../../contexts/CardListContext';
+import { CardListContext } from '../../contexts/CardListContext';
 import { DeckContext } from '../../contexts/DeckContext';
 import { useNavigate, useParams } from "react-router-dom";
 import { createCard } from '../../services/cardAPI'
@@ -19,9 +19,15 @@ import { loadUserThemeColor } from '../../services/userAPI'
 function AddCardToDeck() {
     const { setError } = useContext(ErrorContext);
     const { user, isAuthenticated } = useContext(UserContext);
-    const { cardsForDeck, setCardsForDeck, addCard } = useCardContext();
-    const [frontText, setFrontText] = useState('');
-    const [backText, setBackText] = useState('');
+    const {
+        cardsForDeck,
+        setCardsForDeck,
+        addCard,
+        frontText,
+        setFrontText,
+        backText,
+        setBackText
+    } = useContext(CardListContext);
     const [justAddedCard, setJustAddedCard] = useState(false);
     /*  let { deckName } = useParams()
      deckName = deckName?.replaceAll('-', ' ') */
@@ -149,7 +155,10 @@ function AddCardToDeck() {
                             />
 
                         </div>
-                        <button type="submit">
+                        <button
+                            type="submit"
+                            title='Add Card to Deck'
+                        >
                             <FontAwesomeIcon
                                 className='faPlus-icon add-card-plus-button'
                                 icon={faPlus}

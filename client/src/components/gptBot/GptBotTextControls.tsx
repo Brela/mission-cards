@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import { CardListContext } from '../../contexts/CardListContext';
 
 // add icons to each component that needs them instead of app
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faPalette, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 // usage -- {<FontAwesomeIcon icon={faSearch} />}
 
 
 function GptBotTextControls() {
     const { user } = useContext(UserContext)
+    const { userPrompt, botResponse, setFrontText, setBackText } = useContext(CardListContext)
     const [activeItem, setActiveItem] = useState('');
 
     const handleItemClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -37,8 +39,18 @@ function GptBotTextControls() {
      */
     return (
         <>
-            <button className="" title="Send Question to Front of Card" onClick={() => setActiveItem('')}>Q</button>
-            <button className="" title="Send Response to Back of Card" onClick={() => setActiveItem('')}>R</button>
+            <button className="" title="Send Prompt to Front of Card" onClick={() => setFrontText(userPrompt)}>
+                <FontAwesomeIcon
+                    className='faPlus-icon send-gpt-prompt-button'
+                    icon={faArrowUp}
+                />
+            </button>
+            <button className="" title="Send Response to Back of Card" onClick={() => setBackText(botResponse)}>
+                <FontAwesomeIcon
+                    className='faPlus-icon send-gpt-prompt-button'
+                    icon={faArrowUp}
+                />
+            </button>
         </>
     );
 }
