@@ -1,19 +1,38 @@
-# mission study cards
-The purpose of this site is to create a captivating flashcards application where users can enter their current mission, get rewarded for progress (with points), and review added cards at user defined intervals
-<!-- ## live site: <a href="" target="_blank"></a> -->
-## start it up
-* add *.env* file to *server/config/* -> add port and DB_string to env file
+
+# Mission: Study Cards
+* Create deck & add study cards to deck
+* Choose a theme color
+* Chat with ChatGPT - Send your chat prompt to the front of the flashcard and the response to the back.
+
+<section align="left">
+<a href="" target="_blank" rel="noreferrer">
+<img src="https://i.ibb.co/Pcbvf67/Screenshot-2023-05-16-103911.png" alt="mission cards picture" width="620" height="400"/>
+</a>
+</section>
+
+  <section align="left">
+<a href="" target="_blank" rel="noreferrer">
+<img src="https://i.ibb.co/D1dr0pn/Screenshot-2023-05-16-104150.png" alt="mission cards picture" width="620" height="400"/>
+</a>
+</section>
+  <br>
+
+## Live Site
+https://missionchatgpt.com/
+
+## Start it Up
+* add *.env* file to client/ and server/ folders. Ask me for the contents
 * cd client -> npm install -> npm run dev
 * cd server -> npm install -> npm run dev
 * go to http://localhost:4000/ in browser
 
-### notes
-* The front-end (client folder) uses typeScript because I wanted to learn typeScript
-* The back-end (server folder) uses plain JS because I already had it developed when I started using TS
+### Notes
+* The front-end (client folder) uses typeScript because I wanted to learn TypeScript
+* The back-end (server folder) uses plain JS because it helped simplify the build
 
 
-## tech used
-Vite, TypeScript, MongoDB, Express, React, and Node
+## Tech Used
+Vite | TypeScript | MongoDB | Express | React | Node | OpenAI API
 
 ## Hosted on
 * Netlify - front end
