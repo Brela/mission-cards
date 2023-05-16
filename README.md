@@ -5,12 +5,19 @@
 * Chat with ChatGPT - Send your chat prompt to the front of the flashcard and the response to the back.
 
 <section align="left">
-<a href="https://orderly.pro/" target="_blank" rel="noreferrer">
-<img src="[https://i.ibb.co/Qc018WP/Screenshot-2023-04-12-140059.png](https://ibb.co/y6McbQw"><img src="https://i.ibb.co/Pcbvf67/Screenshot-2023-05-16-103911.png)" alt="mission cards picture" width="620" height="400"/>
+<a href="" target="_blank" rel="noreferrer">
+<img src="https://i.ibb.co/Pcbvf67/Screenshot-2023-05-16-103911.png" alt="mission cards picture" width="620" height="400"/>
+</a>
+</section>
+
+  <section align="left">
+<a href="" target="_blank" rel="noreferrer">
+<img src="https://i.ibb.co/D1dr0pn/Screenshot-2023-05-16-104150.png" alt="mission cards picture" width="620" height="400"/>
 </a>
 </section>
   <br>
-  
+  <a href="" alt="Screenshot-2023-05-16-104150" border="0"></a>
+<br>
 
 ## live site
 https://missionchatgpt.com/
