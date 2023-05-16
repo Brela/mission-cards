@@ -1,5 +1,5 @@
 
-# mission study cards
+# Mission: Study Cards
 * Create deck & add study cards to deck
 * Choose a theme color
 * Chat with ChatGPT - Send your chat prompt to the front of the flashcard and the response to the back.
@@ -16,25 +16,23 @@
 </a>
 </section>
   <br>
-  <a href="" alt="Screenshot-2023-05-16-104150" border="0"></a>
-<br>
 
-## live site
+## Live Site
 https://missionchatgpt.com/
 
-## start it up
-* add *.env* file to *server/config/* -> add port and DB_string to env file
+## Start it Up
+* add *.env* file to client/ and server/ folders. Ask me for the contents
 * cd client -> npm install -> npm run dev
 * cd server -> npm install -> npm run dev
 * go to http://localhost:4000/ in browser
 
-### notes
+### Notes
 * The front-end (client folder) uses typeScript because I wanted to learn TypeScript
 * The back-end (server folder) uses plain JS because it helped simplify the build
 
 
-## tech used
-Vite, TypeScript, MongoDB, Express, React, and Node
+## Tech Used
+Vite | TypeScript | MongoDB | Express | React | Node | OpenAI API
 
 ## Hosted on
 * Netlify - front end
