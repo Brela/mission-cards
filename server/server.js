@@ -35,7 +35,7 @@ app.set("trust proxy", true);
 const allowedOrigins = [
   "http://localhost:4000",
   "https://missionchatgpt.com",
-  "http://missiongpt.netlify.app",
+  "https://missiongpt.netlify.app",
 ];
 
 app.use(
