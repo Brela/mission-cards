@@ -32,7 +32,11 @@ connectDB();
 
 app.set("trust proxy", true);
 
-const allowedOrigins = ['http://localhost:4000', 'https://missionchatgpt.com'];
+const allowedOrigins = [
+  "http://localhost:4000",
+  "https://missionchatgpt.com",
+  "http://missiongpt.netlify.app",
+];
 
 app.use(
     cors({
