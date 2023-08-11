@@ -42,51 +42,69 @@ function DecksToolbar() {
         }, []);
      */
     return (
-        <div className="container">
-            <div className="row-3">
-                {['search', 'palette', 'gear'].map((popupItem) => (
-                    <div
-                        key={popupItem}
-                        // className={`item ${activeItem === popupItem ? 'active-item' : ''}`}
-                        data-popup={popupItem}
-                        onClick={handleItemClick}
-                        ref={popupsRefs[popupItem]}
-                    >
-                        {popupItem === 'search' && <FontAwesomeIcon icon={faSearch} className='fa-solid' />}
-                        {popupItem === 'palette' && <FontAwesomeIcon icon={faPalette} className='fa-solid' />}
-                        {popupItem === 'gear' && <FontAwesomeIcon icon={faCog} className='fa-solid' />}
-                    </div>
-                ))}
+      <div className="flex pt-3 text-cyan-800/50">
+        <div className="flex gap-5">
+          {["search", "palette", "gear"].map((popupItem) => (
+            <div
+              key={popupItem}
+              // className={`item ${activeItem === popupItem ? 'active-item' : ''}`}
+              data-popup={popupItem}
+              onClick={handleItemClick}
+              ref={popupsRefs[popupItem]}
+            >
+              {popupItem === "search" && (
+                <FontAwesomeIcon icon={faSearch} className="fa-solid" />
+              )}
+              {popupItem === "palette" && (
+                <FontAwesomeIcon icon={faPalette} className="fa-solid" />
+              )}
+              {popupItem === "gear" && (
+                <FontAwesomeIcon icon={faCog} className="fa-solid" />
+              )}
             </div>
-
-            <div className={`popup search ${activeItem === 'search' ? 'active' : ''}`}>
-                <div className="popup-box">
-                    <div className="popup-content">
-                        <h2>Keyword Search</h2>
-                        <h4>Coming Soon!</h4>
-                        <input />
-                    </div>
-                    <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
-                </div>
-            </div>
-            <div className={`popup palette ${activeItem === 'palette' ? 'active' : ''}`}>
-                <div className="popup-box">
-                    <div className="popup-content">
-                        <ColorPicker />
-                    </div>
-                    <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
-                </div>
-            </div>
-            <div className={`popup gear ${activeItem === 'gear' ? 'active' : ''}`}>
-                <div className="popup-box">
-                    <div className="popup-content">
-                        <h2>Preferences</h2>
-                        <p>Coming Soon!</p>
-                    </div>
-                    <button className="close-btn" onClick={() => setActiveItem('')}>Close</button>
-                </div>
-            </div>
+          ))}
         </div>
+
+        <div
+          className={`popup search ${activeItem === "search" ? "active" : ""}`}
+        >
+          <div className="popup-box">
+            <div className="popup-content">
+              <h2>Keyword Search</h2>
+              <h4>Coming Soon!</h4>
+              <input />
+            </div>
+            <button className="close-btn" onClick={() => setActiveItem("")}>
+              Close
+            </button>
+          </div>
+        </div>
+        <div
+          className={`popup palette ${
+            activeItem === "palette" ? "active" : ""
+          }`}
+        >
+          <div className="popup-box">
+            <div className="popup-content">
+              <ColorPicker />
+            </div>
+            <button className="close-btn" onClick={() => setActiveItem("")}>
+              Close
+            </button>
+          </div>
+        </div>
+        <div className={`popup gear ${activeItem === "gear" ? "active" : ""}`}>
+          <div className="popup-box">
+            <div className="popup-content">
+              <h2>Preferences</h2>
+              <p>Coming Soon!</p>
+            </div>
+            <button className="close-btn" onClick={() => setActiveItem("")}>
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     );
 }
 
