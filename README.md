@@ -18,7 +18,7 @@
   <br>
 
 ## Live Site
-https://missionchatgpt.com/
+https://missiongpt.netlify.app/
 
 ## Start it Up
 * add *.env* file to client/ and server/ folders. Ask me for the contents
