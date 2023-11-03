@@ -1,6 +1,7 @@
 import { API_URL } from './_config';
 import DeckType from '../types/DeckType';
 
+console.log(API_URL)
 export async function getDecks(): Promise<DeckType[]> {
     const response = await fetch(`${API_URL}/decks/`, {
         credentials: 'include',

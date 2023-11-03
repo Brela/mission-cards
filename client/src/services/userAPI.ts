@@ -126,7 +126,7 @@ export async function loginAsGuest() {
     }
 }
 
-/* Passport automatically attaches the logged-in user's information to the req object, 
+/* Passport automatically attaches the logged-in user's information to the req object,
 so there's no need to send the user ID explicitly in this case. */
 export async function logoutUser() {
     const response = await fetch(`${API_URL}/user/logout`, {
@@ -136,49 +136,7 @@ export async function logoutUser() {
     return response;
 }
 
-/* 
-// send a POST request to server to create a new user with the provided Google ID token.
-export async function createUserWithGoogle(idToken: string) {
-    try {
-        const response = await fetch(`${API_URL}/user/google/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id_token: idToken,
-            }),
-        });
-        const data = await response.json();
-        return { status: response.status, data };
-    } catch (error) {
-        const err = error as Response;
-        const data = await err.json();
-        return { status: err.status, data };
-    }
-}
 
-// send a POST request to server to authenticate the user with the provided Google ID token.
-export async function loginWithGoogle(idToken: string) {
-    try {
-        const response = await fetch(`${API_URL}/user/google/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id_token: idToken,
-            }),
-        });
-        const data = await response.json();
-        return { status: response.status, data };
-    } catch (error) {
-        const err = error as Response;
-        const data = await err.json();
-        return { status: err.status, data };
-    }
-}
- */
 
 
 
